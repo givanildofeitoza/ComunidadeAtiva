@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ComunidadeAtiva.Infra.Data\ComunidadeAtiva.Infra.Data.csproj" />
+    <ProjectReference Include="..\Dominio\ComunidadeAtiva.Dominio.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="CasosDeUso\Interfaces\" />
+    <Folder Include="CasosDeUso\Servicos\" />
+    <Folder Include="DTO\" />
+    <Folder Include="Mapeamento\" />
+  </ItemGroup>
+
+</Project>

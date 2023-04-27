@@ -1,0 +1,17 @@
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Aplicacao\bin\Debug\net6.0\ComunidadeAtiva.Aplicacao.deps.json
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Aplicacao\bin\Debug\net6.0\ComunidadeAtiva.Aplicacao.dll
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Aplicacao\bin\Debug\net6.0\ComunidadeAtiva.Aplicacao.pdb
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Aplicacao\bin\Debug\net6.0\ComunidadeAtiva.Dominio.dll
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Aplicacao\bin\Debug\net6.0\ComunidadeAtiva.Dominio.pdb
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Aplicacao\obj\Debug\net6.0\ComunidadeAtiva.Aplicacao.csproj.AssemblyReference.cache
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Aplicacao\obj\Debug\net6.0\ComunidadeAtiva.Aplicacao.GeneratedMSBuildEditorConfig.editorconfig
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Aplicacao\obj\Debug\net6.0\ComunidadeAtiva.Aplicacao.AssemblyInfoInputs.cache
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Aplicacao\obj\Debug\net6.0\ComunidadeAtiva.Aplicacao.AssemblyInfo.cs
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Aplicacao\obj\Debug\net6.0\ComunidadeAtiva.Aplicacao.csproj.CoreCompileInputs.cache
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Aplicacao\obj\Debug\net6.0\ComunidadeAtiva.Aplicacao.csproj.CopyComplete
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Aplicacao\obj\Debug\net6.0\ComunidadeAtiva.Aplicacao.dll
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Aplicacao\obj\Debug\net6.0\refint\ComunidadeAtiva.Aplicacao.dll
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Aplicacao\obj\Debug\net6.0\ComunidadeAtiva.Aplicacao.pdb
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Aplicacao\obj\Debug\net6.0\ref\ComunidadeAtiva.Aplicacao.dll
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Aplicacao\bin\Debug\net6.0\ComunidadeAtiva.Infra.Data.dll
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Aplicacao\bin\Debug\net6.0\ComunidadeAtiva.Infra.Data.pdb

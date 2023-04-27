@@ -1,0 +1,12 @@
+C:\givanildo\Projetos\ComunidadeAtiva\Dominio\bin\Debug\net6.0\ComunidadeAtiva.Dominio.deps.json
+C:\givanildo\Projetos\ComunidadeAtiva\Dominio\bin\Debug\net6.0\ComunidadeAtiva.Dominio.dll
+C:\givanildo\Projetos\ComunidadeAtiva\Dominio\bin\Debug\net6.0\ComunidadeAtiva.Dominio.pdb
+C:\givanildo\Projetos\ComunidadeAtiva\Dominio\obj\Debug\net6.0\ComunidadeAtiva.Dominio.csproj.AssemblyReference.cache
+C:\givanildo\Projetos\ComunidadeAtiva\Dominio\obj\Debug\net6.0\ComunidadeAtiva.Dominio.GeneratedMSBuildEditorConfig.editorconfig
+C:\givanildo\Projetos\ComunidadeAtiva\Dominio\obj\Debug\net6.0\ComunidadeAtiva.Dominio.AssemblyInfoInputs.cache
+C:\givanildo\Projetos\ComunidadeAtiva\Dominio\obj\Debug\net6.0\ComunidadeAtiva.Dominio.AssemblyInfo.cs
+C:\givanildo\Projetos\ComunidadeAtiva\Dominio\obj\Debug\net6.0\ComunidadeAtiva.Dominio.csproj.CoreCompileInputs.cache
+C:\givanildo\Projetos\ComunidadeAtiva\Dominio\obj\Debug\net6.0\ComunidadeAtiva.Dominio.dll
+C:\givanildo\Projetos\ComunidadeAtiva\Dominio\obj\Debug\net6.0\refint\ComunidadeAtiva.Dominio.dll
+C:\givanildo\Projetos\ComunidadeAtiva\Dominio\obj\Debug\net6.0\ComunidadeAtiva.Dominio.pdb
+C:\givanildo\Projetos\ComunidadeAtiva\Dominio\obj\Debug\net6.0\ref\ComunidadeAtiva.Dominio.dll

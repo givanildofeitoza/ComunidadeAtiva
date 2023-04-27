@@ -1,0 +1,302 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\givanildo\\Projetos\\ComunidadeAtiva\\ComunidadeAtiva.Ioc\\ComunidadeAtiva.Ioc.csproj": {}
+  },
+  "projects": {
+    "C:\\givanildo\\Projetos\\ComunidadeAtiva\\ComunidadeAtiva.Aplicacao\\ComunidadeAtiva.Aplicacao.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\givanildo\\Projetos\\ComunidadeAtiva\\ComunidadeAtiva.Aplicacao\\ComunidadeAtiva.Aplicacao.csproj",
+        "projectName": "ComunidadeAtiva.Aplicacao",
+        "projectPath": "C:\\givanildo\\Projetos\\ComunidadeAtiva\\ComunidadeAtiva.Aplicacao\\ComunidadeAtiva.Aplicacao.csproj",
+        "packagesPath": "C:\\Users\\IQ SISTEMAS\\.nuget\\packages\\",
+        "outputPath": "C:\\givanildo\\Projetos\\ComunidadeAtiva\\ComunidadeAtiva.Aplicacao\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\IQ SISTEMAS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\givanildo\\Projetos\\ComunidadeAtiva\\ComunidadeAtiva.Infra.Data\\ComunidadeAtiva.Infra.Data.csproj": {
+                "projectPath": "C:\\givanildo\\Projetos\\ComunidadeAtiva\\ComunidadeAtiva.Infra.Data\\ComunidadeAtiva.Infra.Data.csproj"
+              },
+              "C:\\givanildo\\Projetos\\ComunidadeAtiva\\Dominio\\ComunidadeAtiva.Dominio.csproj": {
+                "projectPath": "C:\\givanildo\\Projetos\\ComunidadeAtiva\\Dominio\\ComunidadeAtiva.Dominio.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\givanildo\\Projetos\\ComunidadeAtiva\\ComunidadeAtiva.Infra.Data\\ComunidadeAtiva.Infra.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\givanildo\\Projetos\\ComunidadeAtiva\\ComunidadeAtiva.Infra.Data\\ComunidadeAtiva.Infra.Data.csproj",
+        "projectName": "ComunidadeAtiva.Infra.Data",
+        "projectPath": "C:\\givanildo\\Projetos\\ComunidadeAtiva\\ComunidadeAtiva.Infra.Data\\ComunidadeAtiva.Infra.Data.csproj",
+        "packagesPath": "C:\\Users\\IQ SISTEMAS\\.nuget\\packages\\",
+        "outputPath": "C:\\givanildo\\Projetos\\ComunidadeAtiva\\ComunidadeAtiva.Infra.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\IQ SISTEMAS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\givanildo\\Projetos\\ComunidadeAtiva\\Dominio\\ComunidadeAtiva.Dominio.csproj": {
+                "projectPath": "C:\\givanildo\\Projetos\\ComunidadeAtiva\\Dominio\\ComunidadeAtiva.Dominio.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[6.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.10, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[6.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\givanildo\\Projetos\\ComunidadeAtiva\\ComunidadeAtiva.Ioc\\ComunidadeAtiva.Ioc.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\givanildo\\Projetos\\ComunidadeAtiva\\ComunidadeAtiva.Ioc\\ComunidadeAtiva.Ioc.csproj",
+        "projectName": "ComunidadeAtiva.Ioc",
+        "projectPath": "C:\\givanildo\\Projetos\\ComunidadeAtiva\\ComunidadeAtiva.Ioc\\ComunidadeAtiva.Ioc.csproj",
+        "packagesPath": "C:\\Users\\IQ SISTEMAS\\.nuget\\packages\\",
+        "outputPath": "C:\\givanildo\\Projetos\\ComunidadeAtiva\\ComunidadeAtiva.Ioc\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\IQ SISTEMAS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\givanildo\\Projetos\\ComunidadeAtiva\\ComunidadeAtiva.Aplicacao\\ComunidadeAtiva.Aplicacao.csproj": {
+                "projectPath": "C:\\givanildo\\Projetos\\ComunidadeAtiva\\ComunidadeAtiva.Aplicacao\\ComunidadeAtiva.Aplicacao.csproj"
+              },
+              "C:\\givanildo\\Projetos\\ComunidadeAtiva\\ComunidadeAtiva.Infra.Data\\ComunidadeAtiva.Infra.Data.csproj": {
+                "projectPath": "C:\\givanildo\\Projetos\\ComunidadeAtiva\\ComunidadeAtiva.Infra.Data\\ComunidadeAtiva.Infra.Data.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.Extensions.Hosting.Abstractions": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\givanildo\\Projetos\\ComunidadeAtiva\\Dominio\\ComunidadeAtiva.Dominio.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\givanildo\\Projetos\\ComunidadeAtiva\\Dominio\\ComunidadeAtiva.Dominio.csproj",
+        "projectName": "ComunidadeAtiva.Dominio",
+        "projectPath": "C:\\givanildo\\Projetos\\ComunidadeAtiva\\Dominio\\ComunidadeAtiva.Dominio.csproj",
+        "packagesPath": "C:\\Users\\IQ SISTEMAS\\.nuget\\packages\\",
+        "outputPath": "C:\\givanildo\\Projetos\\ComunidadeAtiva\\Dominio\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\IQ SISTEMAS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

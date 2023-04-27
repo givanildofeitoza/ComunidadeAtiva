@@ -1,0 +1,17 @@
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Infra.Data\bin\Debug\net6.0\ComunidadeAtiva.Infra.Data.deps.json
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Infra.Data\bin\Debug\net6.0\ComunidadeAtiva.Infra.Data.dll
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Infra.Data\bin\Debug\net6.0\ComunidadeAtiva.Infra.Data.pdb
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Infra.Data\bin\Debug\net6.0\ComunidadeAtiva.Dominio.dll
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Infra.Data\bin\Debug\net6.0\ComunidadeAtiva.Dominio.pdb
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Infra.Data\obj\Debug\net6.0\ComunidadeAtiva.Infra.Data.csproj.AssemblyReference.cache
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Infra.Data\obj\Debug\net6.0\ComunidadeAtiva.Infra.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Infra.Data\obj\Debug\net6.0\ComunidadeAtiva.Infra.Data.AssemblyInfoInputs.cache
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Infra.Data\obj\Debug\net6.0\ComunidadeAtiva.Infra.Data.AssemblyInfo.cs
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Infra.Data\obj\Debug\net6.0\ComunidadeAtiva.Infra.Data.csproj.CoreCompileInputs.cache
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Infra.Data\obj\Debug\net6.0\ComunidadeAtiva.Infra.Data.csproj.CopyComplete
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Infra.Data\obj\Debug\net6.0\ComunidadeAtiva.Infra.Data.dll
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Infra.Data\obj\Debug\net6.0\refint\ComunidadeAtiva.Infra.Data.dll
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Infra.Data\obj\Debug\net6.0\ComunidadeAtiva.Infra.Data.pdb
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Infra.Data\obj\Debug\net6.0\ref\ComunidadeAtiva.Infra.Data.dll
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Infra.Data\bin\Debug\net6.0\ComunidadeAtiva.Infra.Data.runtimeconfig.json
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Infra.Data\obj\Debug\net6.0\ComunidadeAtiva.Infra.Data.genruntimeconfig.cache
