@@ -13,7 +13,6 @@
 
   <ItemGroup>
     <Folder Include="CasosDeUso\Interfaces\" />
-    <Folder Include="CasosDeUso\Servicos\" />
     <Folder Include="DTO\" />
     <Folder Include="Mapeamento\" />
   </ItemGroup>

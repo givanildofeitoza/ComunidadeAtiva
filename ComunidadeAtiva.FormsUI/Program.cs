@@ -40,6 +40,7 @@ namespace ComunidadeAtiva.FormsUI
                 .AddDbContext<FileDbContext>(opt => opt.UseMySql(ConnectionStrings, ServerVersion.AutoDetect(ConnectionStrings)))
                 .AddScoped<DbContext, FileDbContext>()
                 .AddSingleton<Imorador, MoradorService>()
+                .AddSingleton<Irua, RuaService>()
                 .AddScoped<FrmMain>();
            
         }

@@ -3,7 +3,7 @@
 
 namespace ComunidadeAtiva.Dominio.Interfaces
 {
-    public interface IruaService
+    public interface Irua
     {
         public void CadastrarRua(Rua m);
         public void AlterarRua(Rua m);

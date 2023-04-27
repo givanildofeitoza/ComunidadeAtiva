@@ -27,7 +27,6 @@ namespace ComunidadeAtiva.FormsUI
         private Image _img;
         private Image _imgBtnAlter;
         private Image _imgBtnDelete;
-    
 
         private void imgAlter_Click(object sender, EventArgs e)
         {
@@ -89,8 +88,5 @@ namespace ComunidadeAtiva.FormsUI
             get { return _texto04; }
             set { _texto04 = value; txtInfo04.Text = value; }
         }
-
-
-
     }
 }

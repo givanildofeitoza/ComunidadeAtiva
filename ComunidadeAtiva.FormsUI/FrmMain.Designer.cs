@@ -45,6 +45,8 @@
             panel1 = new Panel();
             button1 = new Button();
             panel3 = new Panel();
+            imgAlter = new PictureBox();
+            lblOpcaoAtiva = new Label();
             textBox1 = new TextBox();
             button8 = new Button();
             panel4 = new Panel();
@@ -53,6 +55,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)imgAlter).BeginInit();
             panel4.SuspendLayout();
             SuspendLayout();
             // 
@@ -196,6 +199,7 @@
             btnMorador.TabIndex = 3;
             btnMorador.Text = "Moradores";
             btnMorador.UseVisualStyleBackColor = false;
+            btnMorador.Click += btnMorador_Click;
             // 
             // label2
             // 
@@ -257,13 +261,38 @@
             // panel3
             // 
             panel3.BackColor = Color.WhiteSmoke;
+            panel3.Controls.Add(imgAlter);
+            panel3.Controls.Add(lblOpcaoAtiva);
             panel3.Controls.Add(textBox1);
             panel3.Controls.Add(button8);
             panel3.Dock = DockStyle.Top;
             panel3.Location = new Point(264, 36);
             panel3.Name = "panel3";
-            panel3.Size = new Size(854, 88);
+            panel3.Size = new Size(854, 132);
             panel3.TabIndex = 3;
+            // 
+            // imgAlter
+            // 
+            imgAlter.Cursor = Cursors.Hand;
+            imgAlter.Image = (Image)resources.GetObject("imgAlter.Image");
+            imgAlter.Location = new Point(816, 20);
+            imgAlter.Name = "imgAlter";
+            imgAlter.Size = new Size(26, 26);
+            imgAlter.SizeMode = PictureBoxSizeMode.StretchImage;
+            imgAlter.TabIndex = 9;
+            imgAlter.TabStop = false;
+            imgAlter.Click += imgAlter_Click;
+            // 
+            // lblOpcaoAtiva
+            // 
+            lblOpcaoAtiva.AutoSize = true;
+            lblOpcaoAtiva.Cursor = Cursors.Hand;
+            lblOpcaoAtiva.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblOpcaoAtiva.Location = new Point(26, 91);
+            lblOpcaoAtiva.Name = "lblOpcaoAtiva";
+            lblOpcaoAtiva.Size = new Size(99, 20);
+            lblOpcaoAtiva.TabIndex = 6;
+            lblOpcaoAtiva.Text = "MORADORES";
             // 
             // textBox1
             // 
@@ -294,9 +323,9 @@
             panel4.BackColor = Color.WhiteSmoke;
             panel4.Controls.Add(flowLayoutPanel1);
             panel4.Dock = DockStyle.Fill;
-            panel4.Location = new Point(264, 124);
+            panel4.Location = new Point(264, 168);
             panel4.Name = "panel4";
-            panel4.Size = new Size(854, 644);
+            panel4.Size = new Size(854, 600);
             panel4.TabIndex = 4;
             // 
             // flowLayoutPanel1
@@ -305,7 +334,7 @@
             flowLayoutPanel1.Dock = DockStyle.Fill;
             flowLayoutPanel1.Location = new Point(0, 0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(854, 644);
+            flowLayoutPanel1.Size = new Size(854, 600);
             flowLayoutPanel1.TabIndex = 0;
             // 
             // FrmMain
@@ -327,6 +356,7 @@
             panel1.ResumeLayout(false);
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)imgAlter).EndInit();
             panel4.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -352,5 +382,7 @@
         private Button button8;
         private TextBox textBox1;
         private FlowLayoutPanel flowLayoutPanel1;
+        private Label lblOpcaoAtiva;
+        private PictureBox imgAlter;
     }
 }

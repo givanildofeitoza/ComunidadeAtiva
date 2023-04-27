@@ -87,7 +87,7 @@
             // imgBox
             // 
             imgBox.Image = Properties.Resources.user1;
-            imgBox.Location = new Point(35, 13);
+            imgBox.Location = new Point(37, 13);
             imgBox.Name = "imgBox";
             imgBox.Size = new Size(45, 45);
             imgBox.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -112,7 +112,7 @@
             txtInfo04.Name = "txtInfo04";
             txtInfo04.Size = new Size(38, 13);
             txtInfo04.TabIndex = 5;
-            txtInfo04.Text = "label2";         
+            txtInfo04.Text = "label2";
             // 
             // panel2
             // 
@@ -125,6 +125,7 @@
             // 
             // imgAlter
             // 
+            imgAlter.Cursor = Cursors.Hand;
             imgAlter.Image = (Image)resources.GetObject("imgAlter.Image");
             imgAlter.Location = new Point(691, 21);
             imgAlter.Name = "imgAlter";
@@ -136,6 +137,7 @@
             // 
             // imgDelete
             // 
+            imgDelete.Cursor = Cursors.Hand;
             imgDelete.Image = (Image)resources.GetObject("imgDelete.Image");
             imgDelete.Location = new Point(737, 21);
             imgDelete.Name = "imgDelete";
