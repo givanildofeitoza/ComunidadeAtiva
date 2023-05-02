@@ -16,7 +16,7 @@ namespace ComunidadeAtiva.Infra.Data.EntidadesConfig
             builder.Property(p => p.Nascimento).HasDefaultValue("1900-01-01");
             builder.Property(p => p.Situacao).HasMaxLength(10).HasDefaultValue("Ativo");
             builder.Property(p => p.NumeroCasa).HasMaxLength(4);
-            builder.Property(p => p.IdRua).HasMaxLength(4).IsRequired();
+            builder.Property(p => p.RuaId).HasMaxLength(4).IsRequired();
         }
     }
 }

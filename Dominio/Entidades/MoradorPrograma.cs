@@ -8,8 +8,8 @@ namespace ComunidadeAtiva.Dominio.Entidades
 {
     public class MoradorPrograma:Entidade
     {
-        public int IdMorador { get; set; }
-        public int IdPrograma { get; set; }
+        public int MoradorId { get; set; }
+        public int ProgramaId { get; set; }
         public string Ativo { get; set; }
 
     }

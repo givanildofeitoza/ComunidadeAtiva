@@ -275,7 +275,7 @@
             // 
             imgAlter.Cursor = Cursors.Hand;
             imgAlter.Image = (Image)resources.GetObject("imgAlter.Image");
-            imgAlter.Location = new Point(816, 20);
+            imgAlter.Location = new Point(10, 91);
             imgAlter.Name = "imgAlter";
             imgAlter.Size = new Size(26, 26);
             imgAlter.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -288,7 +288,7 @@
             lblOpcaoAtiva.AutoSize = true;
             lblOpcaoAtiva.Cursor = Cursors.Hand;
             lblOpcaoAtiva.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            lblOpcaoAtiva.Location = new Point(26, 91);
+            lblOpcaoAtiva.Location = new Point(39, 95);
             lblOpcaoAtiva.Name = "lblOpcaoAtiva";
             lblOpcaoAtiva.Size = new Size(99, 20);
             lblOpcaoAtiva.TabIndex = 6;

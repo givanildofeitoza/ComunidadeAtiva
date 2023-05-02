@@ -67,3 +67,5 @@ C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.FormsUI\obj\Debug\net6.0-w
 C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.FormsUI\obj\Debug\net6.0-windows\ComunidadeAtiva.FormsUI.ControlMorador.resources
 C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.FormsUI\obj\Debug\net6.0-windows\ComunidadeAtiva.FormsUI.CustomListItem.resources
 C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.FormsUI\obj\Debug\net6.0-windows\ComunidadeAtiva.FormsUI.FormsModal._FrmCrudMorador.resources
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.FormsUI\obj\Debug\net6.0-windows\ComunidadeAtiva.FormsUI.FormsModal._FrmCrudRua.resources
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.FormsUI\obj\Debug\net6.0-windows\ComunidadeAtiva.FormsUI.Classes.ClasseFormPadrao.resources

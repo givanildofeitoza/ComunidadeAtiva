@@ -76,11 +76,11 @@ namespace ComunidadeAtiva.Infra.Data.Migrations
                         .HasColumnType("varchar(1)")
                         .HasDefaultValue("S");
 
-                    b.Property<int>("IdBeneficioSocial")
+                    b.Property<int>("BeneficioSocialId")
                         .HasMaxLength(4)
                         .HasColumnType("int");
 
-                    b.Property<int>("IdMorador")
+                    b.Property<int>("MoradorId")
                         .HasMaxLength(4)
                         .HasColumnType("int");
 
@@ -91,6 +91,9 @@ namespace ComunidadeAtiva.Infra.Data.Migrations
                         .HasDefaultValue(0m);
 
                     b.HasKey("id");
+
+                    b.HasIndex("MoradorId")
+                        .IsUnique();
 
                     b.ToTable("moradorBeneficioSocial");
                 });
@@ -107,15 +110,18 @@ namespace ComunidadeAtiva.Infra.Data.Migrations
                         .HasColumnType("varchar(1)")
                         .HasDefaultValue("S");
 
-                    b.Property<int>("IdMorador")
+                    b.Property<int>("MoradorId")
                         .HasMaxLength(6)
                         .HasColumnType("int");
 
-                    b.Property<int>("IdNecessidade")
+                    b.Property<int>("NecessidadeId")
                         .HasMaxLength(6)
                         .HasColumnType("int");
 
                     b.HasKey("id");
+
+                    b.HasIndex("MoradorId")
+                        .IsUnique();
 
                     b.ToTable("moradorNecessidadeEspecial");
                 });
@@ -133,15 +139,18 @@ namespace ComunidadeAtiva.Infra.Data.Migrations
                         .HasColumnType("varchar(1)")
                         .HasDefaultValue("S");
 
-                    b.Property<int>("IdMorador")
+                    b.Property<int>("MoradorId")
                         .HasMaxLength(6)
                         .HasColumnType("int");
 
-                    b.Property<int>("IdPrograma")
+                    b.Property<int>("ProgramaId")
                         .HasMaxLength(3)
                         .HasColumnType("int");
 
                     b.HasKey("id");
+
+                    b.HasIndex("MoradorId")
+                        .IsUnique();
 
                     b.ToTable("moradorPrograma");
                 });
@@ -441,11 +450,6 @@ namespace ComunidadeAtiva.Infra.Data.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("varchar(20)");
 
-                    b.Property<int?>("IdRua")
-                        .IsRequired()
-                        .HasMaxLength(4)
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("Nascimento")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime")
@@ -464,6 +468,10 @@ namespace ComunidadeAtiva.Infra.Data.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("varchar(10)");
 
+                    b.Property<int>("RuaId")
+                        .HasMaxLength(4)
+                        .HasColumnType("int");
+
                     b.Property<string>("Situacao")
                         .ValueGeneratedOnAdd()
                         .HasMaxLength(10)
@@ -471,6 +479,8 @@ namespace ComunidadeAtiva.Infra.Data.Migrations
                         .HasDefaultValue("Ativo");
 
                     b.HasKey("id");
+
+                    b.HasIndex("RuaId");
 
                     b.ToTable("morador");
                 });
@@ -568,6 +578,56 @@ namespace ComunidadeAtiva.Infra.Data.Migrations
                     b.HasKey("id");
 
                     b.ToTable("rua");
+                });
+
+            modelBuilder.Entity("ComunidadeAtiva.Dominio.Entidades.MoradorBeneficioSocial", b =>
+                {
+                    b.HasOne("ComunidadeAtiva.Dominio.Entity.Morador", null)
+                        .WithOne("beneficioSocial")
+                        .HasForeignKey("ComunidadeAtiva.Dominio.Entidades.MoradorBeneficioSocial", "MoradorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ComunidadeAtiva.Dominio.Entidades.MoradorNecessidadeEspecial", b =>
+                {
+                    b.HasOne("ComunidadeAtiva.Dominio.Entity.Morador", null)
+                        .WithOne("necessidadeEspecial")
+                        .HasForeignKey("ComunidadeAtiva.Dominio.Entidades.MoradorNecessidadeEspecial", "MoradorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ComunidadeAtiva.Dominio.Entidades.MoradorPrograma", b =>
+                {
+                    b.HasOne("ComunidadeAtiva.Dominio.Entity.Morador", null)
+                        .WithOne("programa")
+                        .HasForeignKey("ComunidadeAtiva.Dominio.Entidades.MoradorPrograma", "MoradorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ComunidadeAtiva.Dominio.Entity.Morador", b =>
+                {
+                    b.HasOne("ComunidadeAtiva.Dominio.Entity.Rua", "rua")
+                        .WithMany()
+                        .HasForeignKey("RuaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("rua");
+                });
+
+            modelBuilder.Entity("ComunidadeAtiva.Dominio.Entity.Morador", b =>
+                {
+                    b.Navigation("beneficioSocial")
+                        .IsRequired();
+
+                    b.Navigation("necessidadeEspecial")
+                        .IsRequired();
+
+                    b.Navigation("programa")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

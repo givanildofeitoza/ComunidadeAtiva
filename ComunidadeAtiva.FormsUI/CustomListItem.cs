@@ -14,6 +14,7 @@ namespace ComunidadeAtiva.FormsUI
     public partial class CustomListItem : UserControl
     {
         private ClasseFormPadrao _frm;
+
         public CustomListItem(ClasseFormPadrao frm)
         {
             _frm = frm;
@@ -30,7 +31,7 @@ namespace ComunidadeAtiva.FormsUI
 
         private void imgAlter_Click(object sender, EventArgs e)
         {
-            _frm.Id = int.Parse(_texto02);
+            _frm.Id = int.Parse(_texto01);
             _frm.ShowDialog();
         }
 

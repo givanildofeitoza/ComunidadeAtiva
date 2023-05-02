@@ -8,52 +8,52 @@ namespace ComunidadeAtiva.Infra.Data.RepositorioGenerico
         
     public class RepositorioGenerico<T> : IrepositorioGenerico<T> where T :Entidade
     {
-        private readonly DbContext _BancoDados;
-        private readonly DbSet<T> _EntidadeGenerica;
+        protected readonly DbContext _BancoDados;
+        protected readonly DbSet<T> _Entidade;
         public RepositorioGenerico(DbContext BancoDados)
         {
             _BancoDados = BancoDados;
-            _EntidadeGenerica = _BancoDados.Set<T>();
+            _Entidade = _BancoDados.Set<T>();
         }
         
-        public void Alterar(T ModelParametro)
+        public async Task Alterar(T ModelParametro)
         {
             if (ModelParametro.id != 0)
             {
-                _EntidadeGenerica.Update(ModelParametro);
-                _BancoDados.SaveChanges();
+                _Entidade.Update(ModelParametro);
+                _BancoDados.SaveChangesAsync();
             }                
             
         }
 
-        public void Cadastrar(T ModelParametro)
+        public async Task Cadastrar(T ModelParametro)
         {
 
             if (ModelParametro != null)
             {
-                _EntidadeGenerica.Add(ModelParametro);
-                _BancoDados.SaveChanges();
+                _Entidade.Add(ModelParametro);
+                _BancoDados.SaveChangesAsync();
             }
             
         }
 
-        public void Deletar(T ModelParametro)
+        public async Task Deletar(T ModelParametro)
         {
             if (ModelParametro.id != 0)
             {
-                _EntidadeGenerica.Remove(ModelParametro);
-                _BancoDados.SaveChanges();
+                _Entidade.Remove(ModelParametro);
+                _BancoDados.SaveChangesAsync();
             }
         }
 
-        public T ObterPorId(int id)
+        public async Task<T> ObterPorId(int id)
         {
-            return _EntidadeGenerica.Where(x=>x.id==id).FirstOrDefault();
+            return await _Entidade.Where(x=>x.id==id).FirstOrDefaultAsync();
         }
 
-        public IEnumerable<T> ObterTodos(int take, int skip)
-        {
-            return _EntidadeGenerica.Take(take).Skip(skip).ToList();
+        public async Task<IEnumerable<T>> ObterTodos(int take, int skip)
+        {            
+            return await _Entidade.Take(take).Skip(skip).ToListAsync();
         }
     }
 }

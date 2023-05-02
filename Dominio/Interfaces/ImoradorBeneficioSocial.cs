@@ -1,13 +1,10 @@
 ﻿using ComunidadeAtiva.Dominio.Entidades;
-
+using ComunidadeAtiva.Dominio.Entity;
 
 namespace ComunidadeAtiva.Dominio.Interfaces
 {
-    public interface ImoradorBeneficioSocialService
+    public interface ImoradorBeneficioSocial: IrepositorioGenerico<BeneficioSocial>
     {
-        public void CadastrarMoradorBeneficioSocial(MoradorBeneficioSocial m);
-        public void AlterarMoradorBeneficioSocial(MoradorBeneficioSocial m);
-        public IEnumerable<MoradorBeneficioSocial> ObterTodosMoradorBeneficioSocial(int t, int s);
-        public MoradorBeneficioSocial ObterMoradorBeneficioSocialId(int id);
+    
     }
 }

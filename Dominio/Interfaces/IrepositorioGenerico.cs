@@ -10,11 +10,11 @@ namespace ComunidadeAtiva.Dominio.Interfaces
 {
     public interface IrepositorioGenerico<T> 
     {
-        public T ObterPorId(int id);
-        public IEnumerable<T> ObterTodos(int take, int skip);
-        public void Cadastrar(T morador);
-        public void Alterar(T morador);
-        public void Deletar(T morador);
+        public  Task<T> ObterPorId(int id);
+        public  Task<IEnumerable<T>> ObterTodos(int take, int skip);
+        public  Task Cadastrar(T morador);
+        public  Task Alterar(T morador);
+        public  Task Deletar(T morador);
        
      
     }

@@ -39,6 +39,7 @@
             panel2 = new Panel();
             imgAlter = new PictureBox();
             imgDelete = new PictureBox();
+            lblLabelCodigo = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)imgBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgAlter).BeginInit();
@@ -50,7 +51,7 @@
             TxtTitulo.AutoSize = true;
             TxtTitulo.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             TxtTitulo.ForeColor = SystemColors.GrayText;
-            TxtTitulo.Location = new Point(98, 9);
+            TxtTitulo.Location = new Point(96, 5);
             TxtTitulo.Name = "TxtTitulo";
             TxtTitulo.Size = new Size(50, 20);
             TxtTitulo.TabIndex = 0;
@@ -59,8 +60,9 @@
             // txtInfo01
             // 
             txtInfo01.AutoSize = true;
-            txtInfo01.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            txtInfo01.Location = new Point(98, 34);
+            txtInfo01.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            txtInfo01.ForeColor = SystemColors.WindowFrame;
+            txtInfo01.Location = new Point(142, 27);
             txtInfo01.Name = "txtInfo01";
             txtInfo01.Size = new Size(38, 13);
             txtInfo01.TabIndex = 1;
@@ -69,7 +71,8 @@
             // txtInfo02
             // 
             txtInfo02.AutoSize = true;
-            txtInfo02.Location = new Point(98, 51);
+            txtInfo02.ForeColor = SystemColors.WindowFrame;
+            txtInfo02.Location = new Point(98, 43);
             txtInfo02.Name = "txtInfo02";
             txtInfo02.Size = new Size(38, 15);
             txtInfo02.TabIndex = 2;
@@ -98,7 +101,8 @@
             // 
             txtInfo03.AutoSize = true;
             txtInfo03.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            txtInfo03.Location = new Point(355, 34);
+            txtInfo03.ForeColor = SystemColors.WindowFrame;
+            txtInfo03.Location = new Point(355, 29);
             txtInfo03.Name = "txtInfo03";
             txtInfo03.Size = new Size(38, 13);
             txtInfo03.TabIndex = 4;
@@ -108,7 +112,8 @@
             // 
             txtInfo04.AutoSize = true;
             txtInfo04.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            txtInfo04.Location = new Point(529, 34);
+            txtInfo04.ForeColor = SystemColors.WindowFrame;
+            txtInfo04.Location = new Point(529, 29);
             txtInfo04.Name = "txtInfo04";
             txtInfo04.Size = new Size(38, 13);
             txtInfo04.TabIndex = 5;
@@ -146,10 +151,22 @@
             imgDelete.TabIndex = 9;
             imgDelete.TabStop = false;
             // 
+            // lblLabelCodigo
+            // 
+            lblLabelCodigo.AutoSize = true;
+            lblLabelCodigo.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lblLabelCodigo.ForeColor = SystemColors.WindowFrame;
+            lblLabelCodigo.Location = new Point(98, 27);
+            lblLabelCodigo.Name = "lblLabelCodigo";
+            lblLabelCodigo.Size = new Size(48, 13);
+            lblLabelCodigo.TabIndex = 10;
+            lblLabelCodigo.Text = "Código:";
+            // 
             // CustomListItem
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(lblLabelCodigo);
             Controls.Add(imgDelete);
             Controls.Add(imgAlter);
             Controls.Add(panel2);
@@ -181,5 +198,6 @@
         private Panel panel2;
         private PictureBox imgAlter;
         private PictureBox imgDelete;
+        private Label lblLabelCodigo;
     }
 }

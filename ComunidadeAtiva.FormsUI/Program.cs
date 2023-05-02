@@ -1,9 +1,10 @@
-using ComunidadeAtiva.Aplicacao.CasosDeUso.Servicos;
 using ComunidadeAtiva.Dominio.Interfaces;
 using ComunidadeAtiva.Infra.Data.DbContextFiles;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
+using ComunidadeAtiva.Infra.Data.Repositorio;
+using ComunidadeAtiva.Dominio.Entity;
 
 namespace ComunidadeAtiva.FormsUI
 {
@@ -39,8 +40,10 @@ namespace ComunidadeAtiva.FormsUI
             services.AddLogging(configure => configure.AddConsole())
                 .AddDbContext<FileDbContext>(opt => opt.UseMySql(ConnectionStrings, ServerVersion.AutoDetect(ConnectionStrings)))
                 .AddScoped<DbContext, FileDbContext>()
-                .AddSingleton<Imorador, MoradorService>()
-                .AddSingleton<Irua, RuaService>()
+                .AddSingleton<Imorador, RepositorioMorador>()
+                .AddSingleton<IbeneficioSocial, RepositorioBeneficioSocial>()
+                .AddSingleton<InecessidadeEspecial, RepositorioNecessidadeEspecial>()
+                .AddSingleton<Irua, RepositorioRua>()
                 .AddScoped<FrmMain>();
            
         }

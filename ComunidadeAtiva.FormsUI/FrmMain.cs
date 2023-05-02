@@ -5,6 +5,7 @@ using ComunidadeAtiva.Infra.Data.DbContextFiles;
 using ComunidadeAtiva.Dominio.Interfaces;
 using ComunidadeAtiva.FormsUI.FormsModal;
 using System.Windows.Forms;
+using System.Windows.Forms.Design;
 
 namespace ComunidadeAtiva.FormsUI
 {
@@ -12,25 +13,26 @@ namespace ComunidadeAtiva.FormsUI
     {
         private readonly FileDbContext _db;
         private readonly Imorador _Morador;
-        private readonly Irua _Rua;
-        public delegate void AbrirModalForm(Form frmModal, int id);
+        private readonly IbeneficioSocial _beneficioSocial;
+        private readonly InecessidadeEspecial _necessidadeEspecial;
+        private readonly Irua _ruaService;
+
 
         public FrmMain(
             Imorador Morador,
-            Irua Rua,
+            IbeneficioSocial beneficioSocial,
+            InecessidadeEspecial necessidadeEspecial,
+            Irua ruaService,
             FileDbContext db
             )
         {
             InitializeComponent();
             _Morador = Morador;
-            _Rua = Rua;
+            _beneficioSocial = beneficioSocial;
+            _necessidadeEspecial = necessidadeEspecial;
+            _ruaService = ruaService;
             _db = db;
-
-        }
-        public void AbrirModal(Form frmModal, int id)
-        {
-
-        }
+        }  
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -42,21 +44,22 @@ namespace ComunidadeAtiva.FormsUI
             Application.Exit();
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        private async void button8_Click(object sender, EventArgs e)
         {
-            _FrmCrudMorador Fmorador = new _FrmCrudMorador(_Morador, _db);
+            _FrmCrudMorador Fmorador = new _FrmCrudMorador(_Morador, _beneficioSocial, _necessidadeEspecial, _ruaService, _db);
             flowLayoutPanel1.Controls.Clear();
-            var listMoradores = _Morador.ObterTodosMorador(10, 0);
+            var listMoradores = await _Morador.ObterTodosRelacionalMorador(10, 0);
             CustomListItem[] listItem = new CustomListItem[listMoradores.Count()];
             int i = 0;
             foreach (var item in listMoradores)
             {
-                listItem[i] = new CustomListItem(Fmorador);
-                listItem[i].Title = item.Nome;
-                listItem[i].Texto01 = "Codigo " + item.id.ToString();
-                listItem[i].Texto02 = $"{_Rua.ObterRuaId(item.IdRua).Nome1.ToString()} ({_Rua.ObterRuaId(item.IdRua).Nome2.ToString()})";
+                listItem[i]         = new CustomListItem(Fmorador);
+                listItem[i].Title   = item.Nome;
+                listItem[i].Texto01 = item.id.ToString();
+                listItem[i].Texto02 = $"{item.rua.Nome1} - {item.rua.Nome2}, N° {item.NumeroCasa}";
                 listItem[i].Texto03 = item.Situacao;
-                listItem[i].Texto04 = "Nascimento: " + item.Nascimento.ToString("dd/mm/yyyy");
+                listItem[i].Texto04 = $"{(int.Parse(DateTime.Now.ToString("yyyy")) - int.Parse(item.Nascimento.ToString("yyyy"))).ToString()} Anos";
+                
                 flowLayoutPanel1.Controls.Add(listItem[i]);
                 i++;
             }
@@ -67,7 +70,7 @@ namespace ComunidadeAtiva.FormsUI
         }
         private void imgAlter_Click(object sender, EventArgs e)
         {
-            _FrmCrudMorador Fmorador = new _FrmCrudMorador(_Morador, _db);
+            _FrmCrudMorador Fmorador = new _FrmCrudMorador(_Morador, _beneficioSocial, _necessidadeEspecial,_ruaService, _db);
             Fmorador.ShowDialog();
         }
     }

@@ -1,13 +1,16 @@
 ﻿using ComunidadeAtiva.Dominio.Entity;
-
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ComunidadeAtiva.Dominio.Interfaces
 {
-    public interface Imorador
+    public interface Imorador : IrepositorioGenerico<Morador>
     {
-        public void CadastrarMorador(Morador m);
-        public void AlterarMorador(Morador m);
-        public IEnumerable<Morador> ObterTodosMorador(int t, int s);
-        public Morador ObterMoradorId(int id);
+        public Task<IEnumerable<Morador>> ObterTodosRelacionalMorador(int t, int s);
+        public Task<Morador> ObterMoradorRelacionalId(int id);
+
     }
 }

@@ -8,8 +8,8 @@ namespace ComunidadeAtiva.Dominio.Entidades
 {
     public class MoradorNecessidadeEspecial : Entidade
     {
-        public int IdMorador { get; set;}
-        public int IdNecessidade { get; set;}
+        public int MoradorId { get; set;}
+        public int NecessidadeId { get; set;}
         public string? Ativo { get; set;}
 
     }

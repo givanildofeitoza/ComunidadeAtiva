@@ -31,8 +31,8 @@ namespace ComunidadeAtiva.Infra.Data.DbContextFiles
         public DbSet<NecessidadeEspecial> necessidadeEspecial { get; set; }
         public DbSet<Rua> rua { get; set; }
 
-         /*para funcionar a migration
-         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        // para funcionar a migration
+       /*  protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
           {
               var ConnectionStrings = "server=localhost; port=3307; uid=root;pwd=p@ssw0rd;database=comunidade";
               optionsBuilder.UseMySql(ConnectionStrings,ServerVersion.AutoDetect(ConnectionStrings));
@@ -76,8 +76,10 @@ namespace ComunidadeAtiva.Infra.Data.DbContextFiles
             modelBuilder.Entity<MoradorPrograma>().HasKey(p => p.id);
             modelBuilder.Entity<NecessidadeEspecial>().HasKey(p => p.id);
             modelBuilder.Entity<Rua>().HasKey(p => p.id);
-            
            
+
+
+
 
         }
 
