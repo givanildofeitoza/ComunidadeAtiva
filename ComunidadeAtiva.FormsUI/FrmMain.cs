@@ -12,25 +12,31 @@ namespace ComunidadeAtiva.FormsUI
     public partial class FrmMain : Form
     {
         private readonly FileDbContext _db;
-        private readonly Imorador _Morador;
-        private readonly IbeneficioSocial _beneficioSocial;
-        private readonly InecessidadeEspecial _necessidadeEspecial;
+        public static    Imorador _Morador;
+        public static    IbeneficioSocial _beneficioSocial;
+        public static    ImoradorBeneficioSocial _moradorBeneficioSocial;
+        public static    InecessidadeEspecial _necessidadeEspecial;
         private readonly Irua _ruaService;
+        public static    ImoradorNecessidadeEspecial _ImoradorNecessidadeEspecial;
 
 
         public FrmMain(
             Imorador Morador,
             IbeneficioSocial beneficioSocial,
+            ImoradorBeneficioSocial moradorBeneficioSocial,
             InecessidadeEspecial necessidadeEspecial,
             Irua ruaService,
+            ImoradorNecessidadeEspecial ImoradorNecessidadeEspecial,
             FileDbContext db
             )
         {
             InitializeComponent();
             _Morador = Morador;
             _beneficioSocial = beneficioSocial;
+            _moradorBeneficioSocial = moradorBeneficioSocial;
             _necessidadeEspecial = necessidadeEspecial;
             _ruaService = ruaService;
+            _ImoradorNecessidadeEspecial = ImoradorNecessidadeEspecial;
             _db = db;
         }  
 

@@ -59,13 +59,9 @@
             ListBoxNecessidade = new ListBox();
             label13 = new Label();
             pictureBox1 = new PictureBox();
-            pictureBox2 = new PictureBox();
-            pictureBox3 = new PictureBox();
             pictureBox4 = new PictureBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             SuspendLayout();
             // 
@@ -360,26 +356,7 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 32;
             pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(532, 364);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(23, 23);
-            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 33;
-            pictureBox2.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(198, 364);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(23, 23);
-            pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox3.TabIndex = 35;
-            pictureBox3.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // pictureBox4
             // 
@@ -390,6 +367,7 @@
             pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox4.TabIndex = 34;
             pictureBox4.TabStop = false;
+            pictureBox4.Click += pictureBox4_Click;
             // 
             // _FrmCrudMorador
             // 
@@ -397,9 +375,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(716, 533);
-            Controls.Add(pictureBox3);
             Controls.Add(pictureBox4);
-            Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
             Controls.Add(label13);
             Controls.Add(ListBoxNecessidade);
@@ -436,8 +412,6 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -475,8 +449,6 @@
         private ListBox ListBoxNecessidade;
         private Label label13;
         private PictureBox pictureBox1;
-        private PictureBox pictureBox2;
-        private PictureBox pictureBox3;
         private PictureBox pictureBox4;
     }
 }

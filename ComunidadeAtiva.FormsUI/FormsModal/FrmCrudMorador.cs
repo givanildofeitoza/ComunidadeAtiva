@@ -1,4 +1,5 @@
-﻿using ComunidadeAtiva.Dominio.Entity;
+﻿using ComunidadeAtiva.Dominio.Entidades;
+using ComunidadeAtiva.Dominio.Entity;
 using ComunidadeAtiva.Dominio.Interfaces;
 using ComunidadeAtiva.FormsUI.Classes;
 using ComunidadeAtiva.Infra.Data.DbContextFiles;
@@ -19,10 +20,11 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
     {
 
         private readonly FileDbContext _db;
-        private readonly Imorador _Morador;
+        private Imorador _Morador;
         private readonly IbeneficioSocial _beneficioSocial;
         private readonly InecessidadeEspecial _necessidadeEspecial;
         private readonly Irua _ruaService;
+        private Morador Morador;
 
         public _FrmCrudMorador(Imorador Morador, IbeneficioSocial beneficioSocial, InecessidadeEspecial necessidadeEspecial, Irua ruaService, FileDbContext db)
         {
@@ -54,47 +56,76 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
         }
         private async void _FrmCrudMorador_Load(object sender, EventArgs e)
         {
-            var m = await _Morador.ObterMoradorRelacionalId(Id);
-            if (m == null)
+            Morador = await _Morador.ObterMoradorRelacionalRuaId(Id);
+            if (Morador == null)
                 return;
 
-            txtNome.Text = m?.Nome;
-            txtId.Text = m?.id.ToString();
-            txtData.Value = m == null ? DateTime.Now : m.Nascimento;
-            txtCpf.Text = m?.Cpf;
-            txtRg.Text = m?.Rg;
-            txtNumero.Text = m?.NumeroCasa;
-            cboSituacao.Text = m?.Situacao;
-            cboEstadoCivil.Text = m?.EstadoCivil;
-            txtNumero.Text = m?.NumeroCasa;
+            txtNome.Text = Morador?.Nome;
+            txtId.Text = Morador?.id.ToString();
+            txtData.Value = Morador == null ? DateTime.Now : Morador.Nascimento;
+            txtCpf.Text = Morador?.Cpf;
+            txtRg.Text = Morador?.Rg;
+            txtNumero.Text = Morador?.NumeroCasa;
+            cboSituacao.Text = Morador?.Situacao;
+            cboEstadoCivil.Text = Morador?.EstadoCivil;
+            txtNumero.Text = Morador?.NumeroCasa;
 
-            txtDescRua.Text = $" {m.rua.Nome1}({m.rua.Nome2}). " +
-                            $" \r\n Calçada: {m.rua.Calcada} " +
-                            $" \r\n Água: {m.rua.Agua} " +
-                            $" \r\n Coleta de Lixo:{m.rua.ColetaLixo} " +
-                            $" \r\n Energia: {m.rua.Energia} " +
-                            $" \r\n Saneamento: {m.rua.Saneamento} " +
-                            $" \r\n Agente de saúde: {m.rua.AgenteSaudeResponsval}";
+            txtDescRua.Text = $" {Morador.rua.Nome1}({Morador.rua.Nome2}). " +
+                            $" \r\n Calçada: {Morador.rua.Calcada} " +
+                            $" \r\n Água: {Morador.rua.Agua} " +
+                            $" \r\n Coleta de Lixo:{Morador.rua.ColetaLixo} " +
+                            $" \r\n Energia: {Morador.rua.Energia} " +
+                            $" \r\n Saneamento: {Morador.rua.Saneamento} " +
+                            $" \r\n Agente de saúde: {Morador.rua.AgenteSaudeResponsval}";
 
+            CarregarDadosAxuliaresMorador();
+        }
+        private async void CarregarDadosAxuliaresMorador()
+        {
+            Morador = await _Morador.ObterMoradorRelacionalRuaId(Morador.id);
             var beneficio = await _beneficioSocial.ObterTodos(50, 0);
             ListBoxBeneficio.Items.Clear();
-            foreach (var b in m.moradorBeneficioSocial)
+            foreach (var b in Morador.moradorBeneficioSocial)
                 ListBoxBeneficio.Items.Add(beneficio.Where(x => x.id == b.BeneficioSocialId).FirstOrDefault().NomeBeneficioSocial + "- R$ " + b.Valor.ToString("0.00"));
 
             var necessidade = await _necessidadeEspecial.ObterTodos(50, 0);
             ListBoxNecessidade.Items.Clear();
-            foreach (var n in m.necessidadeEspecial)
+            foreach (var n in Morador.necessidadeEspecial)
             {
                 var detNecessidade = necessidade.Where(x => x.id == n.NecessidadeId).FirstOrDefault();
                 ListBoxNecessidade.Items.Add("Remédio:" + detNecessidade.NecessitaRemedioControlado + "  " + detNecessidade.DescricaoNecessidadeEspecial);
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private async void button2_Click(object sender, EventArgs e)
         {
             _FrmCrudRua Frua = new _FrmCrudRua(_ruaService);
             Frua.ShowDialog();
+            var dadosRua = await _ruaService.ObterPorId(Frua.Id);
+
+            txtDescRua.Text = $" {dadosRua.Nome1}({dadosRua.Nome2}). " +
+                            $" \r\n Calçada: {dadosRua.Calcada} " +
+                            $" \r\n Água: {dadosRua.Agua} " +
+                            $" \r\n Coleta de Lixo:{dadosRua.ColetaLixo} " +
+                            $" \r\n Energia: {dadosRua.Energia} " +
+                            $" \r\n Saneamento: {dadosRua.Saneamento} " +
+                            $" \r\n Agente de saúde: {dadosRua.AgenteSaudeResponsval}";
+
             txtIdRua.Text = Frua.Id.ToString();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            _FrmCrudNecessidades Fnecessidade = new _FrmCrudNecessidades(Morador);
+            Fnecessidade.ShowDialog();
+            CarregarDadosAxuliaresMorador();
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            _FrmCrudBeneficios Fbeneficio = new _FrmCrudBeneficios(Morador.id);
+            Fbeneficio.ShowDialog();
+            CarregarDadosAxuliaresMorador();
         }
     }
 }

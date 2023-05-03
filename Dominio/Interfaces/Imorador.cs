@@ -10,7 +10,7 @@ namespace ComunidadeAtiva.Dominio.Interfaces
     public interface Imorador : IrepositorioGenerico<Morador>
     {
         public Task<IEnumerable<Morador>> ObterTodosRelacionalMorador(int t, int s);
-        public Task<Morador> ObterMoradorRelacionalId(int id);
+        public Task<Morador> ObterMoradorRelacionalRuaId(int id);
 
     }
 }

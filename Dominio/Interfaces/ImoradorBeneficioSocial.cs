@@ -3,7 +3,7 @@ using ComunidadeAtiva.Dominio.Entity;
 
 namespace ComunidadeAtiva.Dominio.Interfaces
 {
-    public interface ImoradorBeneficioSocial: IrepositorioGenerico<BeneficioSocial>
+    public interface ImoradorBeneficioSocial: IrepositorioGenerico<MoradorBeneficioSocial>
     {
     
     }

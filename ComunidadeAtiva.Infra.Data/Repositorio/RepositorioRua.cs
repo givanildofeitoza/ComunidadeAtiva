@@ -14,23 +14,11 @@ using System.Threading.Tasks;
 
 namespace ComunidadeAtiva.Infra.Data.Repositorio
 {
-    public class RepositorioMorador : RepositorioGenerico<Morador>, Imorador
+    public class RepositorioRua : RepositorioGenerico<Rua>, Irua
     {
-        public RepositorioMorador(DbContext BancoDados) : base(BancoDados)
+        public RepositorioRua(DbContext BancoDados) : base(BancoDados)
         {
         }
-
-       public async Task<Morador> ObterMoradorRelacionalId(int id)
-        {         
-            return await _Entidade
-            .Where(x => x.id == id)
-            .Include(r => r.rua)
-            .Include(n => n.necessidadeEspecial)
-            .Include(b => b.moradorBeneficioSocial)
-            .AsNoTracking().FirstOrDefaultAsync();
-        }
-        public async Task<IEnumerable<Morador>> ObterTodosRelacionalMorador(int t, int s)
-            =>  _Entidade.Include(r=> r.rua).AsNoTracking().ToList().Take(t).Skip(s);
 
     }
     

@@ -32,7 +32,7 @@ namespace ComunidadeAtiva.Infra.Data.RepositorioGenerico
             if (ModelParametro != null)
             {
                 _Entidade.Add(ModelParametro);
-                _BancoDados.SaveChangesAsync();
+                await _BancoDados.SaveChangesAsync();
             }
             
         }
@@ -41,8 +41,8 @@ namespace ComunidadeAtiva.Infra.Data.RepositorioGenerico
         {
             if (ModelParametro.id != 0)
             {
-                _Entidade.Remove(ModelParametro);
-                _BancoDados.SaveChangesAsync();
+               _Entidade.Remove(ModelParametro);
+               await _BancoDados.SaveChangesAsync();
             }
         }
 
@@ -53,7 +53,7 @@ namespace ComunidadeAtiva.Infra.Data.RepositorioGenerico
 
         public async Task<IEnumerable<T>> ObterTodos(int take, int skip)
         {            
-            return await _Entidade.Take(take).Skip(skip).ToListAsync();
+            return await _Entidade.Take(take).Skip(skip).AsNoTracking().ToListAsync();
         }
     }
 }

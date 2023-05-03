@@ -10,7 +10,13 @@
     <Compile Update="CustomListItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="FormsModal\FrmCrudBeneficios.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FormsModal\FrmCrudMorador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormsModal\FrmCrudNecessidades.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FormsModal\FrmCrudRua.cs">

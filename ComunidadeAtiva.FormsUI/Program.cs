@@ -42,7 +42,9 @@ namespace ComunidadeAtiva.FormsUI
                 .AddScoped<DbContext, FileDbContext>()
                 .AddSingleton<Imorador, RepositorioMorador>()
                 .AddSingleton<IbeneficioSocial, RepositorioBeneficioSocial>()
+                .AddSingleton <ImoradorBeneficioSocial, RepositorioMoradorBeneficioSocial>()
                 .AddSingleton<InecessidadeEspecial, RepositorioNecessidadeEspecial>()
+                .AddSingleton<ImoradorNecessidadeEspecial, RepositorioMoradorNecessidadeEspecial>()
                 .AddSingleton<Irua, RepositorioRua>()
                 .AddScoped<FrmMain>();
            
