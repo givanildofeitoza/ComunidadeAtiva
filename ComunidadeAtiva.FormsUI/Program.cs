@@ -3,8 +3,9 @@ using ComunidadeAtiva.Infra.Data.DbContextFiles;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
-using ComunidadeAtiva.Infra.Data.Repositorio;
 using ComunidadeAtiva.Dominio.Entity;
+using ComunidadeAtiva.Aplicacao.CasosDeUso.Repositorio;
+using ComunidadeAtiva.Dominio.Validacao;
 
 namespace ComunidadeAtiva.FormsUI
 {
@@ -40,12 +41,13 @@ namespace ComunidadeAtiva.FormsUI
             services.AddLogging(configure => configure.AddConsole())
                 .AddDbContext<FileDbContext>(opt => opt.UseMySql(ConnectionStrings, ServerVersion.AutoDetect(ConnectionStrings)))
                 .AddScoped<DbContext, FileDbContext>()
-                .AddSingleton<Imorador, RepositorioMorador>()
-                .AddSingleton<IbeneficioSocial, RepositorioBeneficioSocial>()
-                .AddSingleton <ImoradorBeneficioSocial, RepositorioMoradorBeneficioSocial>()
-                .AddSingleton<InecessidadeEspecial, RepositorioNecessidadeEspecial>()
-                .AddSingleton<ImoradorNecessidadeEspecial, RepositorioMoradorNecessidadeEspecial>()
-                .AddSingleton<Irua, RepositorioRua>()
+                .AddScoped<ICapturarNotificacao, CapturarNotificacao>()
+                .AddSingleton<ImoradorService, MoradorService>()
+                .AddSingleton<IbeneficioSocialService, BeneficioSocialService>()
+                .AddSingleton <ImoradorBeneficioSocial, MoradorBeneficioSocialService>()
+                .AddSingleton<InecessidadeEspecialService, NecessidadeEspecialService>()
+                .AddSingleton<ImoradorNecessidadeEspecial, MoradorNecessidadeEspecialService>()
+                .AddSingleton<IruaService, RuaService>()
                 .AddScoped<FrmMain>();
            
         }

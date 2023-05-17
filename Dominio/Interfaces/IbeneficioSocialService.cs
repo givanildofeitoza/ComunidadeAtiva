@@ -3,7 +3,8 @@
 
 namespace ComunidadeAtiva.Dominio.Interfaces
 {
-    public interface Idependente : IrepositorioGenerico<Dependente>
+    public interface IbeneficioSocialService : IrepositorioGenerico<BeneficioSocial>
     {
+        
     }
 }

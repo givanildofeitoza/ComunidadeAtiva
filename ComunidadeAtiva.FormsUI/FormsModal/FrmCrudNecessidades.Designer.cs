@@ -39,10 +39,13 @@
             label2 = new Label();
             cbonecessidade = new ComboBox();
             button3 = new Button();
+            panel2 = new Panel();
+            button4 = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gridNcessidade).BeginInit();
             pnlListaNecessidade.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -109,19 +112,20 @@
             // 
             // pnlListaNecessidade
             // 
+            pnlListaNecessidade.Controls.Add(panel2);
             pnlListaNecessidade.Controls.Add(pictureBox1);
             pnlListaNecessidade.Controls.Add(label2);
             pnlListaNecessidade.Controls.Add(cbonecessidade);
-            pnlListaNecessidade.Location = new Point(64, 108);
+            pnlListaNecessidade.Location = new Point(64, 79);
             pnlListaNecessidade.Name = "pnlListaNecessidade";
-            pnlListaNecessidade.Size = new Size(350, 110);
+            pnlListaNecessidade.Size = new Size(350, 139);
             pnlListaNecessidade.TabIndex = 39;
             pnlListaNecessidade.Visible = false;
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(295, 61);
+            pictureBox1.Location = new Point(293, 87);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(23, 23);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -132,7 +136,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(28, 26);
+            label2.Location = new Point(26, 52);
             label2.Name = "label2";
             label2.Size = new Size(130, 15);
             label2.TabIndex = 1;
@@ -141,7 +145,7 @@
             // cbonecessidade
             // 
             cbonecessidade.FormattingEnabled = true;
-            cbonecessidade.Location = new Point(28, 61);
+            cbonecessidade.Location = new Point(26, 87);
             cbonecessidade.Name = "cbonecessidade";
             cbonecessidade.Size = new Size(261, 23);
             cbonecessidade.TabIndex = 0;
@@ -160,6 +164,31 @@
             button3.Text = "EXCLUIR";
             button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.WhiteSmoke;
+            panel2.Controls.Add(button4);
+            panel2.Dock = DockStyle.Top;
+            panel2.Location = new Point(0, 0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(350, 36);
+            panel2.TabIndex = 35;
+            // 
+            // button4
+            // 
+            button4.Dock = DockStyle.Right;
+            button4.FlatAppearance.BorderColor = Color.White;
+            button4.FlatStyle = FlatStyle.Flat;
+            button4.Font = new Font("Segoe UI Variable Display", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            button4.Location = new Point(275, 0);
+            button4.Name = "button4";
+            button4.Size = new Size(75, 36);
+            button4.TabIndex = 0;
+            button4.TabStop = false;
+            button4.Text = "X";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // _FrmCrudNecessidades
             // 
@@ -182,6 +211,7 @@
             pnlListaNecessidade.ResumeLayout(false);
             pnlListaNecessidade.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel2.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -197,5 +227,7 @@
         private ComboBox cbonecessidade;
         private PictureBox pictureBox1;
         private Button button3;
+        private Panel panel2;
+        private Button button4;
     }
 }

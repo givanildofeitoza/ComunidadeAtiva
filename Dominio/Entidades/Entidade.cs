@@ -10,7 +10,6 @@ namespace ComunidadeAtiva.Dominio.Entidades
     public abstract class Entidade
     {
         [Key]
-        public int id;
-
+        public int id;        
     }
 }

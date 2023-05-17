@@ -11,14 +11,15 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ComunidadeAtiva.Infra.Data.Repositorio
+namespace ComunidadeAtiva.Aplicacao.CasosDeUso.Repositorio
 {
-    public class RepositorioNecessidadeEspecial : RepositorioGenerico<NecessidadeEspecial>, InecessidadeEspecial
+    public class MoradorBeneficioSocialService : RepositorioGenerico<MoradorBeneficioSocial>, ImoradorBeneficioSocial
     {
-        public RepositorioNecessidadeEspecial(DbContext BancoDados) : base(BancoDados)
+        public MoradorBeneficioSocialService(DbContext BancoDados) : base(BancoDados)
         {
         }
 
+
     }
-    
+
 }

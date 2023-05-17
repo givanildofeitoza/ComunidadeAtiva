@@ -80,10 +80,10 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
 
         private async void button3_Click(object sender, EventArgs e)
         {
-            var result = MessageBox.Show("Excluir Informação?","",MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var result = MessageBox.Show("Excluir Informação?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.No)
                 return;
-            
+
             var n = await FrmMain._ImoradorNecessidadeEspecial.ObterPorId(Id);
             if (n == null)
                 return;
@@ -95,6 +95,11 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
         private void gridNcessidade_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
             Id = int.Parse(gridNcessidade.Rows[e.RowIndex].Cells[0].Value.ToString());
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            pnlListaNecessidade.Visible = false;
         }
     }
 }

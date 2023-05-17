@@ -1,6 +1,8 @@
 ﻿using ComunidadeAtiva.Dominio.Entity;
 using ComunidadeAtiva.Dominio.Enum;
 using ComunidadeAtiva.Dominio.Interfaces;
+using ComunidadeAtiva.Dominio.ObjetoValor;
+using ComunidadeAtiva.Dominio.Validacao;
 using ComunidadeAtiva.FormsUI.Classes;
 using System;
 using System.Collections.Generic;
@@ -17,12 +19,13 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
 {
     public partial class _FrmCrudRua : ClasseFormPadrao
     {
-        private Irua _ruaService;
+        private IruaService _ruaService;
 
         private AcaoControleCadastro opcao;
+        
 
         private Rua RuaMovimento;
-        public _FrmCrudRua(Irua ruaService)
+        public _FrmCrudRua(IruaService ruaService)
         {
             _ruaService = ruaService;
             InitializeComponent();
@@ -47,40 +50,54 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
         }
         private async void MovimentarMorador(AcaoControleCadastro acao)
         {
-            if (acao == AcaoControleCadastro.CADASRTRAR)
+            try
             {
-                Rua r = new Rua();
-                r.Nome1 = txtNome.Text;
-                r.Nome2 = txtNomeAntigo.Text;
-                r.Energia = cboEnergia.Text;
-                r.Calcada = cboCalcada.Text;
-                r.ColetaLixo = cboLixo.Text;
-                r.Agua = cboAgua.Text;
-                r.Saneamento = cboSaneamento.Text;
-                r.Cep = txtCep.Text;
-                r.AgenteSaudeResponsval = txtAgenteSaude.Text;
-                await _ruaService.Cadastrar(r);
-                MessageBox.Show("Cadastrado com sucesso !");
-                CarregarGrid();
-                pnlCadRua.Visible = false;
 
+
+                if (acao == AcaoControleCadastro.CADASRTRAR)
+                {
+                    Rua rua = new Rua(
+                    txtNome.Text,
+                    txtNomeAntigo.Text,
+                    cboCalcada.Text,
+                    cboEnergia.Text,
+                    cboAgua.Text,
+                    cboSaneamento.Text,
+                    cboLixo.Text,
+                    txtAgenteSaude.Text);
+                    rua.setCep(txtCep.Text);
+                    rua.IsValid(FrmMain._notificacao);
+
+
+                    await _ruaService.Cadastrar(rua);
+                    MessageBox.Show("Cadastrado com sucesso !");
+                    CarregarGrid();
+                    pnlCadRua.Visible = false;
+
+                }
+                else
+                {
+                    RuaMovimento.Nome1 = txtNome.Text;
+                    RuaMovimento.Nome2 = txtNomeAntigo.Text;
+                    RuaMovimento.Energia = cboEnergia.Text;
+                    RuaMovimento.Calcada = cboCalcada.Text;
+                    RuaMovimento.ColetaLixo = cboLixo.Text;
+                    RuaMovimento.Agua = cboAgua.Text;
+                    RuaMovimento.Saneamento = cboSaneamento.Text;
+                    //RuaMovimento.AlterarCep(txtCep.Text);
+                    RuaMovimento.AgenteSaudeResponsval = txtAgenteSaude.Text;
+
+                    await _ruaService.Alterar(RuaMovimento);
+                    MessageBox.Show("Alterado com sucesso !");
+                    CarregarGrid();
+                    pnlCadRua.Visible = false;
+                }
             }
-            else
+            catch (Exception e)
             {
-                RuaMovimento.Nome1 = txtNome.Text;
-                RuaMovimento.Nome2 = txtNomeAntigo.Text;
-                RuaMovimento.Energia = cboEnergia.Text;
-                RuaMovimento.Calcada = cboCalcada.Text;
-                RuaMovimento.ColetaLixo = cboLixo.Text;
-                RuaMovimento.Agua = cboAgua.Text;
-                RuaMovimento.Saneamento = cboSaneamento.Text;
-                RuaMovimento.Cep = txtCep.Text;
-                RuaMovimento.AgenteSaudeResponsval = txtAgenteSaude.Text;
-                await _ruaService.Alterar(RuaMovimento);
-                MessageBox.Show("Alterado com sucesso !");
-                CarregarGrid();
-                pnlCadRua.Visible = false;
+                MessageBox.Show(e.Message);
             }
+
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -98,7 +115,7 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
             cboLixo.Text = RuaMovimento.ColetaLixo;
             cboAgua.Text = RuaMovimento.Agua;
             cboSaneamento.Text = RuaMovimento.Saneamento;
-            txtCep.Text = RuaMovimento.Cep;
+            txtCep.Text = RuaMovimento.Cep.ToString();
             txtAgenteSaude.Text = RuaMovimento.AgenteSaudeResponsval;
 
             opcao = AcaoControleCadastro.ALTERAR;

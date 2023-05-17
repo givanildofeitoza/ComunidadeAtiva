@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ComunidadeAtiva.Dominio.Interfaces
 {
-    public interface Imorador : IrepositorioGenerico<Morador>
+    public interface ImoradorService : IrepositorioGenerico<Morador>
     {
         public Task<IEnumerable<Morador>> ObterTodosRelacionalMorador(int t, int s);
         public Task<Morador> ObterMoradorRelacionalRuaId(int id);

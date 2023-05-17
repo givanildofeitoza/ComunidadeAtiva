@@ -12,15 +12,15 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ComunidadeAtiva.Infra.Data.Repositorio
+namespace ComunidadeAtiva.Aplicacao.CasosDeUso.Repositorio
 {
-    public class RepositorioRua : RepositorioGenerico<Rua>, Irua
+    public class RuaService : RepositorioGenerico<Rua>, IruaService
     {
-        public RepositorioRua(DbContext BancoDados) : base(BancoDados)
+        public RuaService(DbContext BancoDados) : base(BancoDados)
         {
         }
 
     }
-    
+
 }
 

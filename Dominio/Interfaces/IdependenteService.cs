@@ -3,8 +3,7 @@
 
 namespace ComunidadeAtiva.Dominio.Interfaces
 {
-    public interface IassociacaoEvento: IrepositorioGenerico<AssociacaoEvento>
+    public interface IdependenteService : IrepositorioGenerico<Dependente>
     {
-       
     }
 }

@@ -12,21 +12,24 @@ namespace ComunidadeAtiva.FormsUI
     public partial class FrmMain : Form
     {
         private readonly FileDbContext _db;
-        public static    Imorador _Morador;
-        public static    IbeneficioSocial _beneficioSocial;
+        public static    ImoradorService _Morador;
+        public static    IbeneficioSocialService _beneficioSocial;
         public static    ImoradorBeneficioSocial _moradorBeneficioSocial;
-        public static    InecessidadeEspecial _necessidadeEspecial;
-        private readonly Irua _ruaService;
+        public static    InecessidadeEspecialService _necessidadeEspecial;
+        private readonly IruaService _ruaService;
         public static    ImoradorNecessidadeEspecial _ImoradorNecessidadeEspecial;
+        public static    ICapturarNotificacao _notificacao;
+
 
 
         public FrmMain(
-            Imorador Morador,
-            IbeneficioSocial beneficioSocial,
+            ImoradorService Morador,
+            IbeneficioSocialService beneficioSocial,
             ImoradorBeneficioSocial moradorBeneficioSocial,
-            InecessidadeEspecial necessidadeEspecial,
-            Irua ruaService,
+            InecessidadeEspecialService necessidadeEspecial,
+            IruaService ruaService,
             ImoradorNecessidadeEspecial ImoradorNecessidadeEspecial,
+            ICapturarNotificacao notificacao,
             FileDbContext db
             )
         {
@@ -38,6 +41,7 @@ namespace ComunidadeAtiva.FormsUI
             _ruaService = ruaService;
             _ImoradorNecessidadeEspecial = ImoradorNecessidadeEspecial;
             _db = db;
+            _notificacao = notificacao;
         }  
 
         private void button1_Click(object sender, EventArgs e)
@@ -52,7 +56,7 @@ namespace ComunidadeAtiva.FormsUI
 
         private async void button8_Click(object sender, EventArgs e)
         {
-            _FrmCrudMorador Fmorador = new _FrmCrudMorador(_Morador, _beneficioSocial, _necessidadeEspecial, _ruaService, _db);
+            _FrmCrudMorador Fmorador = new _FrmCrudMorador(_Morador, _beneficioSocial, _necessidadeEspecial, _notificacao, _ruaService, _db);
             flowLayoutPanel1.Controls.Clear();
             var listMoradores = await _Morador.ObterTodosRelacionalMorador(10, 0);
             CustomListItem[] listItem = new CustomListItem[listMoradores.Count()];
@@ -76,7 +80,7 @@ namespace ComunidadeAtiva.FormsUI
         }
         private void imgAlter_Click(object sender, EventArgs e)
         {
-            _FrmCrudMorador Fmorador = new _FrmCrudMorador(_Morador, _beneficioSocial, _necessidadeEspecial,_ruaService, _db);
+            _FrmCrudMorador Fmorador = new _FrmCrudMorador(_Morador, _beneficioSocial, _necessidadeEspecial,_notificacao,_ruaService, _db);
             Fmorador.ShowDialog();
         }
     }

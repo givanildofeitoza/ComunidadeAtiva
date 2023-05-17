@@ -3,7 +3,7 @@
 
 namespace ComunidadeAtiva.Dominio.Interfaces
 {
-    public interface Irua:IrepositorioGenerico<Rua>
+    public interface IassociacaoPatrimonioService:IrepositorioGenerico<AssociacaoPatrimonio>
     {
        
     }

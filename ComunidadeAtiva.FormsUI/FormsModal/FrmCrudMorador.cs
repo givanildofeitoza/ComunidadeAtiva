@@ -20,13 +20,18 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
     {
 
         private readonly FileDbContext _db;
-        private Imorador _Morador;
-        private readonly IbeneficioSocial _beneficioSocial;
-        private readonly InecessidadeEspecial _necessidadeEspecial;
-        private readonly Irua _ruaService;
+        private ImoradorService _Morador;
+        private readonly IbeneficioSocialService _beneficioSocial;
+        private readonly InecessidadeEspecialService _necessidadeEspecial;
+        private readonly IruaService _ruaService;
+        private readonly ICapturarNotificacao _notificacao;
         private Morador Morador;
 
-        public _FrmCrudMorador(Imorador Morador, IbeneficioSocial beneficioSocial, InecessidadeEspecial necessidadeEspecial, Irua ruaService, FileDbContext db)
+        public _FrmCrudMorador(ImoradorService Morador, 
+            IbeneficioSocialService beneficioSocial, 
+            InecessidadeEspecialService necessidadeEspecial,
+            ICapturarNotificacao notificacao,
+            IruaService ruaService, FileDbContext db)
         {
             InitializeComponent();
             _Morador = Morador;
@@ -34,6 +39,7 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
             _necessidadeEspecial = necessidadeEspecial;
             _ruaService = ruaService;
             _db = db;
+            _notificacao = notificacao;
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -99,7 +105,7 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
 
         private async void button2_Click(object sender, EventArgs e)
         {
-            _FrmCrudRua Frua = new _FrmCrudRua(_ruaService);
+            _FrmCrudRua Frua = new _FrmCrudRua(_notificacao,_ruaService);
             Frua.ShowDialog();
             var dadosRua = await _ruaService.ObterPorId(Frua.Id);
 

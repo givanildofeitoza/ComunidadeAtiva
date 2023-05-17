@@ -1,19 +1,30 @@
 ﻿using ComunidadeAtiva.Dominio.Entidades;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ComunidadeAtiva.Dominio.Interfaces;
+using ComunidadeAtiva.Dominio.ObjetoValor;
+using ComunidadeAtiva.Dominio.Validacao;
 
 namespace ComunidadeAtiva.Dominio.Entity
 {
     public class Rua : Entidade
     {
+        public Rua(string nome1, string nome2, string calcada, string energia, string agua, string saneamento, string coletaLixo, string agenteSaudeResponsval)
+        {
+            
+            Nome1 = nome1;
+            Nome2 = nome2;
+            Calcada = calcada;
+            Energia = energia;
+            Agua = agua;
+            Saneamento = saneamento;
+            ColetaLixo = coletaLixo;
+            AgenteSaudeResponsval = agenteSaudeResponsval;
+        }
+
         public string Nome1 { get; set; }
         
         public string Nome2 { get; set; }
 
-        public string Cep { get; set; }
+        public Cep Cep { get; private set; }
 
         public string Calcada { get; set; }
         
@@ -27,5 +38,19 @@ namespace ComunidadeAtiva.Dominio.Entity
 
         public string AgenteSaudeResponsval { get; set; }
 
+        public void setCep(string cep)
+        {
+            Cep = new Cep(cep);  
+        } 
+
+        public bool IsValid(ICapturarNotificacao notificacao)
+        {
+            notificacao.LimparErros();
+                Cep.IsValid(notificacao);
+
+            EmitirExcecoes.EmitirExcecao(notificacao);
+        
+            return true;
+        }
     }
 }

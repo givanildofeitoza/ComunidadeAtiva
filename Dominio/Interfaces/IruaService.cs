@@ -3,8 +3,8 @@
 
 namespace ComunidadeAtiva.Dominio.Interfaces
 {
-    public interface InecessidadeEspecial : IrepositorioGenerico<NecessidadeEspecial>
+    public interface IruaService:IrepositorioGenerico<Rua>
     {
-    
+       
     }
 }

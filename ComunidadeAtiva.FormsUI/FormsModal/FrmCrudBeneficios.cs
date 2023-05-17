@@ -17,7 +17,8 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
     public partial class _FrmCrudBeneficios : ClasseFormPadrao
     {
         private Morador moradorAtivo;
-       
+        private int IdBeneficio;
+
         public _FrmCrudBeneficios(int id)
         {
             InitializeComponent();
@@ -82,6 +83,31 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
             b.Valor = decimal.Parse(txtValor.Text);
             await FrmMain._moradorBeneficioSocial.Cadastrar(b);
             await CarregarBeneficios();
+            pnlLancar.Visible = false;
+        }
+
+        private async void button3_Click(object sender, EventArgs e)
+        {
+
+            var dlg = MessageBox.Show("Confirmar Exclusão do valor?","",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+            if (dlg == DialogResult.No)
+                return;
+
+            var b = await FrmMain._moradorBeneficioSocial.ObterPorId(IdBeneficio);
+            if (b == null)
+                return;
+
+            await FrmMain._moradorBeneficioSocial.Deletar(b);
+            await CarregarBeneficios();
+        }
+
+        private void GridBeneficio_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            IdBeneficio = int.Parse(GridBeneficio.Rows[e.RowIndex].Cells[0].Value.ToString());
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
             pnlLancar.Visible = false;
         }
     }

@@ -3,8 +3,8 @@
 
 namespace ComunidadeAtiva.Dominio.Interfaces
 {
-    public interface IassociacaoPatrimonio:IrepositorioGenerico<AssociacaoPatrimonio>
+    public interface IassociadoService : IrepositorioGenerico<Associado>
     {
-       
+        
     }
 }
