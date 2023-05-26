@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "dgSpecHash": "YT25SYbQJ3WuAYmGEQFGO6LYnd1EOO+avKPE/UAQh5gtjeWSDE93mN1EpqwxXm7P6teSf1CuUOVdUS3vBnfHDA==",
+  "success": true,
+  "projectFilePath": "C:\\givanildo\\Projetos\\ComunidadeAtiva\\ComunidadeAtiva.Testes\\ComunidadeAtiva.Testes.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\IQ SISTEMAS\\.nuget\\packages\\microsoft.codecoverage\\17.6.0\\microsoft.codecoverage.17.6.0.nupkg.sha512",
+    "C:\\Users\\IQ SISTEMAS\\.nuget\\packages\\microsoft.net.test.sdk\\17.6.0\\microsoft.net.test.sdk.17.6.0.nupkg.sha512",
+    "C:\\Users\\IQ SISTEMAS\\.nuget\\packages\\microsoft.testplatform.objectmodel\\17.6.0\\microsoft.testplatform.objectmodel.17.6.0.nupkg.sha512",
+    "C:\\Users\\IQ SISTEMAS\\.nuget\\packages\\microsoft.testplatform.testhost\\17.6.0\\microsoft.testplatform.testhost.17.6.0.nupkg.sha512",
+    "C:\\Users\\IQ SISTEMAS\\.nuget\\packages\\mstest.testframework\\3.0.2\\mstest.testframework.3.0.2.nupkg.sha512",
+    "C:\\Users\\IQ SISTEMAS\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\IQ SISTEMAS\\.nuget\\packages\\nuget.frameworks\\5.11.0\\nuget.frameworks.5.11.0.nupkg.sha512",
+    "C:\\Users\\IQ SISTEMAS\\.nuget\\packages\\system.reflection.metadata\\1.6.0\\system.reflection.metadata.1.6.0.nupkg.sha512"
+  ],
+  "logs": []
+}

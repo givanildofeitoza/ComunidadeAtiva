@@ -1,4 +1,5 @@
-﻿using ComunidadeAtiva.Aplicacao.DTO;
+﻿using ComunidadeAtiva.Aplicacao.CasosDeUso;
+using ComunidadeAtiva.Aplicacao.DTO;
 using ComunidadeAtiva.Dominio.Entidades;
 using ComunidadeAtiva.Dominio.Entity;
 using ComunidadeAtiva.FormsUI.Classes;

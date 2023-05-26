@@ -1,4 +1,7 @@
-﻿using ComunidadeAtiva.Dominio.Entity;
+﻿using AutoMapper;
+using ComunidadeAtiva.Aplicacao.DTO;
+using ComunidadeAtiva.Aplicacao.Mapeamento;
+using ComunidadeAtiva.Dominio.Entity;
 using ComunidadeAtiva.Dominio.Enum;
 using ComunidadeAtiva.Dominio.Interfaces;
 using ComunidadeAtiva.Dominio.ObjetoValor;
@@ -19,13 +22,16 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
 {
     public partial class _FrmCrudRua : ClasseFormPadrao
     {
-        private IruaService _ruaService;
+        private IruaRepositorio _ruaService;
+        private IMapper _mapper;
+
+        
 
         private AcaoControleCadastro opcao;
         
 
         private Rua RuaMovimento;
-        public _FrmCrudRua(IruaService ruaService)
+        public _FrmCrudRua(IruaRepositorio ruaService)
         {
             _ruaService = ruaService;
             InitializeComponent();
@@ -52,11 +58,10 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
         {
             try
             {
-
-
+               
                 if (acao == AcaoControleCadastro.CADASRTRAR)
                 {
-                    Rua rua = new Rua(
+                    Rua rua = new Rua(                  
                     txtNome.Text,
                     txtNomeAntigo.Text,
                     cboCalcada.Text,
@@ -67,8 +72,7 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
                     txtAgenteSaude.Text);
                     rua.setCep(txtCep.Text);
                     rua.IsValid(FrmMain._notificacao);
-
-
+                  
                     await _ruaService.Cadastrar(rua);
                     MessageBox.Show("Cadastrado com sucesso !");
                     CarregarGrid();

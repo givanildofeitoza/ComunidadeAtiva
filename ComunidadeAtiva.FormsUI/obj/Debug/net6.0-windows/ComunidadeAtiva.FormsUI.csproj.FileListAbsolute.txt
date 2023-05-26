@@ -71,3 +71,5 @@ C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.FormsUI\obj\Debug\net6.0-w
 C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.FormsUI\obj\Debug\net6.0-windows\ComunidadeAtiva.FormsUI.Classes.ClasseFormPadrao.resources
 C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.FormsUI\obj\Debug\net6.0-windows\ComunidadeAtiva.FormsUI.FormsModal._FrmCrudNecessidades.resources
 C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.FormsUI\obj\Debug\net6.0-windows\ComunidadeAtiva.FormsUI.FormsModal._FrmCrudBeneficios.resources
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.FormsUI\bin\Debug\net6.0-windows\AutoMapper.dll
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.FormsUI\bin\Debug\net6.0-windows\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComunidadeAtiva.Infra.Data"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComunidadeAtiva.Ioc", "ComunidadeAtiva.Ioc\ComunidadeAtiva.Ioc.csproj", "{2E074EA7-52CE-4E9F-B2BA-F4F8B0938ABD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComunidadeAtiva.FormsUI", "ComunidadeAtiva.FormsUI\ComunidadeAtiva.FormsUI.csproj", "{91EA2AE0-9066-4CCC-8FF3-B484A57F8BE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComunidadeAtiva.FormsUI", "ComunidadeAtiva.FormsUI\ComunidadeAtiva.FormsUI.csproj", "{91EA2AE0-9066-4CCC-8FF3-B484A57F8BE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComunidadeAtiva.UnitTestes", "ComunidadeAtiva.UnitTestes\ComunidadeAtiva.UnitTestes.csproj", "{F6B2D249-3AD3-4BB1-A263-5CAC387BBA72}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{91EA2AE0-9066-4CCC-8FF3-B484A57F8BE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91EA2AE0-9066-4CCC-8FF3-B484A57F8BE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91EA2AE0-9066-4CCC-8FF3-B484A57F8BE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6B2D249-3AD3-4BB1-A263-5CAC387BBA72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6B2D249-3AD3-4BB1-A263-5CAC387BBA72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6B2D249-3AD3-4BB1-A263-5CAC387BBA72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6B2D249-3AD3-4BB1-A263-5CAC387BBA72}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

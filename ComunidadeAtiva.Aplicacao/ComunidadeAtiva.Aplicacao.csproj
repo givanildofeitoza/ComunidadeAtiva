@@ -7,12 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ComunidadeAtiva.Infra.Data\ComunidadeAtiva.Infra.Data.csproj" />
-    <ProjectReference Include="..\Dominio\ComunidadeAtiva.Dominio.csproj" />
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Mapeamento\" />
+    <ProjectReference Include="..\ComunidadeAtiva.Infra.Data\ComunidadeAtiva.Infra.Data.csproj" />
+    <ProjectReference Include="..\Dominio\ComunidadeAtiva.Dominio.csproj" />
   </ItemGroup>
 
 </Project>

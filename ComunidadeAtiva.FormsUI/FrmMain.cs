@@ -6,30 +6,31 @@ using ComunidadeAtiva.Dominio.Interfaces;
 using ComunidadeAtiva.FormsUI.FormsModal;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
+using AutoMapper;
 
 namespace ComunidadeAtiva.FormsUI
 {
     public partial class FrmMain : Form
     {
         private readonly FileDbContext _db;
-        public static    ImoradorService _Morador;
-        public static    IbeneficioSocialService _beneficioSocial;
-        public static    ImoradorBeneficioSocial _moradorBeneficioSocial;
-        public static    InecessidadeEspecialService _necessidadeEspecial;
-        private readonly IruaService _ruaService;
-        public static    ImoradorNecessidadeEspecial _ImoradorNecessidadeEspecial;
+        public static    ImoradorRepositorio _Morador;
+        public static    IbeneficioSocialRepositorio _beneficioSocial;
+        public static    ImoradorBeneficioSocialRepositorio _moradorBeneficioSocial;
+        public static    InecessidadeEspecialRepositorio _necessidadeEspecial;
+        public static    IruaRepositorio _ruaService;
+        public static    ImoradorNecessidadeEspecialRepositorio _ImoradorNecessidadeEspecial;
         public static    ICapturarNotificacao _notificacao;
-
-
+        public static    IMapper _mapper;
 
         public FrmMain(
-            ImoradorService Morador,
-            IbeneficioSocialService beneficioSocial,
-            ImoradorBeneficioSocial moradorBeneficioSocial,
-            InecessidadeEspecialService necessidadeEspecial,
-            IruaService ruaService,
-            ImoradorNecessidadeEspecial ImoradorNecessidadeEspecial,
+            ImoradorRepositorio Morador,
+            IbeneficioSocialRepositorio beneficioSocial,
+            ImoradorBeneficioSocialRepositorio moradorBeneficioSocial,
+            InecessidadeEspecialRepositorio necessidadeEspecial,
+            IruaRepositorio ruaService,
+            ImoradorNecessidadeEspecialRepositorio ImoradorNecessidadeEspecial,
             ICapturarNotificacao notificacao,
+            IMapper mapper,
             FileDbContext db
             )
         {
@@ -42,12 +43,9 @@ namespace ComunidadeAtiva.FormsUI
             _ImoradorNecessidadeEspecial = ImoradorNecessidadeEspecial;
             _db = db;
             _notificacao = notificacao;
+            _mapper = mapper;
         }  
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //MessageBox.Show(_Morador.ObterMoradorId(int.Parse(textBox1.Text)).Nome);
-        }
+      
 
         private void button1_Click_1(object sender, EventArgs e)
         {

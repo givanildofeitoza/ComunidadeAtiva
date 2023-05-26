@@ -1,11 +1,11 @@
 using ComunidadeAtiva.Dominio.Interfaces;
 using ComunidadeAtiva.Infra.Data.DbContextFiles;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
-using ComunidadeAtiva.Dominio.Entity;
-using ComunidadeAtiva.Aplicacao.CasosDeUso.Repositorio;
 using ComunidadeAtiva.Dominio.Validacao;
+using ComunidadeAtiva.Aplicacao.Repositorio;
+using Microsoft.Extensions.DependencyInjection;
+using ComunidadeAtiva.Aplicacao.Mapeamento;
 
 namespace ComunidadeAtiva.FormsUI
 {
@@ -16,40 +16,39 @@ namespace ComunidadeAtiva.FormsUI
         /// </summary>
         [STAThread]
         static void Main()
-        {
-
+        {            
             var services = new ServiceCollection();
             ConfigureServices(services);
             using (ServiceProvider serviceProvider = services.BuildServiceProvider())
-            {
+            {                
                 var _FrmMain = serviceProvider.GetRequiredService<FrmMain>();
                 Application.Run(_FrmMain);
             }
 
-
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             //ApplicationConfiguration.Initialize();
-            //Application.Run(new Form1());
-           
+            //Application.Run(new Form1());           
 
         }
-        private static void ConfigureServices(ServiceCollection services)
+        private static void ConfigureServices(IServiceCollection services)
         {
             var ConnectionStrings = "server=localhost; port=3307; uid=root;pwd=p@ssw0rd;database=comunidade";
-            
+           
             services.AddLogging(configure => configure.AddConsole())
                 .AddDbContext<FileDbContext>(opt => opt.UseMySql(ConnectionStrings, ServerVersion.AutoDetect(ConnectionStrings)))
                 .AddScoped<DbContext, FileDbContext>()
                 .AddScoped<ICapturarNotificacao, CapturarNotificacao>()
-                .AddSingleton<ImoradorService, MoradorService>()
-                .AddSingleton<IbeneficioSocialService, BeneficioSocialService>()
-                .AddSingleton <ImoradorBeneficioSocial, MoradorBeneficioSocialService>()
-                .AddSingleton<InecessidadeEspecialService, NecessidadeEspecialService>()
-                .AddSingleton<ImoradorNecessidadeEspecial, MoradorNecessidadeEspecialService>()
-                .AddSingleton<IruaService, RuaService>()
+                .AddSingleton<ImoradorRepositorio, MoradorRepositorio>()
+                .AddSingleton<IbeneficioSocialRepositorio, BeneficioSocialRepositorio>()
+                .AddSingleton<ImoradorBeneficioSocialRepositorio, MoradorBeneficioSocialRepositorio>()
+                .AddSingleton<InecessidadeEspecialRepositorio, NecessidadeEspecialRepositorio>()
+                .AddSingleton<ImoradorNecessidadeEspecialRepositorio, MoradorNecessidadeEspecialRepositorio>()
+                .AddSingleton<IruaRepositorio, RuaRepositorio>()
+                //Para aparecer o AddAutomaper é preciso ao pacote nuguet AutoMappe.Extensions.Microsoft.DependencyInjection.
+                .AddAutoMapper(typeof(MapeamentoClasseDTO))
                 .AddScoped<FrmMain>();
-           
+            
         }
 
     }

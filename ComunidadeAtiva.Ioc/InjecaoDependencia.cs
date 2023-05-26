@@ -1,7 +1,9 @@
 ﻿using ComunidadeAtiva.Infra.Data.DbContextFiles;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Configuration;
+using ComunidadeAtiva.Aplicacao.Mapeamento;
+using AutoMapper;
+using Microsoft.Extensions.Hosting;
 
 namespace ComunidadeAtiva.Ioc
 {
@@ -9,16 +11,16 @@ namespace ComunidadeAtiva.Ioc
     {
         public static IServiceCollection ConfigDependency(this IServiceCollection services)
         {
-
+            
             var ConnectionStrings = "server=localhost; port=3307; uid=root;pwd=p@ssw0rd;database=comunidade";
             services.AddDbContext<FileDbContext>(options => options.UseMySql(ConnectionStrings, ServerVersion.AutoDetect(ConnectionStrings)));
-            
+                 
             /*services.AddAutoMapper(typeof(AutoMapperConfig));
             services.AddScoped<DbContext, appDbContext>();
             */
-            
-          //  services.AddScoped<IInputRelationsService, InputRelationsRepository>();
-           // services.AddScoped<ICustomerService, CustomerRepository>();
+
+            //  services.AddScoped<IInputRelationsService, InputRelationsRepository>();
+            // services.AddScoped<ICustomerService, CustomerRepository>();
 
             /*
             services.AddApiVersioning(options =>
