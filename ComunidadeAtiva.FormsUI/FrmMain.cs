@@ -7,6 +7,7 @@ using ComunidadeAtiva.FormsUI.FormsModal;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
 using AutoMapper;
+using ComunidadeAtiva.Aplicacao.CasosDeUso.Interface;
 
 namespace ComunidadeAtiva.FormsUI
 {
@@ -17,7 +18,7 @@ namespace ComunidadeAtiva.FormsUI
         public static    IbeneficioSocialRepositorio _beneficioSocial;
         public static    ImoradorBeneficioSocialRepositorio _moradorBeneficioSocial;
         public static    InecessidadeEspecialRepositorio _necessidadeEspecial;
-        public static    IruaRepositorio _ruaService;
+        public static    IServicoRua _ruaService;
         public static    ImoradorNecessidadeEspecialRepositorio _ImoradorNecessidadeEspecial;
         public static    ICapturarNotificacao _notificacao;
         public static    IMapper _mapper;
@@ -27,7 +28,7 @@ namespace ComunidadeAtiva.FormsUI
             IbeneficioSocialRepositorio beneficioSocial,
             ImoradorBeneficioSocialRepositorio moradorBeneficioSocial,
             InecessidadeEspecialRepositorio necessidadeEspecial,
-            IruaRepositorio ruaService,
+            IServicoRua ruaService,
             ImoradorNecessidadeEspecialRepositorio ImoradorNecessidadeEspecial,
             ICapturarNotificacao notificacao,
             IMapper mapper,

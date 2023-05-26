@@ -23,7 +23,7 @@ namespace ComunidadeAtiva.Dominio.ObjetoValor
            CEP = cep;
            
         }
-        public string CEP { get; private set; }
+        public string CEP { get; set; }
 
         public void IsValid(ICapturarNotificacao notificacao)
         {

@@ -1,4 +1,5 @@
-﻿using ComunidadeAtiva.Dominio.Entidades;
+﻿using ComunidadeAtiva.Aplicacao.CasosDeUso.Interface;
+using ComunidadeAtiva.Dominio.Entidades;
 using ComunidadeAtiva.Dominio.Entity;
 using ComunidadeAtiva.Dominio.Interfaces;
 using ComunidadeAtiva.FormsUI.Classes;
@@ -23,7 +24,7 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
         private ImoradorRepositorio _Morador;
         private readonly IbeneficioSocialRepositorio _beneficioSocial;
         private readonly InecessidadeEspecialRepositorio _necessidadeEspecial;
-        private readonly IruaRepositorio _ruaService;
+        private readonly IServicoRua _ruaService;
         private readonly ICapturarNotificacao _notificacao;
         private Morador Morador;
 
@@ -31,7 +32,7 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
             IbeneficioSocialRepositorio beneficioSocial, 
             InecessidadeEspecialRepositorio necessidadeEspecial,
             ICapturarNotificacao notificacao,
-            IruaRepositorio ruaService, FileDbContext db)
+            IServicoRua ruaService, FileDbContext db)
         {
             InitializeComponent();
             _Morador = Morador;
@@ -107,7 +108,7 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
         {
             _FrmCrudRua Frua = new _FrmCrudRua(_ruaService);
             Frua.ShowDialog();
-            var dadosRua = await _ruaService.ObterPorId(Frua.Id);
+            var dadosRua = await _ruaService.ObterRuaPorId(Frua.Id);
 
             txtDescRua.Text = $" {dadosRua.Nome1}({dadosRua.Nome2}). " +
                             $" \r\n Calçada: {dadosRua.Calcada} " +

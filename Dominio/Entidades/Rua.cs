@@ -24,7 +24,7 @@ namespace ComunidadeAtiva.Dominio.Entity
         
         public string Nome2 { get; set; }
 
-        public Cep Cep { get; private set; }
+        public Cep Cep { get;  set; }
 
         public string Calcada { get; set; }
         

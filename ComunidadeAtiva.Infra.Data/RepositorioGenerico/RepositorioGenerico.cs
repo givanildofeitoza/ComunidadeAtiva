@@ -21,7 +21,7 @@ namespace ComunidadeAtiva.Infra.Data.RepositorioGenerico
             if (ModelParametro.id != 0)
             {
                 _Entidade.Update(ModelParametro);
-                _BancoDados.SaveChangesAsync();
+                await _BancoDados.SaveChangesAsync();
             }                
             
         }
@@ -48,7 +48,7 @@ namespace ComunidadeAtiva.Infra.Data.RepositorioGenerico
 
         public async Task<T> ObterPorId(int id)
         {
-            return await _Entidade.Where(x=>x.id==id).FirstOrDefaultAsync();
+            return await _Entidade.Where(x=>x.id==id).AsNoTracking().FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<T>> ObterTodos(int take, int skip)

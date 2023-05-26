@@ -10,12 +10,13 @@ namespace ComunidadeAtiva.Aplicacao.DTO
 {
     public class RuaDTO
     {
+        public int id { get; set; }
         [Required]
         public string Nome1 { get; set; }
         [Required]
         public string Nome2 { get; set; }
         [Required]
-        public string Cep { get; private set; }
+        public string Cep { get;  set; }
 
         [StringLength(1, ErrorMessage = "Texto maior que o esperado")]
         public string Calcada { get; set; }

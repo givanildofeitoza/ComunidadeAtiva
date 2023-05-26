@@ -17,7 +17,9 @@ namespace ComunidadeAtiva.Aplicacao.Mapeamento
             CreateMap<MoradorBeneficioSocial, BeneficosMoradorDTO>().ReverseMap();
             CreateMap<MoradorNecessidadeEspecial, NecessidadesMoradorDTO>().ReverseMap();
             CreateMap<Morador, MoradorDTO>().ReverseMap();
-            CreateMap<Rua, RuaDTO>().ReverseMap();
+            CreateMap<Rua, RuaDTO>()
+            .ForMember(dest => dest.Cep, opt => opt.MapFrom(src => src.Cep.CEP))
+            .ReverseMap();
         }
 
     }
