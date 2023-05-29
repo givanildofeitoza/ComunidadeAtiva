@@ -1,15 +1,10 @@
 ﻿using AutoMapper;
 using ComunidadeAtiva.Aplicacao.DTO;
-using ComunidadeAtiva.Aplicacao.Repositorio;
 using ComunidadeAtiva.Dominio.Entity;
 using ComunidadeAtiva.Dominio.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
-using ComunidadeAtiva.Aplicacao.Mapeamento;
 using ComunidadeAtiva.Aplicacao.CasosDeUso.Interface;
 
 namespace ComunidadeAtiva.Aplicacao.CasosDeUso

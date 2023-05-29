@@ -150,7 +150,7 @@
             label10.Name = "label10";
             label10.Size = new Size(31, 15);
             label10.TabIndex = 37;
-            label10.Text = "CPF:";
+            label10.Text = "CEP:";
             // 
             // button5
             // 

@@ -26,10 +26,10 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
         private IServicoRua _ruaService;
         private IMapper _mapper;
 
-        
+
 
         private AcaoControleCadastro opcao;
-        
+
 
         private RuaDTO RuaMovimento;
         public _FrmCrudRua(IServicoRua ruaService)
@@ -59,21 +59,20 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
         {
             try
             {
-               
+
                 if (acao == AcaoControleCadastro.CADASRTRAR)
-                {
-                   RuaDTO rua = new RuaDTO();
-                   rua.Nome1 = txtNome.Text;
-                   rua.Nome2 = txtNomeAntigo.Text;
-                   rua.Calcada = cboCalcada.Text;
-                   rua.Energia = cboEnergia.Text;
-                   rua.Agua = cboAgua.Text;
-                   rua.Saneamento = cboSaneamento.Text;
-                   rua.ColetaLixo = cboLixo.Text;
-                   rua.AgenteSaudeResponsval = txtAgenteSaude.Text;
-                   rua.Cep =txtCep.Text;
-                   
-                    await _ruaService.CadastrarRua(rua);
+                {                    
+                    RuaMovimento.Nome1 = txtNome.Text;
+                    RuaMovimento.Nome2 = txtNomeAntigo.Text;
+                    RuaMovimento.Calcada = cboCalcada.Text;
+                    RuaMovimento.Energia = cboEnergia.Text;
+                    RuaMovimento.Agua = cboAgua.Text;
+                    RuaMovimento.Saneamento = cboSaneamento.Text;
+                    RuaMovimento.ColetaLixo = cboLixo.Text;
+                    RuaMovimento.AgenteSaudeResponsval = txtAgenteSaude.Text;
+                    RuaMovimento.Cep = txtCep.Text;
+
+                    await _ruaService.CadastrarRua(RuaMovimento);
                     MessageBox.Show("Cadastrado com sucesso !");
                     CarregarGrid();
                     pnlCadRua.Visible = false;

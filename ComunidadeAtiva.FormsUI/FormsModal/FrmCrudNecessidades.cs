@@ -18,9 +18,9 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
 {
     public partial class _FrmCrudNecessidades : ClasseFormPadrao
     {
-        private Morador _MoradorAtivo;
+        private MoradorDTO _MoradorAtivo;
 
-        public _FrmCrudNecessidades(Morador MoradorAtivo)
+        public _FrmCrudNecessidades(MoradorDTO MoradorAtivo)
         {
             InitializeComponent();
             _MoradorAtivo = MoradorAtivo;
@@ -29,7 +29,7 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
 
         private async Task AtualizarGrid()
         {
-            _MoradorAtivo = await FrmMain._Morador.ObterMoradorRelacionalRuaId(_MoradorAtivo.id);
+            _MoradorAtivo = await FrmMain._ServicoMorador.ObterMoradorRelacionalRuaId(int.Parse(_MoradorAtivo.id));
             var ListNecessidadesEspeciais = await FrmMain._necessidadeEspecial.ObterTodos(50, 0);
             List<NecessidadesMoradorDTO> TabelaNecessidadeMorador = new List<NecessidadesMoradorDTO>();
             foreach (var n in _MoradorAtivo.necessidadeEspecial)
@@ -70,7 +70,7 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
             }
 
             MoradorNecessidadeEspecial n = new MoradorNecessidadeEspecial();
-            n.MoradorId = _MoradorAtivo.id;
+            n.MoradorId = int.Parse(_MoradorAtivo.id);
             n.NecessidadeId = int.Parse(cbonecessidade.Text.Substring(0, 4));
 
             await FrmMain._ImoradorNecessidadeEspecial.Cadastrar(n);

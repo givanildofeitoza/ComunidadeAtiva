@@ -18,7 +18,6 @@ namespace ComunidadeAtiva.Aplicacao.CasosDeUso.Interface
         public Task<RuaDTO> ObterRuaPorId(int Id);
 
         public Task<IEnumerable<RuaDTO>> ObterRuaTodas(int take, int skip);
-
         
     }
 }

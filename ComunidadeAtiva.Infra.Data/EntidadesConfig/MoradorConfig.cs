@@ -10,13 +10,17 @@ namespace ComunidadeAtiva.Infra.Data.EntidadesConfig
         public void Configure(EntityTypeBuilder<Morador> builder)
         {            
             builder.Property(p => p.Nome).HasMaxLength(50).IsRequired();
-            builder.Property(p => p.Cpf).HasMaxLength(11);
+            //builder.Property(p => p.Cpf).HasMaxLength(11);
             builder.Property(p => p.Rg).HasMaxLength(10);
             builder.Property(p => p.EstadoCivil).HasMaxLength(20);
             builder.Property(p => p.Nascimento).HasDefaultValue("1900-01-01");
             builder.Property(p => p.Situacao).HasMaxLength(10).HasDefaultValue("Ativo");
             builder.Property(p => p.NumeroCasa).HasMaxLength(4);
             builder.Property(p => p.RuaId).HasMaxLength(4).IsRequired();
+
+            //isso informa que o tipo ValueObject  deve ser criado como tipo primitivo no banco
+            builder.OwnsOne(x => x.Cpf,
+                x => x.Property(x => x.CPF).HasColumnName("Cpf").HasMaxLength(11));
         }
     }
 }

@@ -1,7 +1,10 @@
 ﻿using ComunidadeAtiva.Aplicacao.CasosDeUso.Interface;
+using ComunidadeAtiva.Aplicacao.DTO;
 using ComunidadeAtiva.Dominio.Entidades;
 using ComunidadeAtiva.Dominio.Entity;
+using ComunidadeAtiva.Dominio.Enum;
 using ComunidadeAtiva.Dominio.Interfaces;
+using ComunidadeAtiva.Dominio.Validacao;
 using ComunidadeAtiva.FormsUI.Classes;
 using ComunidadeAtiva.Infra.Data.DbContextFiles;
 using System;
@@ -21,35 +24,39 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
     {
 
         private readonly FileDbContext _db;
-        private ImoradorRepositorio _Morador;
+        private readonly IServicoMorador  _MoradorServico;
         private readonly IbeneficioSocialRepositorio _beneficioSocial;
         private readonly InecessidadeEspecialRepositorio _necessidadeEspecial;
         private readonly IServicoRua _ruaService;
         private readonly ICapturarNotificacao _notificacao;
-        private Morador Morador;
+        private MoradorDTO Morador;
+        private AcaoControleCadastro _AcaoControleCadastro;
 
-        public _FrmCrudMorador(ImoradorRepositorio Morador, 
+
+        public _FrmCrudMorador(IServicoMorador MoradorServico, 
             IbeneficioSocialRepositorio beneficioSocial, 
             InecessidadeEspecialRepositorio necessidadeEspecial,
             ICapturarNotificacao notificacao,
-            IServicoRua ruaService, FileDbContext db)
+            IServicoRua ruaService, FileDbContext db,
+            AcaoControleCadastro AcaoControleCadastro)
         {
             InitializeComponent();
-            _Morador = Morador;
+            _MoradorServico = MoradorServico;
             _beneficioSocial = beneficioSocial;
             _necessidadeEspecial = necessidadeEspecial;
             _ruaService = ruaService;
             _db = db;
             _notificacao = notificacao;
+            _AcaoControleCadastro = AcaoControleCadastro;
         }
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private async void button3_Click(object sender, EventArgs e)
         {
-            Morador m = new Morador();
+            MoradorDTO m = new MoradorDTO();         
             m.Nome = txtNome.Text;
             m.Cpf = txtCpf.Text;
             m.Rg = txtRg.Text;
@@ -58,12 +65,44 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
             m.RuaId = int.Parse(txtIdRua.Text);
             m.Nascimento = Convert.ToDateTime(txtData.Text);
             m.NumeroCasa = txtNumero.Text;
-            _Morador.Cadastrar(m);
-            MessageBox.Show("Cadastrado com Sucesso!");
+
+            if (_AcaoControleCadastro == AcaoControleCadastro.CADASRTRAR)
+            {
+                try
+                {
+                    await _MoradorServico.CadastrarMorador(m);
+                }
+                catch
+                {
+                    EmitirExcecoes.EmitirExcecao(_notificacao);
+                }
+                finally {
+                    MessageBox.Show("Cadastrado com Sucesso!");
+                }                
+                
+            }
+            else
+            {
+                try
+                {
+                    m.id = txtId.Text;
+                    _MoradorServico.AlterarMorador(m);
+                }
+                catch
+                {
+                    EmitirExcecoes.EmitirExcecao(_notificacao);
+                }
+                finally
+                {
+                    MessageBox.Show("Alterado com Sucesso!");
+                }
+                
+                
+            }
         }
         private async void _FrmCrudMorador_Load(object sender, EventArgs e)
         {
-            Morador = await _Morador.ObterMoradorRelacionalRuaId(Id);
+            Morador = await _MoradorServico.ObterMoradorRelacionalRuaId(Id);
             if (Morador == null)
                 return;
 
@@ -89,7 +128,7 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
         }
         private async void CarregarDadosAxuliaresMorador()
         {
-            Morador = await _Morador.ObterMoradorRelacionalRuaId(Morador.id);
+            Morador = await _MoradorServico.ObterMoradorRelacionalRuaId(int.Parse(Morador.id));
             var beneficio = await _beneficioSocial.ObterTodos(50, 0);
             ListBoxBeneficio.Items.Clear();
             foreach (var b in Morador.moradorBeneficioSocial)
@@ -130,7 +169,7 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
-            _FrmCrudBeneficios Fbeneficio = new _FrmCrudBeneficios(Morador.id);
+            _FrmCrudBeneficios Fbeneficio = new _FrmCrudBeneficios(int.Parse(Morador.id));
             Fbeneficio.ShowDialog();
             CarregarDadosAxuliaresMorador();
         }

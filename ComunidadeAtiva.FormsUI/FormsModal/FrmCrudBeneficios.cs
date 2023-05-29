@@ -17,7 +17,7 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
 {
     public partial class _FrmCrudBeneficios : ClasseFormPadrao
     {
-        private Morador moradorAtivo;
+        private MoradorDTO moradorAtivo;
         private int IdBeneficio;
 
         public _FrmCrudBeneficios(int id)
@@ -28,7 +28,7 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
         public async Task CarregarBeneficios()
         {
             cboBeneficio.Items.Clear();
-            moradorAtivo = await FrmMain._Morador.ObterMoradorRelacionalRuaId(Id);
+            moradorAtivo = await FrmMain._ServicoMorador.ObterMoradorRelacionalRuaId(Id);
             var beneficios = await FrmMain._beneficioSocial.ObterTodos(50, 0);
             List<BeneficosMoradorDTO> BeneficiosMorador = new List<BeneficosMoradorDTO>();
             foreach (var b in moradorAtivo.moradorBeneficioSocial)

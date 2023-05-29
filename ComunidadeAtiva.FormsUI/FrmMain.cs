@@ -8,13 +8,14 @@ using System.Windows.Forms;
 using System.Windows.Forms.Design;
 using AutoMapper;
 using ComunidadeAtiva.Aplicacao.CasosDeUso.Interface;
+using ComunidadeAtiva.Dominio.Enum;
 
 namespace ComunidadeAtiva.FormsUI
 {
     public partial class FrmMain : Form
     {
         private readonly FileDbContext _db;
-        public static    ImoradorRepositorio _Morador;
+        public static    IServicoMorador _ServicoMorador;
         public static    IbeneficioSocialRepositorio _beneficioSocial;
         public static    ImoradorBeneficioSocialRepositorio _moradorBeneficioSocial;
         public static    InecessidadeEspecialRepositorio _necessidadeEspecial;
@@ -24,7 +25,7 @@ namespace ComunidadeAtiva.FormsUI
         public static    IMapper _mapper;
 
         public FrmMain(
-            ImoradorRepositorio Morador,
+            IServicoMorador ServicoMorador,
             IbeneficioSocialRepositorio beneficioSocial,
             ImoradorBeneficioSocialRepositorio moradorBeneficioSocial,
             InecessidadeEspecialRepositorio necessidadeEspecial,
@@ -36,7 +37,7 @@ namespace ComunidadeAtiva.FormsUI
             )
         {
             InitializeComponent();
-            _Morador = Morador;
+            _ServicoMorador = ServicoMorador;
             _beneficioSocial = beneficioSocial;
             _moradorBeneficioSocial = moradorBeneficioSocial;
             _necessidadeEspecial = necessidadeEspecial;
@@ -55,9 +56,9 @@ namespace ComunidadeAtiva.FormsUI
 
         private async void button8_Click(object sender, EventArgs e)
         {
-            _FrmCrudMorador Fmorador = new _FrmCrudMorador(_Morador, _beneficioSocial, _necessidadeEspecial, _notificacao, _ruaService, _db);
+            _FrmCrudMorador Fmorador = new _FrmCrudMorador(_ServicoMorador, _beneficioSocial, _necessidadeEspecial, _notificacao, _ruaService, _db, AcaoControleCadastro.ALTERAR);
             flowLayoutPanel1.Controls.Clear();
-            var listMoradores = await _Morador.ObterTodosRelacionalMorador(10, 0);
+            var listMoradores = await _ServicoMorador.ObterTodosRelacionalMorador(10, 0);
             CustomListItem[] listItem = new CustomListItem[listMoradores.Count()];
             int i = 0;
             foreach (var item in listMoradores)
@@ -79,7 +80,7 @@ namespace ComunidadeAtiva.FormsUI
         }
         private void imgAlter_Click(object sender, EventArgs e)
         {
-            _FrmCrudMorador Fmorador = new _FrmCrudMorador(_Morador, _beneficioSocial, _necessidadeEspecial,_notificacao,_ruaService, _db);
+            _FrmCrudMorador Fmorador = new _FrmCrudMorador(_ServicoMorador, _beneficioSocial, _necessidadeEspecial,_notificacao,_ruaService, _db, AcaoControleCadastro.CADASRTRAR);
             Fmorador.ShowDialog();
         }
     }
