@@ -1,5 +1,6 @@
 ﻿using ComunidadeAtiva.Dominio.Comum;
 using ComunidadeAtiva.Dominio.Interfaces;
+using ComunidadeAtiva.Dominio.Validacao;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,13 +28,13 @@ namespace ComunidadeAtiva.Dominio.ObjetoValor
         {
             CPF = Comuns.LimparString(new string[] { ".", "-","/" }, CPF);
             
-            notificacao.LimparErros();
-            
             if (CPF.Length != 11)
                 notificacao.AddNotificacao("CPF deve conter 11 caracteres!");
 
             if (!CPF.All(char.IsDigit))
                 notificacao.AddNotificacao("Para o CPF são aceitos apenas números!");
+
+          
             
         }
     }

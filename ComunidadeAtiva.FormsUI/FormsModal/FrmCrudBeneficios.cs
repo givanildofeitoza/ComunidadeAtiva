@@ -1,4 +1,5 @@
 ﻿using ComunidadeAtiva.Aplicacao.CasosDeUso;
+using ComunidadeAtiva.Aplicacao.CasosDeUso.Interface;
 using ComunidadeAtiva.Aplicacao.DTO;
 using ComunidadeAtiva.Dominio.Entidades;
 using ComunidadeAtiva.Dominio.Entity;
@@ -36,14 +37,14 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
                 BeneficiosMorador.Add(
                 new BeneficosMoradorDTO
                 {
-                    Id = b.id,
+                    id = b.id,
                     DescricaoBeneficio = beneficios.Where(x => x.id == b.BeneficioSocialId).FirstOrDefault().NomeBeneficioSocial,
                     Valor = b.Valor
                 });
             }
             var tabela = BeneficiosMorador.Select(x => new
             {
-                Id = x.Id,
+                Id = x.id,
                 Descricao = x.DescricaoBeneficio,
                 Valor = x.Valor
 
@@ -78,11 +79,11 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
 
             }
 
-            MoradorBeneficioSocial b = new MoradorBeneficioSocial();
+            BeneficosMoradorDTO b = new BeneficosMoradorDTO();
             b.MoradorId = Id;
             b.BeneficioSocialId = idBeneficio;
             b.Valor = decimal.Parse(txtValor.Text);
-            await FrmMain._moradorBeneficioSocial.Cadastrar(b);
+            await FrmMain._ServicoBeneficoSocialMorador.CadastrarBeneficioMorador(b);
             await CarregarBeneficios();
             pnlLancar.Visible = false;
         }
@@ -90,15 +91,15 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
         private async void button3_Click(object sender, EventArgs e)
         {
 
-            var dlg = MessageBox.Show("Confirmar Exclusão do valor?","",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+            var dlg = MessageBox.Show("Confirmar Exclusão do valor?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dlg == DialogResult.No)
                 return;
 
-            var b = await FrmMain._moradorBeneficioSocial.ObterPorId(IdBeneficio);
+            var b = await FrmMain._ServicoBeneficoSocialMorador.ObterBeneficioMoradorID(IdBeneficio);
             if (b == null)
                 return;
 
-            await FrmMain._moradorBeneficioSocial.Deletar(b);
+            await FrmMain._ServicoBeneficoSocialMorador.DeletarBeneficioMorador(b);
             await CarregarBeneficios();
         }
 

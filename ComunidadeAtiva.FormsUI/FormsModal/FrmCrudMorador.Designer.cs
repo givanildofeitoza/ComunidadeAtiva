@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(_FrmCrudMorador));
             label1 = new Label();
-            txtId = new TextBox();
             panel1 = new Panel();
             button1 = new Button();
             txtRg = new TextBox();
@@ -43,7 +42,6 @@
             label2 = new Label();
             label4 = new Label();
             label5 = new Label();
-            label6 = new Label();
             label7 = new Label();
             label8 = new Label();
             cboSituacao = new ComboBox();
@@ -54,15 +52,21 @@
             txtNumero = new TextBox();
             label10 = new Label();
             label11 = new Label();
-            ListBoxBeneficio = new ListBox();
-            label12 = new Label();
-            ListBoxNecessidade = new ListBox();
-            label13 = new Label();
-            pictureBox1 = new PictureBox();
+            pnlBeneficiosNecessidade = new Panel();
             pictureBox4 = new PictureBox();
+            pictureBox1 = new PictureBox();
+            label13 = new Label();
+            ListBoxNecessidade = new ListBox();
+            label12 = new Label();
+            ListBoxBeneficio = new ListBox();
+            pnlId = new Panel();
+            label6 = new Label();
+            txtId = new TextBox();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            pnlBeneficiosNecessidade.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            pnlId.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -76,15 +80,6 @@
             label1.TabIndex = 0;
             label1.Text = "Dados Morador";
             // 
-            // txtId
-            // 
-            txtId.BorderStyle = BorderStyle.FixedSingle;
-            txtId.Location = new Point(72, 61);
-            txtId.Name = "txtId";
-            txtId.ReadOnly = true;
-            txtId.Size = new Size(96, 23);
-            txtId.TabIndex = 1;
-            // 
             // panel1
             // 
             panel1.BackColor = Color.SteelBlue;
@@ -93,7 +88,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(716, 35);
+            panel1.Size = new Size(685, 35);
             panel1.TabIndex = 2;
             // 
             // button1
@@ -102,7 +97,7 @@
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Arial Narrow", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(641, 0);
+            button1.Location = new Point(610, 0);
             button1.Name = "button1";
             button1.Size = new Size(75, 35);
             button1.TabIndex = 0;
@@ -115,15 +110,15 @@
             txtRg.BorderStyle = BorderStyle.FixedSingle;
             txtRg.Location = new Point(72, 109);
             txtRg.Name = "txtRg";
-            txtRg.Size = new Size(96, 23);
+            txtRg.Size = new Size(115, 23);
             txtRg.TabIndex = 3;
             // 
             // txtNome
             // 
             txtNome.BorderStyle = BorderStyle.FixedSingle;
-            txtNome.Location = new Point(223, 61);
+            txtNome.Location = new Point(72, 73);
             txtNome.Name = "txtNome";
-            txtNome.Size = new Size(446, 23);
+            txtNome.Size = new Size(598, 23);
             txtNome.TabIndex = 4;
             // 
             // txtCpf
@@ -191,7 +186,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(22, 150);
+            label4.Location = new Point(28, 150);
             label4.Name = "label4";
             label4.Size = new Size(42, 15);
             label4.TabIndex = 13;
@@ -200,25 +195,16 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(22, 111);
+            label5.Location = new Point(43, 111);
             label5.Name = "label5";
             label5.Size = new Size(27, 15);
             label5.TabIndex = 14;
             label5.Text = "RG:";
             // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(22, 69);
-            label6.Name = "label6";
-            label6.Size = new Size(21, 15);
-            label6.TabIndex = 15;
-            label6.Text = "Id:";
-            // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(186, 111);
+            label7.Location = new Point(190, 111);
             label7.Name = "label7";
             label7.Size = new Size(30, 15);
             label7.TabIndex = 16;
@@ -227,7 +213,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(174, 63);
+            label8.Location = new Point(26, 75);
             label8.Name = "label8";
             label8.Size = new Size(44, 15);
             label8.TabIndex = 17;
@@ -260,7 +246,7 @@
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Arial Narrow", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             button2.ForeColor = Color.White;
-            button2.Location = new Point(156, 147);
+            button2.Location = new Point(149, 147);
             button2.Name = "button2";
             button2.Size = new Size(31, 24);
             button2.TabIndex = 20;
@@ -311,76 +297,112 @@
             label11.TabIndex = 25;
             label11.Text = "Informações da Rua:";
             // 
-            // ListBoxBeneficio
+            // pnlBeneficiosNecessidade
             // 
-            ListBoxBeneficio.FormattingEnabled = true;
-            ListBoxBeneficio.ItemHeight = 15;
-            ListBoxBeneficio.Location = new Point(72, 392);
-            ListBoxBeneficio.Name = "ListBoxBeneficio";
-            ListBoxBeneficio.Size = new Size(282, 94);
-            ListBoxBeneficio.TabIndex = 28;
+            pnlBeneficiosNecessidade.Controls.Add(pictureBox4);
+            pnlBeneficiosNecessidade.Controls.Add(pictureBox1);
+            pnlBeneficiosNecessidade.Controls.Add(label13);
+            pnlBeneficiosNecessidade.Controls.Add(ListBoxNecessidade);
+            pnlBeneficiosNecessidade.Controls.Add(label12);
+            pnlBeneficiosNecessidade.Controls.Add(ListBoxBeneficio);
+            pnlBeneficiosNecessidade.Location = new Point(72, 357);
+            pnlBeneficiosNecessidade.Name = "pnlBeneficiosNecessidade";
+            pnlBeneficiosNecessidade.Size = new Size(603, 131);
+            pnlBeneficiosNecessidade.TabIndex = 35;
             // 
-            // label12
+            // pictureBox4
             // 
-            label12.AutoSize = true;
-            label12.Location = new Point(72, 372);
-            label12.Name = "label12";
-            label12.Size = new Size(98, 15);
-            label12.TabIndex = 29;
-            label12.Text = "Benefício Social:";
+            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
+            pictureBox4.Location = new Point(100, 5);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(23, 23);
+            pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox4.TabIndex = 40;
+            pictureBox4.TabStop = false;
+            pictureBox4.Click += pictureBox4_Click_1;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(429, 5);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(23, 23);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 39;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click_1;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(303, 12);
+            label13.Name = "label13";
+            label13.Size = new Size(125, 15);
+            label13.TabIndex = 38;
+            label13.Text = "Necessidade Especial:";
             // 
             // ListBoxNecessidade
             // 
             ListBoxNecessidade.FormattingEnabled = true;
             ListBoxNecessidade.ItemHeight = 15;
-            ListBoxNecessidade.Location = new Point(372, 392);
+            ListBoxNecessidade.Location = new Point(303, 33);
             ListBoxNecessidade.Name = "ListBoxNecessidade";
             ListBoxNecessidade.Size = new Size(297, 94);
-            ListBoxNecessidade.TabIndex = 30;
+            ListBoxNecessidade.TabIndex = 37;
             // 
-            // label13
+            // label12
             // 
-            label13.AutoSize = true;
-            label13.Location = new Point(372, 371);
-            label13.Name = "label13";
-            label13.Size = new Size(125, 15);
-            label13.TabIndex = 31;
-            label13.Text = "Necessidade Especial:";
+            label12.AutoSize = true;
+            label12.Location = new Point(3, 13);
+            label12.Name = "label12";
+            label12.Size = new Size(98, 15);
+            label12.TabIndex = 36;
+            label12.Text = "Benefício Social:";
             // 
-            // pictureBox1
+            // ListBoxBeneficio
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(503, 364);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(23, 23);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 32;
-            pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click;
+            ListBoxBeneficio.FormattingEnabled = true;
+            ListBoxBeneficio.ItemHeight = 15;
+            ListBoxBeneficio.Location = new Point(3, 33);
+            ListBoxBeneficio.Name = "ListBoxBeneficio";
+            ListBoxBeneficio.Size = new Size(282, 94);
+            ListBoxBeneficio.TabIndex = 35;
             // 
-            // pictureBox4
+            // pnlId
             // 
-            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(169, 364);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(23, 23);
-            pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox4.TabIndex = 34;
-            pictureBox4.TabStop = false;
-            pictureBox4.Click += pictureBox4_Click;
+            pnlId.Controls.Add(label6);
+            pnlId.Controls.Add(txtId);
+            pnlId.Location = new Point(43, 40);
+            pnlId.Name = "pnlId";
+            pnlId.Size = new Size(136, 31);
+            pnlId.TabIndex = 36;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(5, 9);
+            label6.Name = "label6";
+            label6.Size = new Size(21, 15);
+            label6.TabIndex = 17;
+            label6.Text = "Id:";
+            // 
+            // txtId
+            // 
+            txtId.BorderStyle = BorderStyle.FixedSingle;
+            txtId.Location = new Point(29, 4);
+            txtId.Name = "txtId";
+            txtId.ReadOnly = true;
+            txtId.Size = new Size(96, 23);
+            txtId.TabIndex = 16;
             // 
             // _FrmCrudMorador
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(716, 533);
-            Controls.Add(pictureBox4);
-            Controls.Add(pictureBox1);
-            Controls.Add(label13);
-            Controls.Add(ListBoxNecessidade);
-            Controls.Add(label12);
-            Controls.Add(ListBoxBeneficio);
+            ClientSize = new Size(685, 533);
+            Controls.Add(pnlId);
+            Controls.Add(pnlBeneficiosNecessidade);
             Controls.Add(label11);
             Controls.Add(label10);
             Controls.Add(txtNumero);
@@ -391,7 +413,6 @@
             Controls.Add(cboSituacao);
             Controls.Add(label8);
             Controls.Add(label7);
-            Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label2);
@@ -403,16 +424,20 @@
             Controls.Add(txtNome);
             Controls.Add(txtRg);
             Controls.Add(panel1);
-            Controls.Add(txtId);
             Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Name = "_FrmCrudMorador";
             StartPosition = FormStartPosition.CenterScreen;
             Load += _FrmCrudMorador_Load;
+            Shown += _FrmCrudMorador_Shown;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            pnlBeneficiosNecessidade.ResumeLayout(false);
+            pnlBeneficiosNecessidade.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            pnlId.ResumeLayout(false);
+            pnlId.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -420,7 +445,6 @@
         #endregion
 
         private Label label1;
-        private TextBox txtId;
         private Panel panel1;
         private Button button1;
         private TextBox txtRg;
@@ -433,7 +457,6 @@
         private Label label2;
         private Label label4;
         private Label label5;
-        private Label label6;
         private Label label7;
         private Label label8;
         private ComboBox cboSituacao;
@@ -444,11 +467,15 @@
         private TextBox txtNumero;
         private Label label10;
         private Label label11;
-        private ListBox ListBoxBeneficio;
-        private Label label12;
-        private ListBox ListBoxNecessidade;
-        private Label label13;
-        private PictureBox pictureBox1;
+        private Panel pnlBeneficiosNecessidade;
         private PictureBox pictureBox4;
+        private PictureBox pictureBox1;
+        private Label label13;
+        private ListBox ListBoxNecessidade;
+        private Label label12;
+        private ListBox ListBoxBeneficio;
+        private Panel pnlId;
+        private Label label6;
+        private TextBox txtId;
     }
 }

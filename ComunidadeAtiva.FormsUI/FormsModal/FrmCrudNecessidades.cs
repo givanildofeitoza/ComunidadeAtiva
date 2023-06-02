@@ -69,11 +69,11 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
                 return;
             }
 
-            MoradorNecessidadeEspecial n = new MoradorNecessidadeEspecial();
+            NecessidadesMoradorDTO n = new NecessidadesMoradorDTO();
             n.MoradorId = int.Parse(_MoradorAtivo.id);
             n.NecessidadeId = int.Parse(cbonecessidade.Text.Substring(0, 4));
 
-            await FrmMain._ImoradorNecessidadeEspecial.Cadastrar(n);
+            await FrmMain._ServicoNecessidadeMorador.CadastrarNecessidadeMorador(n);
             await AtualizarGrid();
             pnlListaNecessidade.Visible = false;
         }
@@ -84,11 +84,11 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
             if (result == DialogResult.No)
                 return;
 
-            var n = await FrmMain._ImoradorNecessidadeEspecial.ObterPorId(Id);
+            var n = await FrmMain._ServicoNecessidadeMorador.ObterNecessidadeMoradorId(Id);
             if (n == null)
                 return;
 
-            await FrmMain._ImoradorNecessidadeEspecial.Deletar(n);
+            await FrmMain._ServicoNecessidadeMorador.DeletarNecessidadeMorador(n);
             await AtualizarGrid();
         }
 

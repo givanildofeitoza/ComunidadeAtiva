@@ -1,30 +1,18 @@
 ﻿using ComunidadeAtiva.Aplicacao.CasosDeUso.Interface;
 using ComunidadeAtiva.Aplicacao.DTO;
-using ComunidadeAtiva.Dominio.Entidades;
-using ComunidadeAtiva.Dominio.Entity;
 using ComunidadeAtiva.Dominio.Enum;
+using ComunidadeAtiva.Dominio.Exceptions;
 using ComunidadeAtiva.Dominio.Interfaces;
-using ComunidadeAtiva.Dominio.Validacao;
 using ComunidadeAtiva.FormsUI.Classes;
 using ComunidadeAtiva.Infra.Data.DbContextFiles;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Windows.Forms.Design;
 
 namespace ComunidadeAtiva.FormsUI.FormsModal
 {
     public partial class _FrmCrudMorador : ClasseFormPadrao
     {
-
         private readonly FileDbContext _db;
-        private readonly IServicoMorador  _MoradorServico;
+        private readonly IServicoMorador _MoradorServico;
         private readonly IbeneficioSocialRepositorio _beneficioSocial;
         private readonly InecessidadeEspecialRepositorio _necessidadeEspecial;
         private readonly IServicoRua _ruaService;
@@ -32,9 +20,8 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
         private MoradorDTO Morador;
         private AcaoControleCadastro _AcaoControleCadastro;
 
-
-        public _FrmCrudMorador(IServicoMorador MoradorServico, 
-            IbeneficioSocialRepositorio beneficioSocial, 
+        public _FrmCrudMorador(IServicoMorador MoradorServico,
+            IbeneficioSocialRepositorio beneficioSocial,
             InecessidadeEspecialRepositorio necessidadeEspecial,
             ICapturarNotificacao notificacao,
             IServicoRua ruaService, FileDbContext db,
@@ -56,7 +43,7 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
 
         private async void button3_Click(object sender, EventArgs e)
         {
-            MoradorDTO m = new MoradorDTO();         
+            MoradorDTO m = new MoradorDTO();
             m.Nome = txtNome.Text;
             m.Cpf = txtCpf.Text;
             m.Rg = txtRg.Text;
@@ -71,33 +58,28 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
                 try
                 {
                     await _MoradorServico.CadastrarMorador(m);
-                }
-                catch
-                {
-                    EmitirExcecoes.EmitirExcecao(_notificacao);
-                }
-                finally {
                     MessageBox.Show("Cadastrado com Sucesso!");
-                }                
-                
+                }
+                catch (ExcecoesCustomizadas ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
             }
             else
             {
                 try
                 {
                     m.id = txtId.Text;
-                    _MoradorServico.AlterarMorador(m);
-                }
-                catch
-                {
-                    EmitirExcecoes.EmitirExcecao(_notificacao);
-                }
-                finally
-                {
+                    await _MoradorServico.AlterarMorador(m);
                     MessageBox.Show("Alterado com Sucesso!");
                 }
-                
-                
+                catch (ExcecoesCustomizadas ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+
             }
         }
         private async void _FrmCrudMorador_Load(object sender, EventArgs e)
@@ -171,6 +153,36 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
         {
             _FrmCrudBeneficios Fbeneficio = new _FrmCrudBeneficios(int.Parse(Morador.id));
             Fbeneficio.ShowDialog();
+            CarregarDadosAxuliaresMorador();
+        }
+
+        private void _FrmCrudMorador_Shown(object sender, EventArgs e)
+        {
+            if (_AcaoControleCadastro == AcaoControleCadastro.CADASRTRAR)
+            {
+                pnlBeneficiosNecessidade.Visible = false;
+                pnlId.Visible = false;
+            }
+            else
+            {
+                pnlBeneficiosNecessidade.Visible = true;
+                pnlId.Visible = true;
+            }
+
+
+        }
+
+        private void pictureBox4_Click_1(object sender, EventArgs e)
+        {
+            _FrmCrudBeneficios frmBeneficio = new _FrmCrudBeneficios(int.Parse(txtId.Text));
+            frmBeneficio.ShowDialog();
+            CarregarDadosAxuliaresMorador();
+        }
+
+        private void pictureBox1_Click_1(object sender, EventArgs e)
+        {
+            _FrmCrudNecessidades frmCrudNecessidades = new _FrmCrudNecessidades(Morador);
+            frmCrudNecessidades.ShowDialog();
             CarregarDadosAxuliaresMorador();
         }
     }

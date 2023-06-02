@@ -16,6 +16,7 @@ namespace ComunidadeAtiva.Aplicacao.DTO
         [Required]
         public int NecessidadeId { get; set; }
         public string? Ativo { get; set; }
+     
         [Required]
         [StringLength(30,ErrorMessage ="Nome muito extenso!")]
         public string DescricaoNecessidade { get; set; }

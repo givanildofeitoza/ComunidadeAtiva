@@ -92,9 +92,9 @@
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Arial Narrow", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             button3.ForeColor = Color.White;
-            button3.Location = new Point(12, 408);
+            button3.Location = new Point(5, 408);
             button3.Name = "button3";
-            button3.Size = new Size(131, 30);
+            button3.Size = new Size(102, 30);
             button3.TabIndex = 11;
             button3.Text = "EXCLUIR";
             button3.UseVisualStyleBackColor = false;
@@ -109,7 +109,7 @@
             button2.ForeColor = Color.White;
             button2.Location = new Point(166, 408);
             button2.Name = "button2";
-            button2.Size = new Size(131, 30);
+            button2.Size = new Size(98, 30);
             button2.TabIndex = 12;
             button2.Text = "ADICIONAR";
             button2.UseVisualStyleBackColor = false;

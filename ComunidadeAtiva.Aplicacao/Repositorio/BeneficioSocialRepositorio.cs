@@ -19,18 +19,6 @@ namespace ComunidadeAtiva.Aplicacao.Repositorio
         {
         }
 
-        /*  public async Task<Morador> ObterMoradorRelacionalId(int id)
-           {
-             return await _Entidade.Where(x => x.id == id)
-                   .Include(r => r.rua)
-                   .Include(n => n.necessidadeEspecial)
-                   .Include(b => b.beneficioSocial)
-                   .Include(p => p.programa)
-                   .AsNoTracking().FirstOrDefaultAsync();
-           }
-           public async Task<IEnumerable<Morador>> ObterTodosRelacionalMorador(int t, int s)
-               =>  _Entidade.Include(r=> r.rua).AsNoTracking().ToList().Take(t).Skip(s);*/
-
 
     }
 

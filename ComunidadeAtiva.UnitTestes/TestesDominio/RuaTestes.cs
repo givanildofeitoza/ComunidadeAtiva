@@ -1,4 +1,5 @@
 using ComunidadeAtiva.Dominio.Entity;
+using ComunidadeAtiva.Dominio.Exceptions;
 using ComunidadeAtiva.Dominio.Validacao;
 using System.Security.Cryptography;
 
@@ -12,7 +13,7 @@ namespace ComunidadeAtiva.UnitTestes.TestesDominio
             CapturarNotificacao notificacao = new CapturarNotificacao();
             Rua ruaTeste = new Rua("Nome 01", "", "S", "S", "S", "S", "S", "Agente teste");
             ruaTeste.setCep("56.508.660");
-            Assert.Throws<Exception>(() => ruaTeste.IsValid(notificacao));
+            Assert.Throws<ExcecoesCustomizadas>(() => ruaTeste.IsValid(notificacao));
 
         }
         [Fact]
@@ -30,7 +31,7 @@ namespace ComunidadeAtiva.UnitTestes.TestesDominio
             CapturarNotificacao notificacao = new CapturarNotificacao();
             Rua ruaTeste = new Rua("", "Nome2 teste", "S", "S", "S", "S", "S", "Agente teste");
             ruaTeste.setCep("56.508.660");
-            Assert.Throws<Exception>(() => ruaTeste.IsValid(notificacao));
+            Assert.Throws<ExcecoesCustomizadas>(() => ruaTeste.IsValid(notificacao));
            
         }
         [Fact]
@@ -48,7 +49,7 @@ namespace ComunidadeAtiva.UnitTestes.TestesDominio
             CapturarNotificacao notificacao = new CapturarNotificacao();
             Rua ruaTeste = new Rua("Nome 01 teste", "Nome2 teste", "S", "S", "S", "S", "S", "Agente teste");
             ruaTeste.setCep("");
-            Assert.Throws<Exception>(() => ruaTeste.IsValid(notificacao));
+            Assert.Throws<ExcecoesCustomizadas>(() => ruaTeste.IsValid(notificacao));
           
         }
         [Fact]
@@ -65,7 +66,7 @@ namespace ComunidadeAtiva.UnitTestes.TestesDominio
         {
             CapturarNotificacao notificacao = new CapturarNotificacao();
             Rua ruaTeste = new Rua("Nome 01 teste", "Nome2 teste", "S", "S", "S", "S", "S", "Agente teste");
-            Assert.Throws<Exception>(() => ruaTeste.IsValid(notificacao));
+            Assert.Throws<ExcecoesCustomizadas>(() => ruaTeste.IsValid(notificacao));
 
         }
     }

@@ -49,11 +49,11 @@
             // TxtTitulo
             // 
             TxtTitulo.AutoSize = true;
-            TxtTitulo.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            TxtTitulo.ForeColor = SystemColors.GrayText;
+            TxtTitulo.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            TxtTitulo.ForeColor = SystemColors.WindowText;
             TxtTitulo.Location = new Point(96, 5);
             TxtTitulo.Name = "TxtTitulo";
-            TxtTitulo.Size = new Size(50, 20);
+            TxtTitulo.Size = new Size(51, 20);
             TxtTitulo.TabIndex = 0;
             TxtTitulo.Text = "label1";
             // 

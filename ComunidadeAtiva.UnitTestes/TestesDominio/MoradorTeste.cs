@@ -1,4 +1,5 @@
 ﻿using ComunidadeAtiva.Dominio.Entity;
+using ComunidadeAtiva.Dominio.Exceptions;
 using ComunidadeAtiva.Dominio.ObjetoValor;
 using ComunidadeAtiva.Dominio.Validacao;
 using System;
@@ -17,7 +18,7 @@ namespace ComunidadeAtiva.UnitTestes.TestesDominio
             CapturarNotificacao notificacao = new CapturarNotificacao();
             Morador moradorTeste = new Morador("",DateTime.Now,"10","6857008","Ativo","Solteiro");           
             moradorTeste.SetCpf ("00568446785");
-            Assert.Throws<Exception>(() => moradorTeste.Validar(notificacao));
+            Assert.Throws<ExcecoesCustomizadas>(() => moradorTeste.Validar(notificacao));
 
         }
         [Fact]
@@ -41,7 +42,7 @@ namespace ComunidadeAtiva.UnitTestes.TestesDominio
             CapturarNotificacao notificacao = new CapturarNotificacao();
             Morador moradorTeste = new Morador("Morador Teste", DateTime.Now, "10", "6857008", "Ativo", "Solteiro");
             moradorTeste.SetCpf("sdd255");
-            Assert.Throws<Exception>(() => moradorTeste.Validar(notificacao));
+            Assert.Throws<ExcecoesCustomizadas>(() => moradorTeste.Validar(notificacao));
 
         }
         [Fact]
@@ -64,7 +65,7 @@ namespace ComunidadeAtiva.UnitTestes.TestesDominio
             CapturarNotificacao notificacao = new CapturarNotificacao();
             Morador moradorTeste = new Morador("Morador Teste", DateTime.Now,  "10", "6857008", "Ativo", "Solteiro");
             moradorTeste.SetCpf("sdd255");
-            Assert.Throws<Exception>(() => moradorTeste.Validar(notificacao));
+            Assert.Throws<ExcecoesCustomizadas>(() => moradorTeste.Validar(notificacao));
 
         }
         [Fact]

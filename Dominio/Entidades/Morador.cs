@@ -49,9 +49,11 @@ namespace ComunidadeAtiva.Dominio.Entity
         {
             notificacao.LimparErros();
 
-            if(Cpf is null)
+            if (Cpf is null)
               notificacao.AddNotificacao("CPF não pode ser vazio!");
-
+            
+            Cpf.Validar(notificacao);
+           
             if (Nome == string.Empty)
                 notificacao.AddNotificacao("Nome não pode ser vazio!");
 

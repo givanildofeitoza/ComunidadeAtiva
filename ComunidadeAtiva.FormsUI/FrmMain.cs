@@ -16,36 +16,39 @@ namespace ComunidadeAtiva.FormsUI
     {
         private readonly FileDbContext _db;
         public static    IServicoMorador _ServicoMorador;
+        public static    IServicoBeneficoSocialMorador _ServicoBeneficoSocialMorador;
         public static    IbeneficioSocialRepositorio _beneficioSocial;
-        public static    ImoradorBeneficioSocialRepositorio _moradorBeneficioSocial;
         public static    InecessidadeEspecialRepositorio _necessidadeEspecial;
         public static    IServicoRua _ruaService;
         public static    ImoradorNecessidadeEspecialRepositorio _ImoradorNecessidadeEspecial;
         public static    ICapturarNotificacao _notificacao;
         public static    IMapper _mapper;
+        public static    IServicoNecessidadeMorador _ServicoNecessidadeMorador;
 
         public FrmMain(
+            FileDbContext db,
             IServicoMorador ServicoMorador,
+            IServicoBeneficoSocialMorador ServicoBeneficoSocialMorador,
             IbeneficioSocialRepositorio beneficioSocial,
-            ImoradorBeneficioSocialRepositorio moradorBeneficioSocial,
             InecessidadeEspecialRepositorio necessidadeEspecial,
             IServicoRua ruaService,
             ImoradorNecessidadeEspecialRepositorio ImoradorNecessidadeEspecial,
             ICapturarNotificacao notificacao,
             IMapper mapper,
-            FileDbContext db
+            IServicoNecessidadeMorador ServicoNecessidadeMorador            
             )
         {
             InitializeComponent();
             _ServicoMorador = ServicoMorador;
+            _ServicoBeneficoSocialMorador = ServicoBeneficoSocialMorador;
             _beneficioSocial = beneficioSocial;
-            _moradorBeneficioSocial = moradorBeneficioSocial;
             _necessidadeEspecial = necessidadeEspecial;
             _ruaService = ruaService;
             _ImoradorNecessidadeEspecial = ImoradorNecessidadeEspecial;
             _db = db;
             _notificacao = notificacao;
             _mapper = mapper;
+            _ServicoNecessidadeMorador = ServicoNecessidadeMorador;
         }  
       
 

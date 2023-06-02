@@ -16,5 +16,7 @@ namespace ComunidadeAtiva.Dominio.Comum
             return textoAntigo; 
         }
 
+
+
     }
 }

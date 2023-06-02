@@ -15,25 +15,35 @@ namespace ComunidadeAtiva.Aplicacao.CasosDeUso
     {
         protected readonly ImoradorRepositorio _MoradorRepositorio;
         protected readonly IMapper _Mapper;
+        protected readonly ICapturarNotificacao _Notificacao;
 
-        public ServicoMorador(ImoradorRepositorio moradorRepositorio, IMapper mapper)
+
+        public ServicoMorador(ImoradorRepositorio moradorRepositorio, IMapper mapper, ICapturarNotificacao notificacao)
         {
             _MoradorRepositorio = moradorRepositorio;
             _Mapper = mapper;
+            _Notificacao = notificacao;
         }
 
         public async Task AlterarMorador(MoradorDTO m)
         {
-            await _MoradorRepositorio.Alterar(_Mapper.Map<Morador>(m));
+            var Morador = _Mapper.Map<Morador>(m);
+            Morador.SetCpf(m.Cpf);
+            Morador.Validar(_Notificacao);
+
+            await _MoradorRepositorio.Alterar(Morador);
         }
 
         public async Task CadastrarMorador(MoradorDTO m)
         {
-            await _MoradorRepositorio.Cadastrar(_Mapper.Map<Morador>(m));
+            var Morador = _Mapper.Map<Morador>(m);
+            Morador.SetCpf(m.Cpf);
+            Morador.Validar(_Notificacao);
+            await _MoradorRepositorio.Cadastrar(Morador);
         }
 
         public async Task DeletarMorador(MoradorDTO m)
-        {
+        {            
             await _MoradorRepositorio.Deletar(_Mapper.Map<Morador>(m));
         }
 
