@@ -158,8 +158,9 @@
             button3.Name = "button3";
             button3.Size = new Size(204, 48);
             button3.TabIndex = 6;
-            button3.Text = "Membros";
+            button3.Text = "Imprimir";
             button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // button2
             // 

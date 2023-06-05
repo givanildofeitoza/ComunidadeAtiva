@@ -15,15 +15,15 @@ namespace ComunidadeAtiva.FormsUI
     public partial class FrmMain : Form
     {
         private readonly FileDbContext _db;
-        public static    IServicoMorador _ServicoMorador;
-        public static    IServicoBeneficoSocialMorador _ServicoBeneficoSocialMorador;
-        public static    IbeneficioSocialRepositorio _beneficioSocial;
-        public static    InecessidadeEspecialRepositorio _necessidadeEspecial;
-        public static    IServicoRua _ruaService;
-        public static    ImoradorNecessidadeEspecialRepositorio _ImoradorNecessidadeEspecial;
-        public static    ICapturarNotificacao _notificacao;
-        public static    IMapper _mapper;
-        public static    IServicoNecessidadeMorador _ServicoNecessidadeMorador;
+        public static IServicoMorador _ServicoMorador;
+        public static IServicoBeneficoSocialMorador _ServicoBeneficoSocialMorador;
+        public static IbeneficioSocialRepositorio _beneficioSocial;
+        public static InecessidadeEspecialRepositorio _necessidadeEspecial;
+        public static IServicoRua _ruaService;
+        public static ImoradorNecessidadeEspecialRepositorio _ImoradorNecessidadeEspecial;
+        public static ICapturarNotificacao _notificacao;
+        public static IMapper _mapper;
+        public static IServicoNecessidadeMorador _ServicoNecessidadeMorador;
 
         public FrmMain(
             FileDbContext db,
@@ -35,7 +35,7 @@ namespace ComunidadeAtiva.FormsUI
             ImoradorNecessidadeEspecialRepositorio ImoradorNecessidadeEspecial,
             ICapturarNotificacao notificacao,
             IMapper mapper,
-            IServicoNecessidadeMorador ServicoNecessidadeMorador            
+            IServicoNecessidadeMorador ServicoNecessidadeMorador
             )
         {
             InitializeComponent();
@@ -49,8 +49,8 @@ namespace ComunidadeAtiva.FormsUI
             _notificacao = notificacao;
             _mapper = mapper;
             _ServicoNecessidadeMorador = ServicoNecessidadeMorador;
-        }  
-      
+        }
+
 
         private void button1_Click_1(object sender, EventArgs e)
         {
@@ -66,13 +66,13 @@ namespace ComunidadeAtiva.FormsUI
             int i = 0;
             foreach (var item in listMoradores)
             {
-                listItem[i]         = new CustomListItem(Fmorador);
-                listItem[i].Title   = item.Nome;
+                listItem[i] = new CustomListItem(Fmorador);
+                listItem[i].Title = item.Nome;
                 listItem[i].Texto01 = item.id.ToString();
                 listItem[i].Texto02 = $"{item.rua.Nome1} - {item.rua.Nome2}, N° {item.NumeroCasa}";
                 listItem[i].Texto03 = item.Situacao;
                 listItem[i].Texto04 = $"{(int.Parse(DateTime.Now.ToString("yyyy")) - int.Parse(item.Nascimento.ToString("yyyy"))).ToString()} Anos";
-                
+
                 flowLayoutPanel1.Controls.Add(listItem[i]);
                 i++;
             }
@@ -83,8 +83,15 @@ namespace ComunidadeAtiva.FormsUI
         }
         private void imgAlter_Click(object sender, EventArgs e)
         {
-            _FrmCrudMorador Fmorador = new _FrmCrudMorador(_ServicoMorador, _beneficioSocial, _necessidadeEspecial,_notificacao,_ruaService, _db, AcaoControleCadastro.CADASRTRAR);
+            _FrmCrudMorador Fmorador = new _FrmCrudMorador(_ServicoMorador, _beneficioSocial, _necessidadeEspecial, _notificacao, _ruaService, _db, AcaoControleCadastro.CADASRTRAR);
             Fmorador.ShowDialog();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            FrmImprimir frmImprimir = new FrmImprimir();
+            frmImprimir.ShowDialog();
+
         }
     }
 }
