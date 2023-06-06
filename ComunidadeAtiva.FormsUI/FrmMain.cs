@@ -9,6 +9,7 @@ using System.Windows.Forms.Design;
 using AutoMapper;
 using ComunidadeAtiva.Aplicacao.CasosDeUso.Interface;
 using ComunidadeAtiva.Dominio.Enum;
+using ComunidadeAtiva.Aplicacao.CasosDeUso;
 
 namespace ComunidadeAtiva.FormsUI
 {
@@ -24,6 +25,7 @@ namespace ComunidadeAtiva.FormsUI
         public static ICapturarNotificacao _notificacao;
         public static IMapper _mapper;
         public static IServicoNecessidadeMorador _ServicoNecessidadeMorador;
+        public static IServicoBeneficioSocial _ServicoBeneficioSocial;
 
         public FrmMain(
             FileDbContext db,
@@ -35,7 +37,8 @@ namespace ComunidadeAtiva.FormsUI
             ImoradorNecessidadeEspecialRepositorio ImoradorNecessidadeEspecial,
             ICapturarNotificacao notificacao,
             IMapper mapper,
-            IServicoNecessidadeMorador ServicoNecessidadeMorador
+            IServicoNecessidadeMorador ServicoNecessidadeMorador,
+            IServicoBeneficioSocial ServicoBeneficioSocial
             )
         {
             InitializeComponent();
@@ -49,6 +52,7 @@ namespace ComunidadeAtiva.FormsUI
             _notificacao = notificacao;
             _mapper = mapper;
             _ServicoNecessidadeMorador = ServicoNecessidadeMorador;
+            _ServicoBeneficioSocial = ServicoBeneficioSocial;
         }
 
 
@@ -59,23 +63,60 @@ namespace ComunidadeAtiva.FormsUI
 
         private async void button8_Click(object sender, EventArgs e)
         {
-            _FrmCrudMorador Fmorador = new _FrmCrudMorador(_ServicoMorador, _beneficioSocial, _necessidadeEspecial, _notificacao, _ruaService, _db, AcaoControleCadastro.ALTERAR);
-            flowLayoutPanel1.Controls.Clear();
-            var listMoradores = await _ServicoMorador.ObterTodosRelacionalMorador(10, 0);
-            CustomListItem[] listItem = new CustomListItem[listMoradores.Count()];
-            int i = 0;
-            foreach (var item in listMoradores)
-            {
-                listItem[i] = new CustomListItem(Fmorador);
-                listItem[i].Title = item.Nome;
-                listItem[i].Texto01 = item.id.ToString();
-                listItem[i].Texto02 = $"{item.rua.Nome1} - {item.rua.Nome2}, N° {item.NumeroCasa}";
-                listItem[i].Texto03 = item.Situacao;
-                listItem[i].Texto04 = $"{(int.Parse(DateTime.Now.ToString("yyyy")) - int.Parse(item.Nascimento.ToString("yyyy"))).ToString()} Anos";
 
-                flowLayoutPanel1.Controls.Add(listItem[i]);
-                i++;
-            }
+            switch (lblOpcaoAtiva.Text)
+            {
+                case "MORADORES":
+                    {
+                        _FrmCrudMorador Fmorador = new _FrmCrudMorador(_ServicoMorador, _beneficioSocial, _necessidadeEspecial, _notificacao, _ruaService, _db, AcaoControleCadastro.ALTERAR);
+                        flowLayoutPanel1.Controls.Clear();
+                        var listMoradores = await _ServicoMorador.ObterTodosRelacionalMorador(10, 0);
+                        CustomListItem[] listItem = new CustomListItem[listMoradores.Count()];
+                        int i = 0;
+                        foreach (var item in listMoradores)
+                        {
+                            listItem[i] = new CustomListItem(Fmorador);
+                            listItem[i].Title = item.Nome;
+                            listItem[i].Texto01 = item.id.ToString();
+                            listItem[i].Texto02 = $"{item.rua.Nome1} - {item.rua.Nome2}, N° {item.NumeroCasa}";
+                            listItem[i].Texto03 = item.Situacao;
+                            listItem[i].Texto04 = $"{(int.Parse(DateTime.Now.ToString("yyyy")) - int.Parse(item.Nascimento.ToString("yyyy"))).ToString()} Anos";
+
+                            flowLayoutPanel1.Controls.Add(listItem[i]);
+                            i++;
+                        }
+
+                        break;
+                    }
+                case "PROGRAMAS SOCIAIS":
+                    {
+                        _FrmCrudMorador Fmorador = new _FrmCrudMorador(_ServicoMorador, _beneficioSocial, _necessidadeEspecial, _notificacao, _ruaService, _db, AcaoControleCadastro.ALTERAR);
+                        flowLayoutPanel1.Controls.Clear();
+                        var listBeneficios = await _ServicoBeneficioSocial.ObterBeneficioTodos(50, 0);
+                        CustomListItem[] listItem = new CustomListItem[listBeneficios.Count()];
+                        int i = 0;
+                        foreach (var item in listBeneficios)
+                        {
+                            listItem[i] = new CustomListItem(Fmorador);
+                            listItem[i].Title = item.NomeBeneficioSocial;
+                            listItem[i].Texto01 = item.DescricaoBeneficioSocial;
+                            listItem[i].Texto02 = "";
+                            listItem[i].Texto03 = "Ativo: "+item.Ativo;
+                            listItem[i].Texto04 = "";
+
+                            flowLayoutPanel1.Controls.Add(listItem[i]);
+                            i++;
+                        }
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+                    
+            }  
+                           
+            
         }
         private void btnMorador_Click(object sender, EventArgs e)
         {
@@ -92,6 +133,11 @@ namespace ComunidadeAtiva.FormsUI
             FrmImprimir frmImprimir = new FrmImprimir();
             frmImprimir.ShowDialog();
 
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            lblOpcaoAtiva.Text = "PROGRAMAS SOCIAIS";
         }
     }
 }

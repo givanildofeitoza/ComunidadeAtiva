@@ -49,7 +49,7 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
             m.Rg = txtRg.Text;
             m.Situacao = cboSituacao.Text;
             m.EstadoCivil = cboEstadoCivil.Text;
-            m.RuaId = int.Parse(txtIdRua.Text);
+            m.RuaId = int.Parse(txtIdRua.Text==""? "0" : txtIdRua.Text);
             m.Nascimento = Convert.ToDateTime(txtData.Text);
             m.NumeroCasa = txtNumero.Text;
 
@@ -137,7 +137,7 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
             txtDescRua.Items.Add($"Energia: {dadosRua.Energia} ");
             txtDescRua.Items.Add($"Saneamento: {dadosRua.Saneamento} ");
             txtDescRua.Items.Add($"Agente de saúde: {dadosRua.AgenteSaudeResponsval}");
-    
+
             txtIdRua.Text = Frua.Id.ToString();
         }
 
@@ -191,7 +191,7 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
             rGprint.impCabecalho("FICHA DE CADASTRO DE MORADOR", 15, FontStyle.Bold, 16);
             rGprint.impCabecalho("", 1, FontStyle.Regular, 16);
             rGprint.impCabecalho("", 1, FontStyle.Regular, 16);
-            rGprint.impCabecalho("DATA IMPRESSÃO:" + DateTime.Now.ToString("dd/mm/yyyy"), 1, FontStyle.Bold, 16);           
+            rGprint.impCabecalho("DATA IMPRESSÃO:" + DateTime.Now.ToString("dd/mm/yyyy"), 1, FontStyle.Bold, 16);
             rGprint.impCabecalho("===========================================================================================================================================", 1, FontStyle.Regular, 16);
             rGprint.impLinha("Nome: " + txtNome.Text, 1, FontStyle.Regular, 16);
             rGprint.impLinha("RG: " + txtRg.Text + "          CPF: " + txtCpf.Text, 1, FontStyle.Regular, 16);
@@ -206,7 +206,7 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
             {
                 rGprint.impLinha(r.ToString(), 1, FontStyle.Regular, 16);
             }
-            rGprint.impLinha("N° Casa: "+txtNumero.Text, 1, FontStyle.Regular, 16);
+            rGprint.impLinha("N° Casa: " + txtNumero.Text, 1, FontStyle.Regular, 16);
             rGprint.impLinha("", 1, FontStyle.Regular, 16);
             rGprint.impLinha("-------------------------------------------------------------------------------------------------------------------------------------------------", 1, FontStyle.Regular, 16);
             rGprint.impLinha("NECESSIDADES ESPECIAIS", 1, FontStyle.Bold, 16);

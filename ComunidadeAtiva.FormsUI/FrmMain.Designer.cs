@@ -93,6 +93,7 @@
             button7.TabIndex = 11;
             button7.Text = "Programas Associação";
             button7.UseVisualStyleBackColor = false;
+            button7.Visible = false;
             // 
             // button6
             // 
@@ -107,6 +108,7 @@
             button6.TabIndex = 10;
             button6.Text = "Programas Sociais";
             button6.UseVisualStyleBackColor = false;
+            button6.Click += button6_Click;
             // 
             // button5
             // 
@@ -121,6 +123,7 @@
             button5.TabIndex = 9;
             button5.Text = "Eventos";
             button5.UseVisualStyleBackColor = false;
+            button5.Visible = false;
             // 
             // button4
             // 
@@ -135,6 +138,7 @@
             button4.TabIndex = 8;
             button4.Text = "Dados Associacao";
             button4.UseVisualStyleBackColor = false;
+            button4.Visible = false;
             // 
             // label4
             // 
@@ -175,6 +179,7 @@
             button2.TabIndex = 5;
             button2.Text = "Sócios";
             button2.UseVisualStyleBackColor = false;
+            button2.Visible = false;
             // 
             // label3
             // 

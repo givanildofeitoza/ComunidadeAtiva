@@ -138,7 +138,6 @@
             txtIdRua.ReadOnly = true;
             txtIdRua.Size = new Size(78, 23);
             txtIdRua.TabIndex = 7;
-            txtIdRua.Text = "1";
             // 
             // cboEstadoCivil
             // 
