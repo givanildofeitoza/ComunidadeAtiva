@@ -35,7 +35,6 @@
             txtRg = new TextBox();
             txtNome = new TextBox();
             txtCpf = new TextBox();
-            txtDescRua = new TextBox();
             txtIdRua = new TextBox();
             cboEstadoCivil = new ComboBox();
             button3 = new Button();
@@ -62,6 +61,8 @@
             pnlId = new Panel();
             label6 = new Label();
             txtId = new TextBox();
+            button4 = new Button();
+            txtDescRua = new ListBox();
             panel1.SuspendLayout();
             pnlBeneficiosNecessidade.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
@@ -129,15 +130,6 @@
             txtCpf.Size = new Size(257, 23);
             txtCpf.TabIndex = 5;
             // 
-            // txtDescRua
-            // 
-            txtDescRua.BorderStyle = BorderStyle.FixedSingle;
-            txtDescRua.Location = new Point(72, 207);
-            txtDescRua.Multiline = true;
-            txtDescRua.Name = "txtDescRua";
-            txtDescRua.Size = new Size(597, 144);
-            txtDescRua.TabIndex = 6;
-            // 
             // txtIdRua
             // 
             txtIdRua.BorderStyle = BorderStyle.FixedSingle;
@@ -168,7 +160,7 @@
             button3.ForeColor = Color.White;
             button3.Location = new Point(72, 492);
             button3.Name = "button3";
-            button3.Size = new Size(131, 30);
+            button3.Size = new Size(96, 30);
             button3.TabIndex = 10;
             button3.Text = "CONFIRMAR";
             button3.UseVisualStyleBackColor = false;
@@ -395,12 +387,38 @@
             txtId.Size = new Size(96, 23);
             txtId.TabIndex = 16;
             // 
+            // button4
+            // 
+            button4.BackColor = Color.SteelBlue;
+            button4.FlatAppearance.BorderSize = 0;
+            button4.FlatStyle = FlatStyle.Flat;
+            button4.Font = new Font("Arial Narrow", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            button4.ForeColor = Color.White;
+            button4.Location = new Point(261, 494);
+            button4.Name = "button4";
+            button4.Size = new Size(96, 30);
+            button4.TabIndex = 37;
+            button4.Text = "IMPRIMIR";
+            button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
+            // 
+            // txtDescRua
+            // 
+            txtDescRua.FormattingEnabled = true;
+            txtDescRua.ItemHeight = 15;
+            txtDescRua.Location = new Point(75, 201);
+            txtDescRua.Name = "txtDescRua";
+            txtDescRua.Size = new Size(595, 139);
+            txtDescRua.TabIndex = 38;
+            // 
             // _FrmCrudMorador
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(685, 533);
+            Controls.Add(txtDescRua);
+            Controls.Add(button4);
             Controls.Add(pnlId);
             Controls.Add(pnlBeneficiosNecessidade);
             Controls.Add(label11);
@@ -419,7 +437,6 @@
             Controls.Add(button3);
             Controls.Add(cboEstadoCivil);
             Controls.Add(txtIdRua);
-            Controls.Add(txtDescRua);
             Controls.Add(txtCpf);
             Controls.Add(txtNome);
             Controls.Add(txtRg);
@@ -450,7 +467,6 @@
         private TextBox txtRg;
         private TextBox txtNome;
         private TextBox txtCpf;
-        private TextBox txtDescRua;
         private TextBox txtIdRua;
         private ComboBox cboEstadoCivil;
         private Button button3;
@@ -477,5 +493,7 @@
         private Panel pnlId;
         private Label label6;
         private TextBox txtId;
+        private Button button4;
+        private ListBox txtDescRua;
     }
 }

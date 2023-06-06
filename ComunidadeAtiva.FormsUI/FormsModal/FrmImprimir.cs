@@ -66,6 +66,11 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
             var descricaoNecessidades = await FrmMain._necessidadeEspecial.ObterTodos(50, 0);
 
             RGprint rgPrint = new RGprint(true, 55);
+            rgPrint.impCabecalho("LISTAGEM DE MORADORES", 15, FontStyle.Bold, 16);
+            rgPrint.impCabecalho("CABEÇALHO 02", 1, FontStyle.Regular, 16);
+            rgPrint.impCabecalho("CABEÇALHO 03", 1, FontStyle.Regular, 16);
+            rgPrint.impCabecalho("CABEÇALHO 04", 1, FontStyle.Regular, 16);
+            rgPrint.impCabecalho("--------------------------------------------------------------------------------------------------------------------------------", 1, FontStyle.Bold, 16);
 
             foreach (var impMorador in moradores)
             {
@@ -81,7 +86,6 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
                     rgPrint.impLinha("", 1, FontStyle.Regular, 16); 
 
                 }
-
                 if (chkNecessidade.Checked)
                 {
                     rgPrint.impLinha("Necessidades Especiais(Necessita Remédio?):", 1, FontStyle.Regular, 16);
@@ -92,32 +96,12 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
                         rgPrint.impLinha(bene.DescricaoNecessidadeEspecial + "(" + bene.NecessitaRemedioControlado + ")", 1, FontStyle.Regular, 16);
                     }
                     rgPrint.impLinha("", 1, FontStyle.Regular, 16); 
-
                 }
 
             }
             rgPrint.Imprimir();
           
         }
-
-        private void impLinha(string pValor)
-        {
-            var maxPagina = TextoImpressao.Count() > 0 ? TextoImpressao.Max(x => x.pag) : 1;
-
-            var ultLinha = TextoImpressao.Count() > 0 ? TextoImpressao.Where(x => x.pag == maxPagina).OrderByDescending(x => x.linha).FirstOrDefault().linha + 1 : 1;
-
-            var incValor = TextoImpressao.Count() + 1;
-
-            if (ultLinha == 55)
-            {
-                ultLinha = 1;
-                TextoImpressao.Add(new LinhaImpressao() { linha = ultLinha, pag = maxPagina + 1, valor = pValor, inc = incValor });
-            }
-            else
-                TextoImpressao.Add(new LinhaImpressao() { linha = ultLinha, pag = maxPagina, valor = pValor, inc = incValor });
-
-        }
-
 
     }
 }

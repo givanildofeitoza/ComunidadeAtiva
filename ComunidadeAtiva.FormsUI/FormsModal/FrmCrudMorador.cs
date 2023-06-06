@@ -98,14 +98,13 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
             cboEstadoCivil.Text = Morador?.EstadoCivil;
             txtNumero.Text = Morador?.NumeroCasa;
 
-            txtDescRua.Text = $" {Morador.rua.Nome1}({Morador.rua.Nome2}). " +
-                            $" \r\n Calçada: {Morador.rua.Calcada} " +
-                            $" \r\n Água: {Morador.rua.Agua} " +
-                            $" \r\n Coleta de Lixo:{Morador.rua.ColetaLixo} " +
-                            $" \r\n Energia: {Morador.rua.Energia} " +
-                            $" \r\n Saneamento: {Morador.rua.Saneamento} " +
-                            $" \r\n Agente de saúde: {Morador.rua.AgenteSaudeResponsval}";
-
+            txtDescRua.Items.Add($"{Morador.rua.Nome1}({Morador.rua.Nome2}). ");
+            txtDescRua.Items.Add($"Calçada: {Morador.rua.Calcada} ");
+            txtDescRua.Items.Add($"Água: {Morador.rua.Agua} ");
+            txtDescRua.Items.Add($"Coleta de Lixo:{Morador.rua.ColetaLixo} ");
+            txtDescRua.Items.Add($"Energia: {Morador.rua.Energia} ");
+            txtDescRua.Items.Add($"Saneamento: {Morador.rua.Saneamento} ");
+            txtDescRua.Items.Add($"Agente de saúde: {Morador.rua.AgenteSaudeResponsval}");
             CarregarDadosAxuliaresMorador();
         }
         private async void CarregarDadosAxuliaresMorador()
@@ -131,14 +130,14 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
             Frua.ShowDialog();
             var dadosRua = await _ruaService.ObterRuaPorId(Frua.Id);
 
-            txtDescRua.Text = $" {dadosRua.Nome1}({dadosRua.Nome2}). " +
-                            $" \r\n Calçada: {dadosRua.Calcada} " +
-                            $" \r\n Água: {dadosRua.Agua} " +
-                            $" \r\n Coleta de Lixo:{dadosRua.ColetaLixo} " +
-                            $" \r\n Energia: {dadosRua.Energia} " +
-                            $" \r\n Saneamento: {dadosRua.Saneamento} " +
-                            $" \r\n Agente de saúde: {dadosRua.AgenteSaudeResponsval}";
-
+            txtDescRua.Items.Add($"{dadosRua.Nome1}({dadosRua.Nome2}). ");
+            txtDescRua.Items.Add($"Calçada: {dadosRua.Calcada} ");
+            txtDescRua.Items.Add($"Água: {dadosRua.Agua} ");
+            txtDescRua.Items.Add($"Coleta de Lixo:{dadosRua.ColetaLixo} ");
+            txtDescRua.Items.Add($"Energia: {dadosRua.Energia} ");
+            txtDescRua.Items.Add($"Saneamento: {dadosRua.Saneamento} ");
+            txtDescRua.Items.Add($"Agente de saúde: {dadosRua.AgenteSaudeResponsval}");
+    
             txtIdRua.Text = Frua.Id.ToString();
         }
 
@@ -184,6 +183,51 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
             _FrmCrudNecessidades frmCrudNecessidades = new _FrmCrudNecessidades(Morador);
             frmCrudNecessidades.ShowDialog();
             CarregarDadosAxuliaresMorador();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            RGprint rGprint = new RGprint(true, 55);
+            rGprint.impCabecalho("FICHA DE CADASTRO DE MORADOR", 15, FontStyle.Bold, 16);
+            rGprint.impCabecalho("", 1, FontStyle.Regular, 16);
+            rGprint.impCabecalho("", 1, FontStyle.Regular, 16);
+            rGprint.impCabecalho("DATA IMPRESSÃO:" + DateTime.Now.ToString("dd/mm/yyyy"), 1, FontStyle.Bold, 16);           
+            rGprint.impCabecalho("===========================================================================================================================================", 1, FontStyle.Regular, 16);
+            rGprint.impLinha("Nome: " + txtNome.Text, 1, FontStyle.Regular, 16);
+            rGprint.impLinha("RG: " + txtRg.Text + "          CPF: " + txtCpf.Text, 1, FontStyle.Regular, 16);
+            rGprint.impLinha("Situação: " + cboSituacao.Text + "        Estado Civil: " + cboEstadoCivil.Text, 1, FontStyle.Regular, 16);
+            rGprint.impLinha("Nascimento: " + txtData.Text, 1, FontStyle.Regular, 16);
+            rGprint.impLinha("", 1, FontStyle.Regular, 16);
+            rGprint.impLinha("-------------------------------------------------------------------------------------------------------------------------------------------------", 1, FontStyle.Regular, 16);
+            rGprint.impLinha("DADOS DA RUA", 1, FontStyle.Bold, 16);
+            rGprint.impLinha("-------------------------------------------------------------------------------------------------------------------------------------------------", 1, FontStyle.Regular, 16);
+            //rGprint.impLinha(txtDescRua. + "  N° casa: " + txtNumero.Text, 1, FontStyle.Regular, 16);
+            foreach (var r in txtDescRua.Items)
+            {
+                rGprint.impLinha(r.ToString(), 1, FontStyle.Regular, 16);
+            }
+            rGprint.impLinha("N° Casa: "+txtNumero.Text, 1, FontStyle.Regular, 16);
+            rGprint.impLinha("", 1, FontStyle.Regular, 16);
+            rGprint.impLinha("-------------------------------------------------------------------------------------------------------------------------------------------------", 1, FontStyle.Regular, 16);
+            rGprint.impLinha("NECESSIDADES ESPECIAIS", 1, FontStyle.Bold, 16);
+            rGprint.impLinha("-------------------------------------------------------------------------------------------------------------------------------------------------", 1, FontStyle.Regular, 16);
+            foreach (var n in ListBoxNecessidade.Items)
+            {
+                rGprint.impLinha(n.ToString(), 1, FontStyle.Regular, 16);
+
+            }
+            rGprint.impLinha("", 1, FontStyle.Regular, 16);
+            rGprint.impLinha("-------------------------------------------------------------------------------------------------------------------------------------------------", 1, FontStyle.Regular, 16);
+            rGprint.impLinha("BENEFÍCIO SOCIAL", 1, FontStyle.Bold, 16);
+            rGprint.impLinha("-------------------------------------------------------------------------------------------------------------------------------------------------", 1, FontStyle.Regular, 16);
+            foreach (var b in ListBoxBeneficio.Items)
+            {
+                rGprint.impLinha(b.ToString(), 1, FontStyle.Regular, 16);
+
+            }
+            rGprint.Imprimir();
+
+
         }
     }
 }
