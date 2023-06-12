@@ -21,24 +21,26 @@ namespace ComunidadeAtiva.FormsUI
         public static IbeneficioSocialRepositorio _beneficioSocial;
         public static InecessidadeEspecialRepositorio _necessidadeEspecial;
         public static IServicoRua _ruaService;
-        public static ImoradorNecessidadeEspecialRepositorio _ImoradorNecessidadeEspecial;
+        //public static ImoradorNecessidadeEspecialRepositorio _ImoradorNecessidadeEspecial;
         public static ICapturarNotificacao _notificacao;
         public static IMapper _mapper;
         public static IServicoNecessidadeMorador _ServicoNecessidadeMorador;
         public static IServicoBeneficioSocial _ServicoBeneficioSocial;
+        public static IServicoNecessidadeEspecial _ServicoNecessidadeEspecial;
 
-        public FrmMain(
+       public FrmMain(
             FileDbContext db,
             IServicoMorador ServicoMorador,
             IServicoBeneficoSocialMorador ServicoBeneficoSocialMorador,
             IbeneficioSocialRepositorio beneficioSocial,
             InecessidadeEspecialRepositorio necessidadeEspecial,
             IServicoRua ruaService,
-            ImoradorNecessidadeEspecialRepositorio ImoradorNecessidadeEspecial,
+          //  ImoradorNecessidadeEspecialRepositorio ImoradorNecessidadeEspecial,
             ICapturarNotificacao notificacao,
             IMapper mapper,
             IServicoNecessidadeMorador ServicoNecessidadeMorador,
-            IServicoBeneficioSocial ServicoBeneficioSocial
+            IServicoBeneficioSocial ServicoBeneficioSocial,
+            IServicoNecessidadeEspecial ServicoNecessidadeEspecial
             )
         {
             InitializeComponent();
@@ -47,12 +49,13 @@ namespace ComunidadeAtiva.FormsUI
             _beneficioSocial = beneficioSocial;
             _necessidadeEspecial = necessidadeEspecial;
             _ruaService = ruaService;
-            _ImoradorNecessidadeEspecial = ImoradorNecessidadeEspecial;
+            //_ImoradorNecessidadeEspecial = ImoradorNecessidadeEspecial;
             _db = db;
             _notificacao = notificacao;
             _mapper = mapper;
             _ServicoNecessidadeMorador = ServicoNecessidadeMorador;
             _ServicoBeneficioSocial = ServicoBeneficioSocial;
+            _ServicoNecessidadeEspecial = ServicoNecessidadeEspecial;
         }
 
 
@@ -101,7 +104,7 @@ namespace ComunidadeAtiva.FormsUI
                             listItem[i].Title = item.NomeBeneficioSocial;
                             listItem[i].Texto01 = item.DescricaoBeneficioSocial;
                             listItem[i].Texto02 = "";
-                            listItem[i].Texto03 = "Ativo: "+item.Ativo;
+                            listItem[i].Texto03 = "Ativo: " + item.Ativo;
                             listItem[i].Texto04 = "";
 
                             flowLayoutPanel1.Controls.Add(listItem[i]);
@@ -109,14 +112,38 @@ namespace ComunidadeAtiva.FormsUI
                         }
                         break;
                     }
+                case "NECESSIDADES ESPECIAIS":
+                    {
+                        FrmCrudNecessidade frmCrudNecessidade = new FrmCrudNecessidade();
+                        _FrmCrudMorador Fmorador = new _FrmCrudMorador(_ServicoMorador, _beneficioSocial, _necessidadeEspecial, _notificacao, _ruaService, _db, AcaoControleCadastro.ALTERAR);
+                        flowLayoutPanel1.Controls.Clear();
+                        var listNecessidades = await _ServicoNecessidadeEspecial.ObterNecessidadeTodos(50, 0);
+                        CustomListItem[] listItem = new CustomListItem[listNecessidades.Count()];
+                        int i = 0;
+                        foreach (var item in listNecessidades)
+                        {
+                            listItem[i] = new CustomListItem(frmCrudNecessidade);
+                            listItem[i].Title = item.DescricaoNecessidadeEspecial;
+                            listItem[i].Texto01 = "1";
+                            listItem[i].Texto02 = "Permanente: " + item.Permanete; 
+                            listItem[i].Texto03 = "Necessita Remédio: " + item.NecessitaRemedioControlado;
+                            listItem[i].Texto04 = "";
+
+                            flowLayoutPanel1.Controls.Add(listItem[i]);
+                            i++;
+                        }
+
+                        break;
+                    }
+
                 default:
                     {
                         break;
                     }
-                    
-            }  
-                           
-            
+
+            }
+
+
         }
         private void btnMorador_Click(object sender, EventArgs e)
         {
@@ -138,6 +165,11 @@ namespace ComunidadeAtiva.FormsUI
         private void button6_Click(object sender, EventArgs e)
         {
             lblOpcaoAtiva.Text = "PROGRAMAS SOCIAIS";
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            lblOpcaoAtiva.Text = "NECESSIDADES ESPECIAIS";
         }
     }
 }

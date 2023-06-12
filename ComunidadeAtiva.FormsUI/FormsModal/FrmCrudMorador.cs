@@ -188,43 +188,46 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
         private void button4_Click(object sender, EventArgs e)
         {
             RGprint rGprint = new RGprint(true, 55);
-            rGprint.impCabecalho("FICHA DE CADASTRO DE MORADOR", 15, FontStyle.Bold, 16);
-            rGprint.impCabecalho("", 1, FontStyle.Regular, 16);
-            rGprint.impCabecalho("", 1, FontStyle.Regular, 16);
-            rGprint.impCabecalho("DATA IMPRESSÃO:" + DateTime.Now.ToString("dd/mm/yyyy"), 1, FontStyle.Bold, 16);
-            rGprint.impCabecalho("===========================================================================================================================================", 1, FontStyle.Regular, 16);
-            rGprint.impLinha("Nome: " + txtNome.Text, 1, FontStyle.Regular, 16);
-            rGprint.impLinha("RG: " + txtRg.Text + "          CPF: " + txtCpf.Text, 1, FontStyle.Regular, 16);
-            rGprint.impLinha("Situação: " + cboSituacao.Text + "        Estado Civil: " + cboEstadoCivil.Text, 1, FontStyle.Regular, 16);
-            rGprint.impLinha("Nascimento: " + txtData.Text, 1, FontStyle.Regular, 16);
-            rGprint.impLinha("", 1, FontStyle.Regular, 16);
-            rGprint.impLinha("-------------------------------------------------------------------------------------------------------------------------------------------------", 1, FontStyle.Regular, 16);
-            rGprint.impLinha("DADOS DA RUA", 1, FontStyle.Bold, 16);
-            rGprint.impLinha("-------------------------------------------------------------------------------------------------------------------------------------------------", 1, FontStyle.Regular, 16);
-            //rGprint.impLinha(txtDescRua. + "  N° casa: " + txtNumero.Text, 1, FontStyle.Regular, 16);
+            rGprint.impCabecalho("FICHA DE CADASTRO DE MORADOR", 15, FontStyle.Bold, 16, true);
+            rGprint.impCabecalho("", 1, FontStyle.Regular, 16, true);
+            rGprint.impCabecalho("", 1, FontStyle.Regular, 16, true);
+            rGprint.impCabecalho("DATA IMPRESSÃO:" + DateTime.Now.ToString("dd/mm/yyyy"), 1, FontStyle.Bold, 16, true);
+            rGprint.impCabecalho("===========================================================================================================================================", 1, FontStyle.Regular, 16, true);
+            rGprint.impLinha("Nome: " + txtNome.Text, 1, FontStyle.Regular, 16, true);
+            rGprint.impLinha("RG: " + txtRg.Text + "          CPF: " + txtCpf.Text, 1, FontStyle.Regular, 16, true);
+            rGprint.impLinha("Situação: " + cboSituacao.Text + "        Estado Civil: " + cboEstadoCivil.Text, 1, FontStyle.Regular, 16, true);
+            rGprint.impLinha("Nascimento: " + txtData.Text, 1, FontStyle.Regular, 16, true);
+            rGprint.impLinha("", 1, FontStyle.Regular, 16, true);
+            rGprint.impLinha("-------------------------------------------------------------------------------------------------------------------------------------------------", 1, FontStyle.Regular, 16, true);
+            rGprint.impLinha("DADOS DA RUA", 1, FontStyle.Bold, 16, true);
+            rGprint.impLinha("-------------------------------------------------------------------------------------------------------------------------------------------------", 1, FontStyle.Regular, 16, true);
+          
+            var ruaLinhaImp = 1;
             foreach (var r in txtDescRua.Items)
-            {
-                rGprint.impLinha(r.ToString(), 1, FontStyle.Regular, 16);
+            {                
+                rGprint.impLinha(r.ToString(), 1, FontStyle.Regular, 16, true);
+               if(ruaLinhaImp==1)
+                rGprint.impLinha("N° Casa: " + txtNumero.Text, 20, FontStyle.Regular, 16, false);
+
+                ruaLinhaImp += 1;
             }
-            rGprint.impLinha("N° Casa: " + txtNumero.Text, 1, FontStyle.Regular, 16);
-            rGprint.impLinha("", 1, FontStyle.Regular, 16);
-            rGprint.impLinha("-------------------------------------------------------------------------------------------------------------------------------------------------", 1, FontStyle.Regular, 16);
-            rGprint.impLinha("NECESSIDADES ESPECIAIS", 1, FontStyle.Bold, 16);
-            rGprint.impLinha("-------------------------------------------------------------------------------------------------------------------------------------------------", 1, FontStyle.Regular, 16);
+           
+            rGprint.impLinha("", 1, FontStyle.Regular, 16, true);
+            rGprint.impLinha("-------------------------------------------------------------------------------------------------------------------------------------------------", 1, FontStyle.Regular, 16, true);
+            rGprint.impLinha("NECESSIDADES ESPECIAIS", 1, FontStyle.Bold, 16, true);
+            rGprint.impLinha("-------------------------------------------------------------------------------------------------------------------------------------------------", 1, FontStyle.Regular, 16, true);
             foreach (var n in ListBoxNecessidade.Items)
-            {
-                rGprint.impLinha(n.ToString(), 1, FontStyle.Regular, 16);
+               rGprint.impLinha(n.ToString(), 1, FontStyle.Regular, 16, true);
 
-            }
-            rGprint.impLinha("", 1, FontStyle.Regular, 16);
-            rGprint.impLinha("-------------------------------------------------------------------------------------------------------------------------------------------------", 1, FontStyle.Regular, 16);
-            rGprint.impLinha("BENEFÍCIO SOCIAL", 1, FontStyle.Bold, 16);
-            rGprint.impLinha("-------------------------------------------------------------------------------------------------------------------------------------------------", 1, FontStyle.Regular, 16);
+            
+            rGprint.impLinha("", 1, FontStyle.Regular, 16, true);
+            rGprint.impLinha("-------------------------------------------------------------------------------------------------------------------------------------------------", 1, FontStyle.Regular, 16, true);
+            rGprint.impLinha("BENEFÍCIO SOCIAL", 1, FontStyle.Bold, 16, true);
+            rGprint.impLinha("-------------------------------------------------------------------------------------------------------------------------------------------------", 1, FontStyle.Regular, 16, true);
             foreach (var b in ListBoxBeneficio.Items)
-            {
-                rGprint.impLinha(b.ToString(), 1, FontStyle.Regular, 16);
+               rGprint.impLinha(b.ToString(), 1, FontStyle.Regular, 16, true);
 
-            }
+            
             rGprint.Imprimir();
 
 

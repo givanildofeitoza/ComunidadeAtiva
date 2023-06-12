@@ -15,6 +15,7 @@ namespace ComunidadeAtiva.Aplicacao.Mapeamento
     {
         public MapeamentoClasseDTO() 
         {
+            CreateMap<NecessidadeEspecial, NecessidadesDTO>().ReverseMap();
             CreateMap<BeneficioSocial, BeneficiosDTO>().ReverseMap();
             CreateMap<MoradorBeneficioSocial, BeneficosMoradorDTO>().ReverseMap();
             CreateMap<MoradorNecessidadeEspecial, NecessidadesMoradorDTO>().ReverseMap();

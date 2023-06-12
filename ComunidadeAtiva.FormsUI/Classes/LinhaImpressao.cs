@@ -15,6 +15,7 @@ namespace ComunidadeAtiva.FormsUI.Classes
         public int fontTamanho { get; set;}
         public FontStyle EstiloFonte { get; set; }
         public int coluna { get; set; }
+        public bool novaLinha { get; set; }
 
     }
 }

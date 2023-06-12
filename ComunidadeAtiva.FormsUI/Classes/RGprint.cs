@@ -25,18 +25,15 @@ namespace ComunidadeAtiva.FormsUI.Classes
         private List<LinhaImpressao> ListCabecalho { get; set; }
 
         private void MontarImpressao(object sender, PrintPageEventArgs e)
-        {
-            
+        {            
             SolidBrush CorCorpo = new SolidBrush(Color.Black);            
             if (QtdLinhas == 0)
             {
-
                 foreach (var t in ListTexto)
                 {
                     Font tipo_Font_Corpo = new Font("Arial", t.fontTamanho, t.EstiloFonte, GraphicsUnit.Pixel);
                     Point PontoImpressaoCorpo = new Point(20 * t.coluna, 20 * t.linha);
                     e.Graphics.DrawString(t.valor, tipo_Font_Corpo, CorCorpo, PontoImpressaoCorpo);
-
                 }
             }
             else
@@ -44,21 +41,21 @@ namespace ComunidadeAtiva.FormsUI.Classes
                 var totalLinha = ListTexto.Max(x => x.inc);
                 var totalPag = ListTexto.Max(x => x.pag);
 
-
                 while (linha <= QtdLinhas)
                 {
-                    if (ListTexto.Count(x => x.linha == linha && x.pag == ultimaPagina) > 0)
+                    if (ListTexto.Count(x => x.linha == linha && x.pag == ultimaPagina) == 0)
+                    break;
+
+                    List<LinhaImpressao> item = ListTexto.Where(x => x.linha == linha && x.pag == ultimaPagina).ToList();
+                    foreach (var t in item)
                     {
-                        LinhaImpressao item = ListTexto.Where(x => x.linha == linha && x.pag == ultimaPagina).FirstOrDefault();
-                        Font tipo_Font_Corpo = new Font("Arial", item.fontTamanho, item.EstiloFonte, GraphicsUnit.Pixel);
-                        Point PontoImpressaoCorpo = new Point(20 * item.coluna, 20 * item.linha);
-                        e.Graphics.DrawString(item.valor, tipo_Font_Corpo, CorCorpo, PontoImpressaoCorpo);
-
-                        linha += 1;
+                        Font tipo_Font_Corpo = new Font("Arial", t.fontTamanho, t.EstiloFonte, GraphicsUnit.Pixel);
+                        Point PontoImpressaoCorpo = new Point(20 * t.coluna, 20 * t.linha);
+                        e.Graphics.DrawString(t.valor, tipo_Font_Corpo, CorCorpo, PontoImpressaoCorpo);
                     }
-                    else { break; }
+                    linha += 1;
+                                         
                 }
-
                 if (ultimaPagina < totalPag)
                 {
                     linha = 1;
@@ -82,15 +79,18 @@ namespace ComunidadeAtiva.FormsUI.Classes
             else { p.Print(); }
             
         }
-        public void impCabecalho(string pValor, int pColuna, FontStyle pEstilo, int pTamanho)
+        public void impCabecalho(string pValor, int pColuna, FontStyle pEstilo, int pTamanho, bool pNovaLinha)
         {
             if(ListTexto.Count() == 0)
-            ListCabecalho.Add(new LinhaImpressao() { valor = pValor, coluna = pColuna, EstiloFonte = pEstilo, fontTamanho = pTamanho });
+            ListCabecalho.Add(new LinhaImpressao() { valor = pValor, coluna = pColuna, EstiloFonte = pEstilo, fontTamanho = pTamanho, novaLinha = pNovaLinha});
         }
-        public void impLinha(string pValor, int pColuna, FontStyle pEstilo, int pTamanho)
+        public void impLinha(string pValor, int pColuna, FontStyle pEstilo, int pTamanho, bool pNovaLinha)
         {
             var maxPagina = ListTexto.Count() > 0 ? ListTexto.Max(x => x.pag) : 1;
-            var ultLinha = ListTexto.Count() > 0 ? ListTexto.Where(x => x.pag == maxPagina).OrderByDescending(x => x.linha).FirstOrDefault().linha + 1 : 1;           
+            var ultLinha = ListTexto.Count() > 0 ? ListTexto.Where(x => x.pag == maxPagina).OrderByDescending(x => x.linha).FirstOrDefault().linha : 1;
+
+            if (pNovaLinha == true && ultLinha > 1)
+                ultLinha += 1;        
 
             if (ultLinha == 1)
             {
@@ -100,24 +100,28 @@ namespace ComunidadeAtiva.FormsUI.Classes
                     var ult_linha = 0;
                     foreach (var c in ListCabecalho)
                     {
+                        if (c.novaLinha == true)
                         ult_linha += 1;
+                                              
                         ListTexto.Add(new LinhaImpressao() { valor = c.valor, coluna = c.coluna, EstiloFonte = c.EstiloFonte, fontTamanho = c.fontTamanho, linha = ult_linha, pag = maxPag });
                     }
+                    ultLinha = ult_linha+1;
                 }
             }
 
             if (ultLinha == (QtdLinhas+1))
             {
                 ultLinha = 1;
-
                 if(ListCabecalho.Count() > 0)
                 {
                     var maxPag = maxPagina + 1;
                     ultLinha = 0;
                     foreach (var c in ListCabecalho)
                     {
+                      if (c.novaLinha == true)
                       ultLinha += 1;
-                      ListTexto.Add(new LinhaImpressao() { valor = c.valor, coluna = c.coluna, EstiloFonte = c.EstiloFonte, fontTamanho =c.fontTamanho, linha = ultLinha, pag = maxPag});
+                      
+                      ListTexto.Add(new LinhaImpressao() { valor = c.valor, coluna = c.coluna, EstiloFonte = c.EstiloFonte, fontTamanho =c.fontTamanho, linha = ultLinha, pag = maxPag });
                     }
                 }
                 else

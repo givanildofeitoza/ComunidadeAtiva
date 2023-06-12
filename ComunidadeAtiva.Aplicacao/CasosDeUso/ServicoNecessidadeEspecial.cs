@@ -2,7 +2,9 @@
 using ComunidadeAtiva.Aplicacao.CasosDeUso.Interface;
 using ComunidadeAtiva.Aplicacao.DTO;
 using ComunidadeAtiva.Dominio.Entity;
+using ComunidadeAtiva.Dominio.Exceptions;
 using ComunidadeAtiva.Dominio.Interfaces;
+using ComunidadeAtiva.Dominio.Validacao;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,21 +18,31 @@ namespace ComunidadeAtiva.Aplicacao.CasosDeUso
 
         private readonly IMapper _mapper;
         private readonly InecessidadeEspecialRepositorio _servicoNecessidadeEspecial;
+        private readonly ICapturarNotificacao _notificacao;
 
-        public ServicoNecessidadeEspecial(IMapper mapper, InecessidadeEspecialRepositorio servicoNecessidadeEspecial)
+        public ServicoNecessidadeEspecial(IMapper mapper, InecessidadeEspecialRepositorio servicoNecessidadeEspecial, ICapturarNotificacao notificacao)
         {
             _mapper = mapper;
             _servicoNecessidadeEspecial = servicoNecessidadeEspecial;
+            _notificacao = notificacao;
         }
 
         public async Task AlterarNecessidade(NecessidadesDTO necessidadeDTO)
         {
+            var necessidade = _mapper.Map<NecessidadeEspecial>(necessidadeDTO);
+            necessidade.Validar(_notificacao);
+            EmitirExcecoes.EmitirExcecao(_notificacao);
+
             await _servicoNecessidadeEspecial.Alterar(_mapper.Map<NecessidadeEspecial>(necessidadeDTO));
         }
 
         public async Task CadastrarNecessidade(NecessidadesDTO necessidadeDTO)
         {
-            await _servicoNecessidadeEspecial.Cadastrar(_mapper.Map<NecessidadeEspecial>(necessidadeDTO));
+            var necessidade = _mapper.Map<NecessidadeEspecial>(necessidadeDTO);
+            necessidade.Validar(_notificacao);
+            EmitirExcecoes.EmitirExcecao(_notificacao);
+
+            await _servicoNecessidadeEspecial.Cadastrar(necessidade);
         }
 
         public async Task DeletarNecessidade(NecessidadesDTO necessidadeDTO)

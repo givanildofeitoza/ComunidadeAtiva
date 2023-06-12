@@ -91,9 +91,9 @@
             button7.Name = "button7";
             button7.Size = new Size(204, 48);
             button7.TabIndex = 11;
-            button7.Text = "Programas Associação";
+            button7.Text = "Necessidades Especiais";
             button7.UseVisualStyleBackColor = false;
-            button7.Visible = false;
+            button7.Click += button7_Click;
             // 
             // button6
             // 
