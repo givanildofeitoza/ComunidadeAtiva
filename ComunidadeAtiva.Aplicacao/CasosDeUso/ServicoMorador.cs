@@ -17,7 +17,6 @@ namespace ComunidadeAtiva.Aplicacao.CasosDeUso
         protected readonly IMapper _Mapper;
         protected readonly ICapturarNotificacao _Notificacao;
 
-
         public ServicoMorador(ImoradorRepositorio moradorRepositorio, IMapper mapper, ICapturarNotificacao notificacao)
         {
             _MoradorRepositorio = moradorRepositorio;
@@ -68,5 +67,6 @@ namespace ComunidadeAtiva.Aplicacao.CasosDeUso
             return _Mapper.Map<IEnumerable<MoradorDTO>>(await _MoradorRepositorio.ObterTodosRelacionalMorador(t,s));
             
         }
+        
     }
 }

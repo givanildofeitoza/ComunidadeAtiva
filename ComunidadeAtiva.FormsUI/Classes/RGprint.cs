@@ -123,10 +123,12 @@ namespace ComunidadeAtiva.FormsUI.Classes
                       
                       ListTexto.Add(new LinhaImpressao() { valor = c.valor, coluna = c.coluna, EstiloFonte = c.EstiloFonte, fontTamanho =c.fontTamanho, linha = ultLinha, pag = maxPag });
                     }
+                    ultLinha += 1;
+                    ListTexto.Add(new LinhaImpressao() { valor = pValor, coluna = pColuna, EstiloFonte = pEstilo, fontTamanho = pTamanho, linha = ultLinha, pag = maxPag });                    
+
                 }
                 else
-                ListTexto.Add(new LinhaImpressao() { valor = pValor, coluna = pColuna, EstiloFonte = pEstilo, fontTamanho= pTamanho, linha = ultLinha, pag = maxPagina + 1 });
-                
+                ListTexto.Add(new LinhaImpressao() { valor = pValor, coluna = pColuna, EstiloFonte = pEstilo, fontTamanho= pTamanho, linha = ultLinha, pag = maxPagina + 1 });                
             }
             else
                 ListTexto.Add(new LinhaImpressao() { valor = pValor, coluna = pColuna, EstiloFonte = pEstilo, fontTamanho = pTamanho, linha = ultLinha, pag = maxPagina });

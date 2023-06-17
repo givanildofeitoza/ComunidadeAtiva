@@ -1,5 +1,6 @@
 ﻿using ComunidadeAtiva.Dominio.Entidades;
 using ComunidadeAtiva.Dominio.Interfaces;
+using ComunidadeAtiva.Dominio.Validacao;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,12 +26,16 @@ namespace ComunidadeAtiva.Dominio.Entity
         public string Ativo { get; set; }
 
         public void Validar(ICapturarNotificacao notificacao)
-        { 
+        {
+            notificacao.LimparErros();
+
             if (string.IsNullOrEmpty(NomeBeneficioSocial))
               notificacao.AddNotificacao("Nome do benefício não pode ser vazio!");
             
             if (string.IsNullOrEmpty(DescricaoBeneficioSocial))
-              notificacao.AddNotificacao("Descrição do benefício não pode ser vazia!");            
+              notificacao.AddNotificacao("Descrição do benefício não pode ser vazia!");
+
+            EmitirExcecoes.EmitirExcecao(notificacao);
         }
     }
 }

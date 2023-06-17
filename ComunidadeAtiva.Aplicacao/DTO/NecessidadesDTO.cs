@@ -9,6 +9,7 @@ namespace ComunidadeAtiva.Aplicacao.DTO
 {
     public class NecessidadesDTO
     {
+        public int Id { get; set; }
         [Required]
         public string DescricaoNecessidadeEspecial { get; set; }
         [Required]

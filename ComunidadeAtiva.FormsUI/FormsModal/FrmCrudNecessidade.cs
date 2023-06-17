@@ -1,5 +1,6 @@
 ﻿using ComunidadeAtiva.Aplicacao.DTO;
 using ComunidadeAtiva.Dominio.Entity;
+using ComunidadeAtiva.Dominio.Enum;
 using ComunidadeAtiva.Dominio.Exceptions;
 using ComunidadeAtiva.FormsUI.Classes;
 using System;
@@ -16,25 +17,53 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
 {
     public partial class FrmCrudNecessidade : ClasseFormPadrao
     {
-        public FrmCrudNecessidade()
+        private AcaoControleCadastro _AcaoControleCadastro;
+        private NecessidadesDTO necessidade = new NecessidadesDTO();
+        public FrmCrudNecessidade(AcaoControleCadastro acaoControleCadastro)
         {
             InitializeComponent();
+            _AcaoControleCadastro = acaoControleCadastro;
         }
 
         private async void button4_Click(object sender, EventArgs e)
-        {
-            NecessidadesDTO necessidadesDTO = new NecessidadesDTO();
-            necessidadesDTO.DescricaoNecessidadeEspecial = txtDescricao.Text;
-            necessidadesDTO.Permanete = cboPermanente.Text;
-            necessidadesDTO.NecessitaRemedioControlado = cboRemedio.Text;
-
-            try {
-                await FrmMain._ServicoNecessidadeEspecial.CadastrarNecessidade(necessidadesDTO);
+        {           
+            necessidade.DescricaoNecessidadeEspecial = txtDescricao.Text;
+            necessidade.Permanete = cboPermanente.Text;
+            necessidade.NecessitaRemedioControlado = cboRemedio.Text;
+            try
+            {
+                if (_AcaoControleCadastro == AcaoControleCadastro.CADASRTRAR)
+                    await FrmMain._ServicoNecessidadeEspecial.CadastrarNecessidade(necessidade);
+                else
+                    await FrmMain._ServicoNecessidadeEspecial.AlterarNecessidade(necessidade);
             }
             catch (ExcecoesCustomizadas ex)
             {
                 MessageBox.Show(ex.Message);
             }
+            MessageBox.Show("Solicitação Confirmada com Sucesso !");
+            this.Close();
+        }
+
+        private async void FrmCrudNecessidade_Shown(object sender, EventArgs e)
+        {
+            if (_AcaoControleCadastro == AcaoControleCadastro.CADASRTRAR)
+            {
+                pnlId.Visible = false;
+                txtDescricao.Text = "";
+                cboPermanente.Text = "N";
+                cboRemedio.Text = "N";
+            }
+            else
+            {
+                necessidade = await FrmMain._ServicoNecessidadeEspecial.ObterNecessidadeID(Id);
+                txtId.Text = necessidade.Id.ToString();
+                txtDescricao.Text = necessidade.DescricaoNecessidadeEspecial;
+                cboPermanente.Text = necessidade.Permanete;
+                cboRemedio.Text = necessidade.NecessitaRemedioControlado;
+
+            }
+
         }
     }
 }

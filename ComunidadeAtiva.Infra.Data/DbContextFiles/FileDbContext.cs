@@ -76,10 +76,6 @@ namespace ComunidadeAtiva.Infra.Data.DbContextFiles
             modelBuilder.Entity<MoradorPrograma>().HasKey(p => p.id);
             modelBuilder.Entity<NecessidadeEspecial>().HasKey(p => p.id);
             modelBuilder.Entity<Rua>().HasKey(p => p.id);
-           
-
-
-
 
         }
 

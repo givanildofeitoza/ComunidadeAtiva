@@ -1,4 +1,5 @@
 C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Infra.Data\bin\Debug\net6.0\ComunidadeAtiva.Infra.Data.deps.json
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Infra.Data\bin\Debug\net6.0\ComunidadeAtiva.Infra.Data.runtimeconfig.json
 C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Infra.Data\bin\Debug\net6.0\ComunidadeAtiva.Infra.Data.dll
 C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Infra.Data\bin\Debug\net6.0\ComunidadeAtiva.Infra.Data.pdb
 C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Infra.Data\bin\Debug\net6.0\ComunidadeAtiva.Dominio.dll
@@ -12,6 +13,5 @@ C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Infra.Data\obj\Debug\net6.
 C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Infra.Data\obj\Debug\net6.0\ComunidadeAtiva.Infra.Data.dll
 C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Infra.Data\obj\Debug\net6.0\refint\ComunidadeAtiva.Infra.Data.dll
 C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Infra.Data\obj\Debug\net6.0\ComunidadeAtiva.Infra.Data.pdb
-C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Infra.Data\obj\Debug\net6.0\ref\ComunidadeAtiva.Infra.Data.dll
-C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Infra.Data\bin\Debug\net6.0\ComunidadeAtiva.Infra.Data.runtimeconfig.json
 C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Infra.Data\obj\Debug\net6.0\ComunidadeAtiva.Infra.Data.genruntimeconfig.cache
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.Infra.Data\obj\Debug\net6.0\ref\ComunidadeAtiva.Infra.Data.dll

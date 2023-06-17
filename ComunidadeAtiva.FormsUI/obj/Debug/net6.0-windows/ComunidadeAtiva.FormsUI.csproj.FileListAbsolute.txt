@@ -26,7 +26,6 @@ C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.FormsUI\obj\Debug\net6.0-w
 C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.FormsUI\bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.dll
 C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.FormsUI\bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.Abstractions.dll
 C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.FormsUI\bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.Relational.dll
-C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.FormsUI\bin\Debug\net6.0-windows\Microsoft.Extensions.Caching.Abstractions.dll
 C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.FormsUI\bin\Debug\net6.0-windows\Microsoft.Extensions.Caching.Memory.dll
 C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.FormsUI\bin\Debug\net6.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll
 C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.FormsUI\bin\Debug\net6.0-windows\Microsoft.Extensions.DependencyInjection.dll
@@ -75,3 +74,12 @@ C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.FormsUI\bin\Debug\net6.0-w
 C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.FormsUI\bin\Debug\net6.0-windows\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.FormsUI\obj\Debug\net6.0-windows\ComunidadeAtiva.FormsUI.FormsModal.FrmImprimir.resources
 C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.FormsUI\obj\Debug\net6.0-windows\ComunidadeAtiva.FormsUI.FormsModal.FrmCrudNecessidade.resources
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.FormsUI\obj\Debug\net6.0-windows\ComunidadeAtiva.FormsUI.FormsModal.FormCrudBeneficioSocial.resources
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.FormsUI\bin\Debug\net6.0-windows\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.FormsUI\bin\Debug\net6.0-windows\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.FormsUI\bin\Debug\net6.0-windows\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.FormsUI\bin\Debug\net6.0-windows\Microsoft.Extensions.Identity.Core.dll
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.FormsUI\bin\Debug\net6.0-windows\Microsoft.Extensions.Identity.Stores.dll
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.FormsUI\obj\Debug\net6.0-windows\ComunidadeAtiva.FormsUI.FormsModal.FrmLogin.resources
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.FormsUI\bin\Debug\net6.0-windows\Microsoft.AspNetCore.Identity.UI.dll
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.FormsUI\bin\Debug\net6.0-windows\Microsoft.Extensions.FileProviders.Embedded.dll

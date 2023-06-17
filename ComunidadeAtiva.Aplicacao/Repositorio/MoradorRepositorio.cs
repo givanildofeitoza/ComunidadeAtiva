@@ -30,7 +30,10 @@ namespace ComunidadeAtiva.Aplicacao.Repositorio
             .AsNoTracking().FirstOrDefaultAsync();
         }
         public async Task<IEnumerable<Morador>> ObterTodosRelacionalMorador(int t, int s)
-            => _Entidade.Include(r => r.rua).AsNoTracking().ToList().Take(t).Skip(s);
+            => _Entidade.Include(r => r.rua).
+            Include(n=>n.necessidadeEspecial).
+            Include(b => b.moradorBeneficioSocial).
+            AsNoTracking().ToList().Take(t).Skip(s);
 
     }
 

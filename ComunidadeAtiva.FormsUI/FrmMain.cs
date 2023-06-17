@@ -10,6 +10,7 @@ using AutoMapper;
 using ComunidadeAtiva.Aplicacao.CasosDeUso.Interface;
 using ComunidadeAtiva.Dominio.Enum;
 using ComunidadeAtiva.Aplicacao.CasosDeUso;
+using Microsoft.AspNetCore.Identity;
 
 namespace ComunidadeAtiva.FormsUI
 {
@@ -21,26 +22,25 @@ namespace ComunidadeAtiva.FormsUI
         public static IbeneficioSocialRepositorio _beneficioSocial;
         public static InecessidadeEspecialRepositorio _necessidadeEspecial;
         public static IServicoRua _ruaService;
-        //public static ImoradorNecessidadeEspecialRepositorio _ImoradorNecessidadeEspecial;
         public static ICapturarNotificacao _notificacao;
         public static IMapper _mapper;
         public static IServicoNecessidadeMorador _ServicoNecessidadeMorador;
         public static IServicoBeneficioSocial _ServicoBeneficioSocial;
         public static IServicoNecessidadeEspecial _ServicoNecessidadeEspecial;
-
-       public FrmMain(
+        public static IServiceSegurancaIdentity _ServiceSegurancaIdentity;
+        public FrmMain(
             FileDbContext db,
             IServicoMorador ServicoMorador,
             IServicoBeneficoSocialMorador ServicoBeneficoSocialMorador,
             IbeneficioSocialRepositorio beneficioSocial,
             InecessidadeEspecialRepositorio necessidadeEspecial,
             IServicoRua ruaService,
-          //  ImoradorNecessidadeEspecialRepositorio ImoradorNecessidadeEspecial,
             ICapturarNotificacao notificacao,
             IMapper mapper,
             IServicoNecessidadeMorador ServicoNecessidadeMorador,
             IServicoBeneficioSocial ServicoBeneficioSocial,
-            IServicoNecessidadeEspecial ServicoNecessidadeEspecial
+            IServicoNecessidadeEspecial ServicoNecessidadeEspecial,
+            IServiceSegurancaIdentity ServiceSegurancaIdentity
             )
         {
             InitializeComponent();
@@ -49,13 +49,13 @@ namespace ComunidadeAtiva.FormsUI
             _beneficioSocial = beneficioSocial;
             _necessidadeEspecial = necessidadeEspecial;
             _ruaService = ruaService;
-            //_ImoradorNecessidadeEspecial = ImoradorNecessidadeEspecial;
             _db = db;
             _notificacao = notificacao;
             _mapper = mapper;
             _ServicoNecessidadeMorador = ServicoNecessidadeMorador;
             _ServicoBeneficioSocial = ServicoBeneficioSocial;
             _ServicoNecessidadeEspecial = ServicoNecessidadeEspecial;
+            _ServiceSegurancaIdentity = ServiceSegurancaIdentity;
         }
 
 
@@ -93,7 +93,7 @@ namespace ComunidadeAtiva.FormsUI
                     }
                 case "PROGRAMAS SOCIAIS":
                     {
-                        _FrmCrudMorador Fmorador = new _FrmCrudMorador(_ServicoMorador, _beneficioSocial, _necessidadeEspecial, _notificacao, _ruaService, _db, AcaoControleCadastro.ALTERAR);
+                        FormCrudBeneficioSocial Fmorador = new FormCrudBeneficioSocial(AcaoControleCadastro.ALTERAR);
                         flowLayoutPanel1.Controls.Clear();
                         var listBeneficios = await _ServicoBeneficioSocial.ObterBeneficioTodos(50, 0);
                         CustomListItem[] listItem = new CustomListItem[listBeneficios.Count()];
@@ -102,8 +102,8 @@ namespace ComunidadeAtiva.FormsUI
                         {
                             listItem[i] = new CustomListItem(Fmorador);
                             listItem[i].Title = item.NomeBeneficioSocial;
-                            listItem[i].Texto01 = item.DescricaoBeneficioSocial;
-                            listItem[i].Texto02 = "";
+                            listItem[i].Texto01 = item.Id.ToString();
+                            listItem[i].Texto02 = item.DescricaoBeneficioSocial;
                             listItem[i].Texto03 = "Ativo: " + item.Ativo;
                             listItem[i].Texto04 = "";
 
@@ -114,7 +114,7 @@ namespace ComunidadeAtiva.FormsUI
                     }
                 case "NECESSIDADES ESPECIAIS":
                     {
-                        FrmCrudNecessidade frmCrudNecessidade = new FrmCrudNecessidade();
+                        FrmCrudNecessidade frmCrudNecessidade = new FrmCrudNecessidade(AcaoControleCadastro.ALTERAR);
                         _FrmCrudMorador Fmorador = new _FrmCrudMorador(_ServicoMorador, _beneficioSocial, _necessidadeEspecial, _notificacao, _ruaService, _db, AcaoControleCadastro.ALTERAR);
                         flowLayoutPanel1.Controls.Clear();
                         var listNecessidades = await _ServicoNecessidadeEspecial.ObterNecessidadeTodos(50, 0);
@@ -124,8 +124,8 @@ namespace ComunidadeAtiva.FormsUI
                         {
                             listItem[i] = new CustomListItem(frmCrudNecessidade);
                             listItem[i].Title = item.DescricaoNecessidadeEspecial;
-                            listItem[i].Texto01 = "1";
-                            listItem[i].Texto02 = "Permanente: " + item.Permanete; 
+                            listItem[i].Texto01 = item.Id.ToString();
+                            listItem[i].Texto02 = "Permanente: " + item.Permanete;
                             listItem[i].Texto03 = "Necessita Remédio: " + item.NecessitaRemedioControlado;
                             listItem[i].Texto04 = "";
 
@@ -151,8 +151,28 @@ namespace ComunidadeAtiva.FormsUI
         }
         private void imgAlter_Click(object sender, EventArgs e)
         {
-            _FrmCrudMorador Fmorador = new _FrmCrudMorador(_ServicoMorador, _beneficioSocial, _necessidadeEspecial, _notificacao, _ruaService, _db, AcaoControleCadastro.CADASRTRAR);
-            Fmorador.ShowDialog();
+            switch (lblOpcaoAtiva.Text)
+            {
+                case "MORADORES":
+                    {
+                        _FrmCrudMorador Fmorador = new _FrmCrudMorador(_ServicoMorador, _beneficioSocial, _necessidadeEspecial, _notificacao, _ruaService, _db, AcaoControleCadastro.CADASRTRAR);
+                        Fmorador.ShowDialog();
+                        break;
+                    }
+                case "NECESSIDADES ESPECIAIS":
+                    {
+                        FrmCrudNecessidade frmCrudNecessidade = new FrmCrudNecessidade(AcaoControleCadastro.CADASRTRAR);
+                        frmCrudNecessidade.ShowDialog();
+                        break;
+                    }
+                case "PROGRAMAS SOCIAIS":
+                    {
+                        FormCrudBeneficioSocial formCrudBeneficioSocial = new FormCrudBeneficioSocial(AcaoControleCadastro.CADASRTRAR);
+                        formCrudBeneficioSocial.ShowDialog();
+                        break;
+                    }
+            }
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -170,6 +190,12 @@ namespace ComunidadeAtiva.FormsUI
         private void button7_Click(object sender, EventArgs e)
         {
             lblOpcaoAtiva.Text = "NECESSIDADES ESPECIAIS";
+        }
+
+        private void FrmMain_Shown(object sender, EventArgs e)
+        {
+            FrmLogin frmLogin = new FrmLogin();
+            frmLogin.ShowDialog();
         }
     }
 }

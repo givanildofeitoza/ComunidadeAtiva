@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ComunidadeAtiva.Infra.Data.Migrations
 {
-    [DbContext(typeof(FileDbContext))]
+    [DbContext(typeof(IdentityFileDbContext))]
     partial class FileDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

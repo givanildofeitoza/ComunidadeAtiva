@@ -37,7 +37,11 @@
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
+            pnlId = new Panel();
+            label5 = new Label();
+            txtId = new TextBox();
             panel1.SuspendLayout();
+            pnlId.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -49,7 +53,7 @@
             panel1.ForeColor = Color.White;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(513, 41);
+            panel1.Size = new Size(513, 37);
             panel1.TabIndex = 0;
             // 
             // label1
@@ -65,7 +69,7 @@
             // 
             cboRemedio.FormattingEnabled = true;
             cboRemedio.Items.AddRange(new object[] { "S", "N" });
-            cboRemedio.Location = new Point(152, 158);
+            cboRemedio.Location = new Point(132, 157);
             cboRemedio.Name = "cboRemedio";
             cboRemedio.Size = new Size(82, 23);
             cboRemedio.TabIndex = 1;
@@ -75,7 +79,7 @@
             // 
             cboPermanente.FormattingEnabled = true;
             cboPermanente.Items.AddRange(new object[] { "S", "N" });
-            cboPermanente.Location = new Point(152, 115);
+            cboPermanente.Location = new Point(132, 114);
             cboPermanente.Name = "cboPermanente";
             cboPermanente.Size = new Size(82, 23);
             cboPermanente.TabIndex = 1;
@@ -83,7 +87,7 @@
             // 
             // txtDescricao
             // 
-            txtDescricao.Location = new Point(103, 74);
+            txtDescricao.Location = new Point(103, 79);
             txtDescricao.Name = "txtDescricao";
             txtDescricao.Size = new Size(379, 23);
             txtDescricao.TabIndex = 0;
@@ -106,7 +110,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(29, 77);
+            label2.Location = new Point(39, 82);
             label2.Name = "label2";
             label2.Size = new Size(58, 15);
             label2.TabIndex = 37;
@@ -115,7 +119,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(29, 161);
+            label3.Location = new Point(9, 160);
             label3.Name = "label3";
             label3.Size = new Size(117, 15);
             label3.TabIndex = 38;
@@ -124,17 +128,44 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(29, 115);
+            label4.Location = new Point(49, 122);
             label4.Name = "label4";
             label4.Size = new Size(71, 15);
             label4.TabIndex = 39;
             label4.Text = "Permanente";
+            // 
+            // pnlId
+            // 
+            pnlId.Controls.Add(label5);
+            pnlId.Controls.Add(txtId);
+            pnlId.Location = new Point(63, 39);
+            pnlId.Name = "pnlId";
+            pnlId.Size = new Size(129, 34);
+            pnlId.TabIndex = 42;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(6, 3);
+            label5.Name = "label5";
+            label5.Size = new Size(18, 15);
+            label5.TabIndex = 43;
+            label5.Text = "ID";
+            // 
+            // txtId
+            // 
+            txtId.Location = new Point(40, 3);
+            txtId.Name = "txtId";
+            txtId.ReadOnly = true;
+            txtId.Size = new Size(79, 23);
+            txtId.TabIndex = 42;
             // 
             // FrmCrudNecessidade
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(513, 264);
+            Controls.Add(pnlId);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -146,8 +177,11 @@
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Name = "FrmCrudNecessidade";
             StartPosition = FormStartPosition.CenterParent;
+            Shown += FrmCrudNecessidade_Shown;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            pnlId.ResumeLayout(false);
+            pnlId.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -163,5 +197,8 @@
         private Label label2;
         private Label label3;
         private Label label4;
+        private Panel pnlId;
+        private Label label5;
+        private TextBox txtId;
     }
 }

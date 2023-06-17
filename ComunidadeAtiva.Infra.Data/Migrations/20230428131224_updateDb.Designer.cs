@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ComunidadeAtiva.Infra.Data.Migrations
 {
-    [DbContext(typeof(FileDbContext))]
+    [DbContext(typeof(IdentityFileDbContext))]
     [Migration("20230428131224_updateDb")]
     partial class updateDb
     {

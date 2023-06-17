@@ -97,7 +97,8 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
             cboSituacao.Text = Morador?.Situacao;
             cboEstadoCivil.Text = Morador?.EstadoCivil;
             txtNumero.Text = Morador?.NumeroCasa;
-
+            txtIdRua.Text = Morador?.rua.id.ToString();
+            txtDescRua.Items.Clear();
             txtDescRua.Items.Add($"{Morador.rua.Nome1}({Morador.rua.Nome2}). ");
             txtDescRua.Items.Add($"Calçada: {Morador.rua.Calcada} ");
             txtDescRua.Items.Add($"Água: {Morador.rua.Agua} ");

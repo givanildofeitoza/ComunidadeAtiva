@@ -9,6 +9,7 @@ namespace ComunidadeAtiva.Aplicacao.DTO
 {
     public class BeneficiosDTO
     {
+        public int Id { get; set; }
         [Required]
         public string NomeBeneficioSocial { get; set; }
         [Required]
