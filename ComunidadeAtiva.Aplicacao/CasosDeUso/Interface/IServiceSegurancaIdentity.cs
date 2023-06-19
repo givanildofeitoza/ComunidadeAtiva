@@ -9,7 +9,7 @@ namespace ComunidadeAtiva.Aplicacao.CasosDeUso.Interface
 {
     public interface IServiceSegurancaIdentity
     {
-        public Task CriarUsuario(UsuarioDTO usuario);
+        public Task CriarUsuario(UsuarioDTO usuario, CorpoDirigenteAssociacaoDTO dirigenteDto);
         public Task<bool> FazerLoginWebApi(UsuarioDTO usuario);
         public Task<bool> FazerLoginForms(UsuarioDTO usuario);
         public Task FazerLogoff(UsuarioDTO usuario);

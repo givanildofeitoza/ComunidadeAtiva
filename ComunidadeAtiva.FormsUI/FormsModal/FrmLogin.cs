@@ -21,7 +21,6 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
         }
         private async void button1_Click(object sender, EventArgs e)
         {
-
             try
             {
                 usuarioDTO.Email = txtEmail.Text;
@@ -31,6 +30,7 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
                 if (await FrmMain._ServiceSegurancaIdentity.FazerLoginForms(usuarioDTO) == true)
                 {
                     this.Close();
+                    FrmMain.UsuarioLogado = txtEmail.Text;
                 }
                 else
                 {
@@ -41,6 +41,33 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void FrmLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            ConsoleKeyInfo key;
+            key = Console.ReadKey(true); // lê a primeira tecla pressionada
+            if (key.Key == ConsoleKey.F1) // verifica se é F1
+            {
+                key = Console.ReadKey(true); // lê a segunda tecla pressionada
+                if (key.Key == ConsoleKey.F2) // verifica se é F2
+                {
+                    FrmCadMembro frmCadMembro = new FrmCadMembro();
+                    frmCadMembro.ShowDialog();
+                }
+            }         
+
         }
     }
 }

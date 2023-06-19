@@ -1,5 +1,6 @@
 ﻿using ComunidadeAtiva.Aplicacao.CasosDeUso.Interface;
 using ComunidadeAtiva.Aplicacao.DTO;
+using ComunidadeAtiva.Dominio.Entidades;
 using ComunidadeAtiva.Dominio.Interfaces;
 using ComunidadeAtiva.Dominio.Validacao;
 using ComunidadeAtiva.Infra.Data.DbContextFiles;
@@ -23,32 +24,45 @@ namespace ComunidadeAtiva.Aplicacao.CasosDeUso
     {
         private readonly UserManager<IdentityUser> _UserManager;
         private readonly SignInManager<IdentityUser> _SignInManager;
-        private readonly ICapturarNotificacao _notificacao;   
+        private readonly ICapturarNotificacao _notificacao;
+        private readonly ICorpoDirigenteAssociacao _CorpoDirigenteAssociacao;
 
-        public ServiceSegurancaIdentity(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, ICapturarNotificacao notificacao)
+        public ServiceSegurancaIdentity(UserManager<IdentityUser> userManager, 
+            SignInManager<IdentityUser> signInManager,
+            ICapturarNotificacao notificacao,
+            ICorpoDirigenteAssociacao CorpoDirigenteAssociacao)
         {
             _UserManager = userManager;
             _SignInManager = signInManager;
-            _notificacao = notificacao;          
+            _notificacao = notificacao;
+            _CorpoDirigenteAssociacao = CorpoDirigenteAssociacao;
         }
         public Task CriarTokenJWT(UsuarioDTO usuario)
         {
             throw new NotImplementedException();
         }
-
-        public async Task CriarUsuario(UsuarioDTO usuario)
+        public async Task CriarUsuario(UsuarioDTO usuario, CorpoDirigenteAssociacaoDTO dirigenteDto)
         {
+            if(dirigenteDto == null || usuario == null)
+            {
+                _notificacao.LimparErros();
+                _notificacao.AddNotificacao("Houve um erro ao tentar fazer o registro de usuário/membro !");
+                EmitirExcecoes.EmitirExcecao(_notificacao);
+            }   
             var user = new IdentityUser
             {
                 Email = usuario.Email,
                 UserName = usuario.Email,
-                EmailConfirmed = true
+                EmailConfirmed = true               
             };
-            var result = await _UserManager.CreateAsync(user, usuario.Senha);
+
+           var result = await _UserManager.CreateAsync(user, usuario.Senha);
             if (result.Succeeded)
             {
-                //await _CustomerService.PostCustomer(_mapper.Map<Customer>(NewUserModel));
-                //cria menbro da associação                
+                user = await _UserManager.FindByEmailAsync(user.Email);
+                dirigenteDto.UsuarioId = user.Id.ToString();
+                await _CorpoDirigenteAssociacao.CadastrarDirigente(dirigenteDto);
+                               
             }
             else
             {

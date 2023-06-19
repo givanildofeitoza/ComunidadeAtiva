@@ -16,6 +16,7 @@ namespace ComunidadeAtiva.FormsUI
 {
     public partial class FrmMain : Form
     {
+        public static string UsuarioLogado = "";
         private readonly FileDbContext _db;
         public static IServicoMorador _ServicoMorador;
         public static IServicoBeneficoSocialMorador _ServicoBeneficoSocialMorador;
@@ -28,6 +29,7 @@ namespace ComunidadeAtiva.FormsUI
         public static IServicoBeneficioSocial _ServicoBeneficioSocial;
         public static IServicoNecessidadeEspecial _ServicoNecessidadeEspecial;
         public static IServiceSegurancaIdentity _ServiceSegurancaIdentity;
+        public static ICorpoDirigenteAssociacao _CorpoDirigenteAssociacao;
         public FrmMain(
             FileDbContext db,
             IServicoMorador ServicoMorador,
@@ -40,7 +42,8 @@ namespace ComunidadeAtiva.FormsUI
             IServicoNecessidadeMorador ServicoNecessidadeMorador,
             IServicoBeneficioSocial ServicoBeneficioSocial,
             IServicoNecessidadeEspecial ServicoNecessidadeEspecial,
-            IServiceSegurancaIdentity ServiceSegurancaIdentity
+            IServiceSegurancaIdentity ServiceSegurancaIdentity,
+            ICorpoDirigenteAssociacao CorpoDirigenteAssociacao
             )
         {
             InitializeComponent();
@@ -56,9 +59,11 @@ namespace ComunidadeAtiva.FormsUI
             _ServicoBeneficioSocial = ServicoBeneficioSocial;
             _ServicoNecessidadeEspecial = ServicoNecessidadeEspecial;
             _ServiceSegurancaIdentity = ServiceSegurancaIdentity;
+            _CorpoDirigenteAssociacao = CorpoDirigenteAssociacao;
 
             FrmLogin frmLogin = new FrmLogin();
             frmLogin.ShowDialog();
+            lblOperadorLogado.Text = UsuarioLogado;
 
         }
 
@@ -193,6 +198,11 @@ namespace ComunidadeAtiva.FormsUI
         {
             lblOpcaoAtiva.Text = "NECESSIDADES ESPECIAIS";
         }
-        
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            _FrmCrudRua Frua = new _FrmCrudRua(_ruaService);
+            Frua.ShowDialog();
+        }
     }
 }

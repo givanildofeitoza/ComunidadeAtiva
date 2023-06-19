@@ -57,4 +57,30 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        DQAACw0B7QfALAAAAXNJREFUSEvtls9Kw0AQxosHPepR8ayvoE8iPkGVja2PkJteRPEJPIibkgeo0F3b
+        m39OER9AL1I9KWLRo35jplDSSajZRQXzgw+adOab3Z3dJLWKP0mj3Z5R2jSDyFyqyA5I9DvQpkH/cZhf
+        NmK7iKLXQWQ/cpRQDIf7gWdaVHSoxOvM0+UVC40Jy7/Fae6oyFxJRSQpbS84zR1snlepiCjEcpo7YoEC
+        cZo735kxevzCae78Zo8bUhFJXnc1nU2YJtkigpIwjqc5zQ/0VCLjTKFR+X9yDaHZ0FJSH782HITrc7rn
+        faYVP0oYhlObrc5qoO0u+tqFHvAefk9l+zjnZ+jzjtLdFYrltPLUj08XYLwP48eR3VusdFB7Ku7Ns83k
+        bB/15mByiNfh25jxhKJcDPigHptZti0Go13GqO8kszLC0bttnnSW2D4f9OpGMnARfb2wfT4I7GcTnaXN
+        PdvnE7TsOnrzLBqUknlSurPG9hX/hlrtE5iV7S+mHRYQAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="pictureBox2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        DQAACw0B7QfALAAAAZNJREFUSEvtVLtKxEAUTWern6CdH+Gj1kYEPyKP1U9QEGutFNFlQchkWa0Xdu9E
+        BUGx8cUi/oFgoyx2FnomuQlBB5nsBLHIgUNm7r1zTmaYO06NGt/hhv05P5JNT8grL5KXnqBDrx3Pcrp6
+        NLrdMV/QEUw/tRTUUjVcXh1+Nc0Icy6vBny8uYEX0SuOel/RF/KtmAsiOcPL7AHBZiasTINOb5JT+Cma
+        Kpojf8Ape0DsuiC8x+Ecyc6zPC4dh+3hRzTIhDHe4HAOFSvkBxy2B47yMRNG+3SCdrxSpIrlxqjlZaND
+        tQd69SQXNSYdW7UW2mNLL2zETZYpDxg/aQTNaHPkuKEvWlEDqrUsUx7/w1hQw43607hsD+B7+prRvBrj
+        e5/kBK1WbrzWOhtPY7SD+W1SAGB+h0dlW43d8GKicmPsuJc8FIKG6VzuJkxzQ9SupzVVG5eklTF28KwT
+        NSLWskx5QOD8h6ApBZ2yTHm4gha1ogb0wniBZUYD2mQZLXOD2/uhMyhS1ajaIJRLvLxGjb+G43wB6APl
+        635uDZcAAAAASUVORK5CYII=
+</value>
+  </data>
 </root>

@@ -39,7 +39,7 @@
             button2 = new Button();
             label3 = new Label();
             btnMorador = new Button();
-            label2 = new Label();
+            lblOperadorLogado = new Label();
             pictureBox1 = new PictureBox();
             label1 = new Label();
             panel1 = new Panel();
@@ -71,7 +71,7 @@
             panel2.Controls.Add(button2);
             panel2.Controls.Add(label3);
             panel2.Controls.Add(btnMorador);
-            panel2.Controls.Add(label2);
+            panel2.Controls.Add(lblOperadorLogado);
             panel2.Controls.Add(pictureBox1);
             panel2.Controls.Add(label1);
             panel2.Dock = DockStyle.Left;
@@ -173,13 +173,13 @@
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             button2.ForeColor = Color.LightSteelBlue;
-            button2.Location = new Point(21, 233);
+            button2.Location = new Point(21, 238);
             button2.Name = "button2";
             button2.Size = new Size(204, 48);
             button2.TabIndex = 5;
-            button2.Text = "Sócios";
+            button2.Text = "Ruas";
             button2.UseVisualStyleBackColor = false;
-            button2.Visible = false;
+            button2.Click += button2_Click;
             // 
             // label3
             // 
@@ -207,16 +207,16 @@
             btnMorador.UseVisualStyleBackColor = false;
             btnMorador.Click += btnMorador_Click;
             // 
-            // label2
+            // lblOperadorLogado
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Yu Gothic Light", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.ForeColor = Color.AliceBlue;
-            label2.Location = new Point(79, 91);
-            label2.Name = "label2";
-            label2.Size = new Size(85, 17);
-            label2.TabIndex = 2;
-            label2.Text = "PRESIDENTE";
+            lblOperadorLogado.AutoSize = true;
+            lblOperadorLogado.Font = new Font("Yu Gothic Light", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblOperadorLogado.ForeColor = Color.AliceBlue;
+            lblOperadorLogado.Location = new Point(79, 91);
+            lblOperadorLogado.Name = "lblOperadorLogado";
+            lblOperadorLogado.Size = new Size(85, 17);
+            lblOperadorLogado.TabIndex = 2;
+            lblOperadorLogado.Text = "PRESIDENTE";
             // 
             // pictureBox1
             // 
@@ -373,7 +373,7 @@
         private Label label1;
         private Panel panel1;
         private Button btnMorador;
-        private Label label2;
+        private Label lblOperadorLogado;
         private Button button4;
         private Label label4;
         private Button button3;

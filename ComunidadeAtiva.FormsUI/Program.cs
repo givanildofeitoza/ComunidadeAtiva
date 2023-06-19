@@ -50,6 +50,7 @@ namespace ComunidadeAtiva.FormsUI
                 .AddSingleton<IbeneficioSocialRepositorio, BeneficioSocialRepositorio>()
                 .AddSingleton<ImoradorBeneficioSocialRepositorio, MoradorBeneficioSocialRepositorio>()
                 .AddSingleton<InecessidadeEspecialRepositorio, NecessidadeEspecialRepositorio>()
+                .AddSingleton<IcorpoDirigenteAssociacaoRepositorio, CorpoDirigenteAssociacaoRepositorio>()
                 .AddSingleton<ImoradorNecessidadeEspecialRepositorio, MoradorNecessidadeEspecialRepositorio>()
                 .AddSingleton<IServicoRua, ServicoRua>()
                 .AddSingleton<IServicoMorador, ServicoMorador>()
@@ -57,6 +58,7 @@ namespace ComunidadeAtiva.FormsUI
                 .AddSingleton<IServicoNecessidadeMorador, ServicoNecessidadeMorador>()
                 .AddSingleton<IServicoBeneficioSocial, ServicoBeneficioSocial>()
                 .AddSingleton<IServicoNecessidadeEspecial, ServicoNecessidadeEspecial>()
+                .AddSingleton<ICorpoDirigenteAssociacao,ServicoCorpoDirigenteAssociacao>()
                 .AddSingleton<IruaRepositorio, RuaRepositorio>()
                 .AddSingleton<IServiceSegurancaIdentity, ServiceSegurancaIdentity>()
 
