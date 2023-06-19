@@ -19,7 +19,6 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
         {
             InitializeComponent();
         }
-
         private async void button1_Click(object sender, EventArgs e)
         {
 
@@ -32,6 +31,10 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
                 if (await FrmMain._ServiceSegurancaIdentity.FazerLoginForms(usuarioDTO) == true)
                 {
                     this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Erro ao tentar entrar! Verifique usuário e senha!");
                 }
             }
             catch (ExcecoesCustomizadas ex)

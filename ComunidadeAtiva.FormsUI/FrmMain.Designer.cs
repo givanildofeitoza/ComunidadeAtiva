@@ -356,7 +356,6 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "FrmMain";
             StartPosition = FormStartPosition.CenterScreen;
-            Shown += FrmMain_Shown;
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

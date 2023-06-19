@@ -56,8 +56,11 @@ namespace ComunidadeAtiva.FormsUI
             _ServicoBeneficioSocial = ServicoBeneficioSocial;
             _ServicoNecessidadeEspecial = ServicoNecessidadeEspecial;
             _ServiceSegurancaIdentity = ServiceSegurancaIdentity;
-        }
 
+            FrmLogin frmLogin = new FrmLogin();
+            frmLogin.ShowDialog();
+
+        }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
@@ -179,7 +182,6 @@ namespace ComunidadeAtiva.FormsUI
         {
             FrmImprimir frmImprimir = new FrmImprimir();
             frmImprimir.ShowDialog();
-
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -191,11 +193,6 @@ namespace ComunidadeAtiva.FormsUI
         {
             lblOpcaoAtiva.Text = "NECESSIDADES ESPECIAIS";
         }
-
-        private void FrmMain_Shown(object sender, EventArgs e)
-        {
-            FrmLogin frmLogin = new FrmLogin();
-            frmLogin.ShowDialog();
-        }
+        
     }
 }

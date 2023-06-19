@@ -31,7 +31,7 @@ namespace ComunidadeAtiva.Infra.Data.DbContextFiles
 
 
         // para funcionar a migration e comente o construtor
-        /*  protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+       /*   protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
           {
                var ConnectionStrings = "server=localhost; port=3307; uid=root;pwd=p@ssw0rd;database=comunidade";
                optionsBuilder.UseMySql(ConnectionStrings,ServerVersion.AutoDetect(ConnectionStrings));     

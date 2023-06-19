@@ -23,17 +23,14 @@ namespace ComunidadeAtiva.Aplicacao.CasosDeUso
     {
         private readonly UserManager<IdentityUser> _UserManager;
         private readonly SignInManager<IdentityUser> _SignInManager;
-        private readonly ICapturarNotificacao _notificacao;
-     
+        private readonly ICapturarNotificacao _notificacao;   
 
-        public ServiceSegurancaIdentity(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, ICapturarNotificacao notificacao
-           )
+        public ServiceSegurancaIdentity(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, ICapturarNotificacao notificacao)
         {
             _UserManager = userManager;
             _SignInManager = signInManager;
             _notificacao = notificacao;          
         }
-
         public Task CriarTokenJWT(UsuarioDTO usuario)
         {
             throw new NotImplementedException();
@@ -51,8 +48,7 @@ namespace ComunidadeAtiva.Aplicacao.CasosDeUso
             if (result.Succeeded)
             {
                 //await _CustomerService.PostCustomer(_mapper.Map<Customer>(NewUserModel));
-                //cria mendo da associação
-                
+                //cria menbro da associação                
             }
             else
             {
@@ -65,24 +61,17 @@ namespace ComunidadeAtiva.Aplicacao.CasosDeUso
             }
         }
         public async Task<bool> FazerLoginForms(UsuarioDTO usuario)
-        {
-            //var usermananger = new UserManager<IdentityUser>(new UserStore<IdentityUser>(new IdentityFileDbContext()), null, null, null, null, null, null, null, null);
-
-            //var user = await _UserManager.FindByLoginAsync(usuario.Email, usuario.Senha);
-           var HttpContext = new DefaultHttpContext();
-            // _SignInManager.Context = HttpContext;
-
-            var usuarioId = new IdentityUser
+        {   
+            var user = await _UserManager.FindByEmailAsync(usuario.Email);
+            if(user == null)
             {
-                Email = usuario.Email,
-                UserName = usuario.Email,
-                EmailConfirmed = true
-            };
+                _notificacao.LimparErros();
+                _notificacao.AddNotificacao("Erro ao tentar entrar! Verifique usuário e senha!");
+                EmitirExcecoes.EmitirExcecao(_notificacao);
+            }
+            var result = await _SignInManager.CheckPasswordSignInAsync(user, usuario.Senha, true);
 
-            var result = _SignInManager.CheckPasswordSignInAsync(usuarioId, usuario.Senha, true);
-
-
-            return (result != null);
+            return result.Succeeded;
         }
         public async Task<bool> FazerLoginWebApi(UsuarioDTO usuario)
         {
