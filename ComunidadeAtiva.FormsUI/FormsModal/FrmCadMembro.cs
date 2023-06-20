@@ -14,7 +14,6 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
 {
     public partial class FrmCadMembro : Form
     {
-        private UsuarioDTO usuario = new UsuarioDTO();
         private CorpoDirigenteAssociacaoDTO dirigenteDto = new CorpoDirigenteAssociacaoDTO();
 
         public FrmCadMembro()
@@ -35,19 +34,19 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
                 return;
             }
 
-            dirigenteDto.Nome = txtNome.Text;
-            dirigenteDto.Apelido = txtApelido.Text;
-            dirigenteDto.Telefone = txtFone.Text;
+            dirigenteDto.Nome     = txtNome.Text;
+            dirigenteDto.Apelido  = txtApelido.Text;
+            dirigenteDto.Telefone =string.IsNullOrEmpty(txtFone.Text)? "0000000000": txtFone.Text;
+            dirigenteDto.Celular = string.IsNullOrEmpty(txtFone.Text) ? "0000000000" : txtFone.Text;
             dirigenteDto.IdCargo = int.Parse(cboNivel.Text.Substring(0, 1));
-
-            usuario.Email = txtEmail.Text;
-            usuario.Senha = txtSenha.Text;
-            usuario.ConfirmaSenha = txtConfSenha.Text;
+            dirigenteDto.Email = txtEmail.Text;
+            dirigenteDto.Senha = txtSenha.Text;
+            dirigenteDto.ConfirmaSenha = txtConfSenha.Text;
 
             try
             {
-
-                await FrmMain._ServiceSegurancaIdentity.CriarUsuario(usuario, dirigenteDto);
+                await FrmMain._ServiceSegurancaIdentity.CriarUsuario(dirigenteDto);
+                this.Close();
             }
             catch (ExcecoesCustomizadas ex)
             {

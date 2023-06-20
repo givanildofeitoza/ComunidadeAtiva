@@ -54,6 +54,10 @@ namespace ComunidadeAtiva.Aplicacao.CasosDeUso
 
         public async Task<IEnumerable<CorpoDirigenteAssociacaoDTO>> ObterDirigenteTodos(int take, int skip)
          => _mapper.Map< IEnumerable<CorpoDirigenteAssociacaoDTO>>(await _corpoDirigenteAssociacaoRepositorio.ObterTodos(take,skip));
-        
+
+        public async Task<CorpoDirigenteAssociacaoDTO> ObterDirigenteRelacional(string Id)
+          => _mapper.Map<CorpoDirigenteAssociacaoDTO>(await _corpoDirigenteAssociacaoRepositorio.ObterDirigenteRelacional(Id));
+
+
     }
 }

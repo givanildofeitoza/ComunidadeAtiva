@@ -283,6 +283,7 @@
             StartPosition = FormStartPosition.CenterParent;
             Text = "FrmLogin";
             KeyDown += FrmLogin_KeyDown;
+            KeyPress += FrmLogin_KeyPress;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);

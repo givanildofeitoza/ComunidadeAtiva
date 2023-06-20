@@ -11,12 +11,15 @@ using ComunidadeAtiva.Aplicacao.CasosDeUso.Interface;
 using ComunidadeAtiva.Dominio.Enum;
 using ComunidadeAtiva.Aplicacao.CasosDeUso;
 using Microsoft.AspNetCore.Identity;
+using ComunidadeAtiva.Aplicacao.DTO;
+using ComunidadeAtiva.Dominio.Entidades;
 
 namespace ComunidadeAtiva.FormsUI
 {
     public partial class FrmMain : Form
     {
-        public static string UsuarioLogado = "";
+
+        public static CorpoDirigenteAssociacaoDTO usuarioLogado = new CorpoDirigenteAssociacaoDTO();
         private readonly FileDbContext _db;
         public static IServicoMorador _ServicoMorador;
         public static IServicoBeneficoSocialMorador _ServicoBeneficoSocialMorador;
@@ -63,7 +66,6 @@ namespace ComunidadeAtiva.FormsUI
 
             FrmLogin frmLogin = new FrmLogin();
             frmLogin.ShowDialog();
-            lblOperadorLogado.Text = UsuarioLogado;
 
         }
 
@@ -203,6 +205,12 @@ namespace ComunidadeAtiva.FormsUI
         {
             _FrmCrudRua Frua = new _FrmCrudRua(_ruaService);
             Frua.ShowDialog();
+        }
+
+        private async void FrmMain_Shown(object sender, EventArgs e)
+        {
+            usuarioLogado = await _CorpoDirigenteAssociacao.ObterDirigenteRelacional(usuarioLogado.UsuarioId);
+            lblOperadorLogado.Text = usuarioLogado == null ? "USUÁRIO ANÔNIMO" : usuarioLogado.Nome.ToUpper();
         }
     }
 }

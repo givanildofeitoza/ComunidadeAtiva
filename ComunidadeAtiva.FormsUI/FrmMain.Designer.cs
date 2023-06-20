@@ -87,7 +87,7 @@
             button7.FlatStyle = FlatStyle.Flat;
             button7.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             button7.ForeColor = Color.LightSteelBlue;
-            button7.Location = new Point(21, 600);
+            button7.Location = new Point(21, 396);
             button7.Name = "button7";
             button7.Size = new Size(204, 48);
             button7.TabIndex = 11;
@@ -102,7 +102,7 @@
             button6.FlatStyle = FlatStyle.Flat;
             button6.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             button6.ForeColor = Color.LightSteelBlue;
-            button6.Location = new Point(21, 534);
+            button6.Location = new Point(21, 450);
             button6.Name = "button6";
             button6.Size = new Size(204, 48);
             button6.TabIndex = 10;
@@ -117,7 +117,7 @@
             button5.FlatStyle = FlatStyle.Flat;
             button5.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             button5.ForeColor = Color.LightSteelBlue;
-            button5.Location = new Point(21, 469);
+            button5.Location = new Point(21, 575);
             button5.Name = "button5";
             button5.Size = new Size(204, 48);
             button5.TabIndex = 9;
@@ -132,7 +132,7 @@
             button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             button4.ForeColor = Color.LightSteelBlue;
-            button4.Location = new Point(21, 406);
+            button4.Location = new Point(21, 521);
             button4.Name = "button4";
             button4.Size = new Size(204, 48);
             button4.TabIndex = 8;
@@ -173,7 +173,7 @@
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             button2.ForeColor = Color.LightSteelBlue;
-            button2.Location = new Point(21, 238);
+            button2.Location = new Point(21, 231);
             button2.Name = "button2";
             button2.Size = new Size(204, 48);
             button2.TabIndex = 5;
@@ -212,7 +212,7 @@
             lblOperadorLogado.AutoSize = true;
             lblOperadorLogado.Font = new Font("Yu Gothic Light", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             lblOperadorLogado.ForeColor = Color.AliceBlue;
-            lblOperadorLogado.Location = new Point(79, 91);
+            lblOperadorLogado.Location = new Point(70, 91);
             lblOperadorLogado.Name = "lblOperadorLogado";
             lblOperadorLogado.Size = new Size(85, 17);
             lblOperadorLogado.TabIndex = 2;
@@ -356,6 +356,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "FrmMain";
             StartPosition = FormStartPosition.CenterScreen;
+            Shown += FrmMain_Shown;
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

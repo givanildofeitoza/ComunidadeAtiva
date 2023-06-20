@@ -10,5 +10,6 @@ namespace ComunidadeAtiva.Aplicacao.CasosDeUso.Interface
         public Task DeletarDirigente(CorpoDirigenteAssociacaoDTO dirigenteDto);
         public Task<CorpoDirigenteAssociacaoDTO> ObterDirigentePorId(int Id);
         public Task<IEnumerable<CorpoDirigenteAssociacaoDTO>> ObterDirigenteTodos(int take, int skip);
+        public Task<CorpoDirigenteAssociacaoDTO> ObterDirigenteRelacional(string Id);
     }
 }

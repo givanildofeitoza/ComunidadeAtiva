@@ -50,21 +50,21 @@
             // 
             // txtNome
             // 
-            txtNome.Location = new Point(25, 128);
+            txtNome.Location = new Point(25, 130);
             txtNome.Name = "txtNome";
             txtNome.Size = new Size(452, 23);
             txtNome.TabIndex = 0;
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(28, 281);
+            txtEmail.Location = new Point(28, 268);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(255, 23);
             txtEmail.TabIndex = 1;
             // 
             // txtSenha
             // 
-            txtSenha.Location = new Point(25, 329);
+            txtSenha.Location = new Point(25, 327);
             txtSenha.Name = "txtSenha";
             txtSenha.PasswordChar = '*';
             txtSenha.Size = new Size(258, 23);
@@ -82,7 +82,7 @@
             // 
             cboNivel.FormattingEnabled = true;
             cboNivel.Items.AddRange(new object[] { "1-Comum", "2-Pleno", "3-Sênior" });
-            cboNivel.Location = new Point(25, 180);
+            cboNivel.Location = new Point(25, 185);
             cboNivel.Name = "cboNivel";
             cboNivel.Size = new Size(121, 23);
             cboNivel.TabIndex = 4;
@@ -109,7 +109,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(25, 310);
+            label3.Location = new Point(25, 302);
             label3.Name = "label3";
             label3.Size = new Size(39, 15);
             label3.TabIndex = 7;
@@ -118,7 +118,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(25, 259);
+            label4.Location = new Point(25, 244);
             label4.Name = "label4";
             label4.Size = new Size(141, 15);
             label4.TabIndex = 8;
@@ -127,7 +127,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(25, 158);
+            label5.Location = new Point(25, 162);
             label5.Name = "label5";
             label5.Size = new Size(90, 15);
             label5.TabIndex = 9;
@@ -136,7 +136,7 @@
             // txtApelido
             // 
             txtApelido.AutoSize = true;
-            txtApelido.Location = new Point(31, 60);
+            txtApelido.Location = new Point(31, 57);
             txtApelido.Name = "txtApelido";
             txtApelido.Size = new Size(48, 15);
             txtApelido.TabIndex = 11;
@@ -151,7 +151,7 @@
             // 
             // txtFone
             // 
-            txtFone.Location = new Point(167, 180);
+            txtFone.Location = new Point(167, 185);
             txtFone.Name = "txtFone";
             txtFone.Size = new Size(209, 23);
             txtFone.TabIndex = 12;
@@ -159,7 +159,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(167, 158);
+            label6.Location = new Point(167, 161);
             label6.Name = "label6";
             label6.Size = new Size(51, 15);
             label6.TabIndex = 13;

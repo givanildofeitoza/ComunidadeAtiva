@@ -14,7 +14,8 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
 {
     public partial class FrmLogin : Form
     {
-        UsuarioDTO usuarioDTO = new UsuarioDTO();
+        CorpoDirigenteAssociacaoDTO dirigenteDto = new CorpoDirigenteAssociacaoDTO();
+        private int acessoRegistroUsuario = 0;
         public FrmLogin()
         {
             InitializeComponent();
@@ -23,14 +24,15 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
         {
             try
             {
-                usuarioDTO.Email = txtEmail.Text;
-                usuarioDTO.Senha = txtSenha.Text;
-                usuarioDTO.ConfirmaSenha = txtSenha.Text;
+                dirigenteDto.Email = txtEmail.Text;
+                dirigenteDto.Senha = txtSenha.Text;
+                dirigenteDto.ConfirmaSenha = txtSenha.Text;
+                var id = await FrmMain._ServiceSegurancaIdentity.FazerLoginForms(dirigenteDto);
 
-                if (await FrmMain._ServiceSegurancaIdentity.FazerLoginForms(usuarioDTO) == true)
+                if ( !string.IsNullOrEmpty(id))
                 {
                     this.Close();
-                    FrmMain.UsuarioLogado = txtEmail.Text;
+                    FrmMain.usuarioLogado.UsuarioId = id;
                 }
                 else
                 {
@@ -55,18 +57,22 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
 
         private void FrmLogin_KeyDown(object sender, KeyEventArgs e)
         {
-
-            ConsoleKeyInfo key;
-            key = Console.ReadKey(true); // lê a primeira tecla pressionada
-            if (key.Key == ConsoleKey.F1) // verifica se é F1
+            if (e.KeyData == Keys.F12)
             {
-                key = Console.ReadKey(true); // lê a segunda tecla pressionada
-                if (key.Key == ConsoleKey.F2) // verifica se é F2
+                acessoRegistroUsuario += 1;
+                if (acessoRegistroUsuario == 4)
                 {
                     FrmCadMembro frmCadMembro = new FrmCadMembro();
                     frmCadMembro.ShowDialog();
                 }
-            }         
+            }
+            else
+                acessoRegistroUsuario = 0;
+
+        }
+
+        private void FrmLogin_KeyPress(object sender, KeyPressEventArgs e)
+        {
 
         }
     }

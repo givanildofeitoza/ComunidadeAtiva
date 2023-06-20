@@ -37,32 +37,37 @@ namespace ComunidadeAtiva.Aplicacao.CasosDeUso
             _notificacao = notificacao;
             _CorpoDirigenteAssociacao = CorpoDirigenteAssociacao;
         }
-        public Task CriarTokenJWT(UsuarioDTO usuario)
+        public Task CriarTokenJWT(CorpoDirigenteAssociacaoDTO dirigenteDto)
         {
             throw new NotImplementedException();
         }
-        public async Task CriarUsuario(UsuarioDTO usuario, CorpoDirigenteAssociacaoDTO dirigenteDto)
+        public async Task CriarUsuario(CorpoDirigenteAssociacaoDTO dirigenteDto)
         {
-            if(dirigenteDto == null || usuario == null)
-            {
-                _notificacao.LimparErros();
+            _notificacao.LimparErros();
+
+            if (dirigenteDto == null)
+            {               
                 _notificacao.AddNotificacao("Houve um erro ao tentar fazer o registro de usuário/membro !");
                 EmitirExcecoes.EmitirExcecao(_notificacao);
-            }   
+            }
+            if (string.IsNullOrEmpty(dirigenteDto.Nome))
+            {               
+                _notificacao.AddNotificacao("Informe o nome do usuário/membro !");
+                EmitirExcecoes.EmitirExcecao(_notificacao);
+            }
             var user = new IdentityUser
             {
-                Email = usuario.Email,
-                UserName = usuario.Email,
+                Email = dirigenteDto.Email,
+                UserName = dirigenteDto.Email,
                 EmailConfirmed = true               
             };
-
-           var result = await _UserManager.CreateAsync(user, usuario.Senha);
+           
+            var result = await _UserManager.CreateAsync(user, dirigenteDto.Senha);
             if (result.Succeeded)
             {
                 user = await _UserManager.FindByEmailAsync(user.Email);
                 dirigenteDto.UsuarioId = user.Id.ToString();
                 await _CorpoDirigenteAssociacao.CadastrarDirigente(dirigenteDto);
-                               
             }
             else
             {
@@ -73,24 +78,25 @@ namespace ComunidadeAtiva.Aplicacao.CasosDeUso
                     EmitirExcecoes.EmitirExcecao(_notificacao);                    
                 }
             }
+           
         }
-        public async Task<bool> FazerLoginForms(UsuarioDTO usuario)
+        public async Task<string> FazerLoginForms(CorpoDirigenteAssociacaoDTO dirigenteDto)
         {   
-            var user = await _UserManager.FindByEmailAsync(usuario.Email);
+            var user = await _UserManager.FindByEmailAsync(dirigenteDto.Email);
             if(user == null)
             {
                 _notificacao.LimparErros();
                 _notificacao.AddNotificacao("Erro ao tentar entrar! Verifique usuário e senha!");
                 EmitirExcecoes.EmitirExcecao(_notificacao);
             }
-            var result = await _SignInManager.CheckPasswordSignInAsync(user, usuario.Senha, true);
+            var result = await _SignInManager.CheckPasswordSignInAsync(user, dirigenteDto.Senha, true);
 
-            return result.Succeeded;
+            return user.Id;
         }
-        public async Task<bool> FazerLoginWebApi(UsuarioDTO usuario)
+        public async Task<bool> FazerLoginWebApi(CorpoDirigenteAssociacaoDTO dirigenteDto)
         {
            
-            var result = await _SignInManager.PasswordSignInAsync(usuario.Email, usuario.Senha, false, true);
+            var result = await _SignInManager.PasswordSignInAsync(dirigenteDto.Email, dirigenteDto.Senha, false, true);
             if (result.Succeeded)
             {
                 /*  DtoCustomer AccountValues = await GetUserByEmail(UserLogin.Email);
@@ -110,7 +116,7 @@ namespace ComunidadeAtiva.Aplicacao.CasosDeUso
 
         }
 
-        public Task FazerLogoff(UsuarioDTO usuario)
+        public Task FazerLogoff(CorpoDirigenteAssociacaoDTO dirigenteDto)
         {
             throw new NotImplementedException();
         }

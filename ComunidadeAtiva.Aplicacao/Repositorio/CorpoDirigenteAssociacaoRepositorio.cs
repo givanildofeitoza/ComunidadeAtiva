@@ -1,4 +1,6 @@
-﻿using ComunidadeAtiva.Dominio.Entidades;
+﻿using ComunidadeAtiva.Aplicacao.CasosDeUso.Interface;
+using ComunidadeAtiva.Aplicacao.DTO;
+using ComunidadeAtiva.Dominio.Entidades;
 using ComunidadeAtiva.Dominio.Entity;
 using ComunidadeAtiva.Dominio.Interfaces;
 using ComunidadeAtiva.Infra.Data.RepositorioGenerico;
@@ -15,6 +17,11 @@ namespace ComunidadeAtiva.Aplicacao.Repositorio
     {
         public CorpoDirigenteAssociacaoRepositorio(DbContext BancoDados) : base(BancoDados)
         {
+        }
+
+        public async Task<CorpoDirigenteAssociacao> ObterDirigenteRelacional(string Id)
+        {
+          return await _BancoDados.Set<CorpoDirigenteAssociacao>().Where(x => x.UsuarioId == Id).FirstOrDefaultAsync();
         }
     }
 }
