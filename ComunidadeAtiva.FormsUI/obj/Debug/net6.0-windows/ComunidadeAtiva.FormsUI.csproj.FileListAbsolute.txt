@@ -84,3 +84,4 @@ C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.FormsUI\obj\Debug\net6.0-w
 C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.FormsUI\bin\Debug\net6.0-windows\Microsoft.AspNetCore.Identity.UI.dll
 C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.FormsUI\bin\Debug\net6.0-windows\Microsoft.Extensions.FileProviders.Embedded.dll
 C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.FormsUI\obj\Debug\net6.0-windows\ComunidadeAtiva.FormsUI.FormsModal.FrmCadMembro.resources
+C:\givanildo\Projetos\ComunidadeAtiva\ComunidadeAtiva.FormsUI\obj\Debug\net6.0-windows\ComunidadeAtiva.FormsUI.FormsModal.FrmDadosAssociacao.resources

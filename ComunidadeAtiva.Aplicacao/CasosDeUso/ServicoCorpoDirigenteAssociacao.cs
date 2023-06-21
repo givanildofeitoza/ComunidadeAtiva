@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace ComunidadeAtiva.Aplicacao.CasosDeUso
 {
-    public class ServicoCorpoDirigenteAssociacao : ICorpoDirigenteAssociacao
+    public class ServicoCorpoDirigenteAssociacao : IServicoCorpoDirigenteAssociacao
     {
         protected readonly IcorpoDirigenteAssociacaoRepositorio _corpoDirigenteAssociacaoRepositorio;
         protected readonly IMapper _mapper;

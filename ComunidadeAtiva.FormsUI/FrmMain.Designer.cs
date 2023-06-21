@@ -87,7 +87,7 @@
             button7.FlatStyle = FlatStyle.Flat;
             button7.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             button7.ForeColor = Color.LightSteelBlue;
-            button7.Location = new Point(21, 396);
+            button7.Location = new Point(21, 341);
             button7.Name = "button7";
             button7.Size = new Size(204, 48);
             button7.TabIndex = 11;
@@ -102,7 +102,7 @@
             button6.FlatStyle = FlatStyle.Flat;
             button6.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             button6.ForeColor = Color.LightSteelBlue;
-            button6.Location = new Point(21, 450);
+            button6.Location = new Point(21, 395);
             button6.Name = "button6";
             button6.Size = new Size(204, 48);
             button6.TabIndex = 10;
@@ -117,7 +117,7 @@
             button5.FlatStyle = FlatStyle.Flat;
             button5.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             button5.ForeColor = Color.LightSteelBlue;
-            button5.Location = new Point(21, 575);
+            button5.Location = new Point(21, 554);
             button5.Name = "button5";
             button5.Size = new Size(204, 48);
             button5.TabIndex = 9;
@@ -132,20 +132,20 @@
             button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             button4.ForeColor = Color.LightSteelBlue;
-            button4.Location = new Point(21, 521);
+            button4.Location = new Point(21, 500);
             button4.Name = "button4";
             button4.Size = new Size(204, 48);
             button4.TabIndex = 8;
             button4.Text = "Dados Associacao";
             button4.UseVisualStyleBackColor = false;
-            button4.Visible = false;
+            button4.Click += button4_Click;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Yu Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             label4.ForeColor = Color.LightSteelBlue;
-            label4.Location = new Point(21, 376);
+            label4.Location = new Point(21, 469);
             label4.Name = "label4";
             label4.Size = new Size(63, 17);
             label4.TabIndex = 7;

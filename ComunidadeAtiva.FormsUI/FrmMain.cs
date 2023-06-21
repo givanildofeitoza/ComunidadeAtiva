@@ -32,7 +32,8 @@ namespace ComunidadeAtiva.FormsUI
         public static IServicoBeneficioSocial _ServicoBeneficioSocial;
         public static IServicoNecessidadeEspecial _ServicoNecessidadeEspecial;
         public static IServiceSegurancaIdentity _ServiceSegurancaIdentity;
-        public static ICorpoDirigenteAssociacao _CorpoDirigenteAssociacao;
+        public static IServicoCorpoDirigenteAssociacao _CorpoDirigenteAssociacao;
+        public static IServicoAssociacao _ServicoAssociacao;
         public FrmMain(
             FileDbContext db,
             IServicoMorador ServicoMorador,
@@ -46,7 +47,8 @@ namespace ComunidadeAtiva.FormsUI
             IServicoBeneficioSocial ServicoBeneficioSocial,
             IServicoNecessidadeEspecial ServicoNecessidadeEspecial,
             IServiceSegurancaIdentity ServiceSegurancaIdentity,
-            ICorpoDirigenteAssociacao CorpoDirigenteAssociacao
+            IServicoCorpoDirigenteAssociacao CorpoDirigenteAssociacao,
+            IServicoAssociacao ServicoAssociacao
             )
         {
             InitializeComponent();
@@ -63,7 +65,7 @@ namespace ComunidadeAtiva.FormsUI
             _ServicoNecessidadeEspecial = ServicoNecessidadeEspecial;
             _ServiceSegurancaIdentity = ServiceSegurancaIdentity;
             _CorpoDirigenteAssociacao = CorpoDirigenteAssociacao;
-
+            _ServicoAssociacao = ServicoAssociacao;
             FrmLogin frmLogin = new FrmLogin();
             frmLogin.ShowDialog();
 
@@ -211,6 +213,12 @@ namespace ComunidadeAtiva.FormsUI
         {
             usuarioLogado = await _CorpoDirigenteAssociacao.ObterDirigenteRelacional(usuarioLogado.UsuarioId);
             lblOperadorLogado.Text = usuarioLogado == null ? "USUÁRIO ANÔNIMO" : usuarioLogado.Nome.ToUpper();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            FrmDadosAssociacao frmDadosAssociacao = new FrmDadosAssociacao();
+            frmDadosAssociacao.ShowDialog();
         }
     }
 }

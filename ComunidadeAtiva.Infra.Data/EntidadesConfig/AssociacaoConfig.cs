@@ -23,7 +23,7 @@ namespace ComunidadeAtiva.Infra.Data.EntidadesConfig
             builder.Property(p => p.Telefone).HasMaxLength(15);
             builder.Property(p => p.NomeFantasia).HasMaxLength(50).IsRequired();
             builder.Property(p => p.RazaoSocial).HasMaxLength(50).IsRequired();
-            builder.Property(p => p.site).HasMaxLength(50).IsRequired();
+            builder.Property(p => p.Site).HasMaxLength(50).IsRequired();
 
         }
     }

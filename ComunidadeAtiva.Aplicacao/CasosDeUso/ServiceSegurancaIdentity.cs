@@ -25,12 +25,12 @@ namespace ComunidadeAtiva.Aplicacao.CasosDeUso
         private readonly UserManager<IdentityUser> _UserManager;
         private readonly SignInManager<IdentityUser> _SignInManager;
         private readonly ICapturarNotificacao _notificacao;
-        private readonly ICorpoDirigenteAssociacao _CorpoDirigenteAssociacao;
+        private readonly IServicoCorpoDirigenteAssociacao _CorpoDirigenteAssociacao;
 
         public ServiceSegurancaIdentity(UserManager<IdentityUser> userManager, 
             SignInManager<IdentityUser> signInManager,
             ICapturarNotificacao notificacao,
-            ICorpoDirigenteAssociacao CorpoDirigenteAssociacao)
+            IServicoCorpoDirigenteAssociacao CorpoDirigenteAssociacao)
         {
             _UserManager = userManager;
             _SignInManager = signInManager;

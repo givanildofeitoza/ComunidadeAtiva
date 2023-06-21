@@ -58,13 +58,12 @@ namespace ComunidadeAtiva.FormsUI
                 .AddSingleton<IServicoNecessidadeMorador, ServicoNecessidadeMorador>()
                 .AddSingleton<IServicoBeneficioSocial, ServicoBeneficioSocial>()
                 .AddSingleton<IServicoNecessidadeEspecial, ServicoNecessidadeEspecial>()
-                .AddSingleton<ICorpoDirigenteAssociacao,ServicoCorpoDirigenteAssociacao>()
+                .AddSingleton<IServicoCorpoDirigenteAssociacao,ServicoCorpoDirigenteAssociacao>()
+                .AddSingleton<IServicoAssociacao,ServicoAssociacao> ()
                 .AddSingleton<IruaRepositorio, RuaRepositorio>()
+                .AddSingleton<IassociacaoRepositorio,AssociacaoRepositorio>()
                 .AddSingleton<IServiceSegurancaIdentity, ServiceSegurancaIdentity>()
-
-
                 //.AddIdentityCore<IdentityUser>()
-
 
                 //Para aparecer o AddAutomaper é preciso ao pacote nuguet AutoMappe.Extensions.Microsoft.DependencyInjection.
                 .AddScoped<FrmMain>()
