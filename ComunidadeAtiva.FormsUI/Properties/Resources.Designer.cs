@@ -63,6 +63,16 @@ namespace ComunidadeAtiva.FormsUI.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_pesquisar_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-pesquisar-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_usuário_60 {
             get {
                 object obj = ResourceManager.GetObject("icons8-usuário-60", resourceCulture);

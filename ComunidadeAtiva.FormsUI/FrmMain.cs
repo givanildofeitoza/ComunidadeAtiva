@@ -13,11 +13,18 @@ using ComunidadeAtiva.Aplicacao.CasosDeUso;
 using Microsoft.AspNetCore.Identity;
 using ComunidadeAtiva.Aplicacao.DTO;
 using ComunidadeAtiva.Dominio.Entidades;
+using ComunidadeAtiva.Dominio.ObjetoValor;
+using System.Security.Cryptography;
+using ComunidadeAtiva.Dominio.ObjetoValor;
 
 namespace ComunidadeAtiva.FormsUI
 {
     public partial class FrmMain : Form
     {
+        public static string razao = "";
+        public static string cnpj = "";
+        public static string endereco = "";
+
 
         public static CorpoDirigenteAssociacaoDTO usuarioLogado = new CorpoDirigenteAssociacaoDTO();
         private readonly FileDbContext _db;
@@ -83,9 +90,13 @@ namespace ComunidadeAtiva.FormsUI
             {
                 case "MORADORES":
                     {
+                        BuscaObjectDTO buscaMorador = new BuscaObjectDTO("", "", "", "", "");
+                        buscaMorador.TextoBusca = txtBusca.Text;
+                       
+
                         _FrmCrudMorador Fmorador = new _FrmCrudMorador(_ServicoMorador, _beneficioSocial, _necessidadeEspecial, _notificacao, _ruaService, _db, AcaoControleCadastro.ALTERAR);
                         flowLayoutPanel1.Controls.Clear();
-                        var listMoradores = await _ServicoMorador.ObterTodosRelacionalMorador(10, 0);
+                        var listMoradores = await _ServicoMorador.ObterTodosRelacionalMorador(10, 0, buscaMorador);
                         CustomListItem[] listItem = new CustomListItem[listMoradores.Count()];
                         int i = 0;
                         foreach (var item in listMoradores)
@@ -160,6 +171,7 @@ namespace ComunidadeAtiva.FormsUI
         private void btnMorador_Click(object sender, EventArgs e)
         {
             lblOpcaoAtiva.Text = "MORADORES";
+            flowLayoutPanel1.Controls.Clear();
         }
         private void imgAlter_Click(object sender, EventArgs e)
         {
@@ -196,11 +208,13 @@ namespace ComunidadeAtiva.FormsUI
         private void button6_Click(object sender, EventArgs e)
         {
             lblOpcaoAtiva.Text = "PROGRAMAS SOCIAIS";
+            flowLayoutPanel1.Controls.Clear();
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
             lblOpcaoAtiva.Text = "NECESSIDADES ESPECIAIS";
+            flowLayoutPanel1.Controls.Clear();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -213,12 +227,37 @@ namespace ComunidadeAtiva.FormsUI
         {
             usuarioLogado = await _CorpoDirigenteAssociacao.ObterDirigenteRelacional(usuarioLogado.UsuarioId);
             lblOperadorLogado.Text = usuarioLogado == null ? "USUÁRIO ANÔNIMO" : usuarioLogado.Nome.ToUpper();
+
+
+            IEnumerable<AssociacaoDTO> associacao = await _ServicoAssociacao.ObterAssociacaoTodos(1, 0);
+            if (associacao.Count() > 0)
+            {
+
+                razao = associacao.FirstOrDefault().NomeFantasia;
+                cnpj = "CNPJ: " + associacao.FirstOrDefault().Cnpj + " " + "Fone: " + associacao.FirstOrDefault().Telefone;
+                endereco = associacao.FirstOrDefault().Endereco + " " + associacao.FirstOrDefault().Cidade + "-" + associacao.FirstOrDefault().Estado;
+
+                lblRazao.Text = razao;
+
+            }
+
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             FrmDadosAssociacao frmDadosAssociacao = new FrmDadosAssociacao();
             frmDadosAssociacao.ShowDialog();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            FrmCadMembro frmCadMembro = new FrmCadMembro();
+            frmCadMembro.ShowDialog();
+        }
+
+        private void txtBusca_Enter(object sender, EventArgs e)
+        {
+           txtBusca.Text="";
         }
     }
 }

@@ -3,6 +3,7 @@ using ComunidadeAtiva.Aplicacao.CasosDeUso.Interface;
 using ComunidadeAtiva.Aplicacao.DTO;
 using ComunidadeAtiva.Dominio.Entity;
 using ComunidadeAtiva.Dominio.Interfaces;
+using ComunidadeAtiva.Dominio.ObjetoValor;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -62,10 +63,10 @@ namespace ComunidadeAtiva.Aplicacao.CasosDeUso
             return _Mapper.Map<MoradorDTO>(await _MoradorRepositorio.ObterMoradorRelacionalRuaId(Id));
             
         }
-        public async Task<IEnumerable<MoradorDTO>> ObterTodosRelacionalMorador(int t, int s)
+        public async Task<IEnumerable<MoradorDTO>> ObterTodosRelacionalMorador(int t, int s, BuscaObjectDTO pMorador)
         {
-            return _Mapper.Map<IEnumerable<MoradorDTO>>(await _MoradorRepositorio.ObterTodosRelacionalMorador(t,s));
-            
+            var m = _Mapper.Map<BuscaObject>(pMorador);
+            return _Mapper.Map<IEnumerable<MoradorDTO>>(await _MoradorRepositorio.ObterTodosRelacionalMorador(t, s, m));            
         }
         
     }

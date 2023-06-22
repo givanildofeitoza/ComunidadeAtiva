@@ -43,20 +43,24 @@
             pictureBox1 = new PictureBox();
             label1 = new Label();
             panel1 = new Panel();
-            button1 = new Button();
-            panel3 = new Panel();
+            pictureBox2 = new PictureBox();
             imgAlter = new PictureBox();
+            button1 = new Button();
             lblOpcaoAtiva = new Label();
-            textBox1 = new TextBox();
+            txtBusca = new TextBox();
             button8 = new Button();
+            panel3 = new Panel();
             panel4 = new Panel();
+            panel5 = new Panel();
+            lblRazao = new Label();
             flowLayoutPanel1 = new FlowLayoutPanel();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
-            panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgAlter).BeginInit();
             panel4.SuspendLayout();
+            panel5.SuspendLayout();
             SuspendLayout();
             // 
             // panel2
@@ -242,12 +246,41 @@
             // panel1
             // 
             panel1.BackColor = Color.WhiteSmoke;
+            panel1.Controls.Add(pictureBox2);
+            panel1.Controls.Add(imgAlter);
             panel1.Controls.Add(button1);
+            panel1.Controls.Add(lblOpcaoAtiva);
+            panel1.Controls.Add(txtBusca);
+            panel1.Controls.Add(button8);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(264, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(854, 36);
+            panel1.Size = new Size(854, 41);
             panel1.TabIndex = 2;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Cursor = Cursors.Hand;
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(749, 8);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(30, 30);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 10;
+            pictureBox2.TabStop = false;
+            pictureBox2.Click += pictureBox2_Click;
+            // 
+            // imgAlter
+            // 
+            imgAlter.Cursor = Cursors.Hand;
+            imgAlter.Image = (Image)resources.GetObject("imgAlter.Image");
+            imgAlter.Location = new Point(378, 9);
+            imgAlter.Name = "imgAlter";
+            imgAlter.Size = new Size(19, 19);
+            imgAlter.SizeMode = PictureBoxSizeMode.StretchImage;
+            imgAlter.TabIndex = 9;
+            imgAlter.TabStop = false;
+            imgAlter.Click += imgAlter_Click;
             // 
             // button1
             // 
@@ -255,92 +288,102 @@
             button1.FlatAppearance.BorderColor = Color.White;
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Segoe UI Variable Display", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.Location = new Point(779, 0);
+            button1.Location = new Point(800, 0);
             button1.Name = "button1";
-            button1.Size = new Size(75, 36);
+            button1.Size = new Size(54, 41);
             button1.TabIndex = 0;
             button1.TabStop = false;
             button1.Text = "X";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click_1;
             // 
-            // panel3
-            // 
-            panel3.BackColor = Color.WhiteSmoke;
-            panel3.Controls.Add(imgAlter);
-            panel3.Controls.Add(lblOpcaoAtiva);
-            panel3.Controls.Add(textBox1);
-            panel3.Controls.Add(button8);
-            panel3.Dock = DockStyle.Top;
-            panel3.Location = new Point(264, 36);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(854, 132);
-            panel3.TabIndex = 3;
-            // 
-            // imgAlter
-            // 
-            imgAlter.Cursor = Cursors.Hand;
-            imgAlter.Image = (Image)resources.GetObject("imgAlter.Image");
-            imgAlter.Location = new Point(10, 91);
-            imgAlter.Name = "imgAlter";
-            imgAlter.Size = new Size(26, 26);
-            imgAlter.SizeMode = PictureBoxSizeMode.StretchImage;
-            imgAlter.TabIndex = 9;
-            imgAlter.TabStop = false;
-            imgAlter.Click += imgAlter_Click;
-            // 
             // lblOpcaoAtiva
             // 
             lblOpcaoAtiva.AutoSize = true;
             lblOpcaoAtiva.Cursor = Cursors.Hand;
-            lblOpcaoAtiva.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            lblOpcaoAtiva.Location = new Point(39, 95);
+            lblOpcaoAtiva.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblOpcaoAtiva.Location = new Point(403, 9);
             lblOpcaoAtiva.Name = "lblOpcaoAtiva";
-            lblOpcaoAtiva.Size = new Size(99, 20);
+            lblOpcaoAtiva.Size = new Size(89, 17);
             lblOpcaoAtiva.TabIndex = 6;
             lblOpcaoAtiva.Text = "MORADORES";
             // 
-            // textBox1
+            // txtBusca
             // 
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point);
-            textBox1.ForeColor = SystemColors.WindowFrame;
-            textBox1.Location = new Point(26, 20);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(207, 23);
-            textBox1.TabIndex = 5;
-            textBox1.Text = "Busca";
+            txtBusca.BorderStyle = BorderStyle.FixedSingle;
+            txtBusca.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point);
+            txtBusca.ForeColor = SystemColors.WindowFrame;
+            txtBusca.Location = new Point(19, 9);
+            txtBusca.Name = "txtBusca";
+            txtBusca.Size = new Size(207, 23);
+            txtBusca.TabIndex = 5;
+            txtBusca.Text = "Busca";
+            txtBusca.Enter += txtBusca_Enter;
             // 
             // button8
             // 
-            button8.BackColor = Color.SteelBlue;
+            button8.BackColor = Color.Transparent;
+            button8.FlatAppearance.BorderSize = 0;
             button8.FlatStyle = FlatStyle.Flat;
-            button8.ForeColor = Color.White;
-            button8.Location = new Point(239, 20);
+            button8.ForeColor = Color.Transparent;
+            button8.Image = (Image)resources.GetObject("button8.Image");
+            button8.Location = new Point(230, 9);
             button8.Name = "button8";
-            button8.Size = new Size(75, 23);
+            button8.Size = new Size(42, 26);
             button8.TabIndex = 4;
-            button8.Text = "Buscar";
             button8.UseVisualStyleBackColor = false;
             button8.Click += button8_Click;
+            // 
+            // panel3
+            // 
+            panel3.BackColor = Color.WhiteSmoke;
+            panel3.Dock = DockStyle.Top;
+            panel3.Location = new Point(264, 41);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(854, 10);
+            panel3.TabIndex = 3;
+            panel3.Visible = false;
             // 
             // panel4
             // 
             panel4.BackColor = Color.WhiteSmoke;
+            panel4.Controls.Add(panel5);
             panel4.Controls.Add(flowLayoutPanel1);
             panel4.Dock = DockStyle.Fill;
-            panel4.Location = new Point(264, 168);
+            panel4.Location = new Point(264, 51);
             panel4.Name = "panel4";
-            panel4.Size = new Size(854, 600);
+            panel4.Size = new Size(854, 717);
             panel4.TabIndex = 4;
+            // 
+            // panel5
+            // 
+            panel5.BackColor = Color.White;
+            panel5.Controls.Add(lblRazao);
+            panel5.Dock = DockStyle.Bottom;
+            panel5.Location = new Point(0, 692);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(854, 25);
+            panel5.TabIndex = 2;
+            // 
+            // lblRazao
+            // 
+            lblRazao.AutoSize = true;
+            lblRazao.Font = new Font("Segoe UI", 6.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblRazao.ForeColor = Color.Gray;
+            lblRazao.Location = new Point(328, 7);
+            lblRazao.Name = "lblRazao";
+            lblRazao.Size = new Size(13, 12);
+            lblRazao.TabIndex = 14;
+            lblRazao.Text = "__";
             // 
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.AutoScroll = true;
-            flowLayoutPanel1.Dock = DockStyle.Fill;
+            flowLayoutPanel1.BackColor = Color.White;
+            flowLayoutPanel1.Dock = DockStyle.Top;
             flowLayoutPanel1.Location = new Point(0, 0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(854, 600);
+            flowLayoutPanel1.Size = new Size(854, 691);
             flowLayoutPanel1.TabIndex = 0;
             // 
             // FrmMain
@@ -361,10 +404,12 @@
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
+            panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)imgAlter).EndInit();
             panel4.ResumeLayout(false);
+            panel5.ResumeLayout(false);
+            panel5.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -387,9 +432,12 @@
         private Panel panel3;
         private Panel panel4;
         private Button button8;
-        private TextBox textBox1;
+        private TextBox txtBusca;
         private FlowLayoutPanel flowLayoutPanel1;
         private Label lblOpcaoAtiva;
         private PictureBox imgAlter;
+        private Panel panel5;
+        private Label lblRazao;
+        private PictureBox pictureBox2;
     }
 }

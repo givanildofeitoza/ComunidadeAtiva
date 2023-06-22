@@ -62,6 +62,7 @@
             // 
             // txtRazao
             // 
+            txtRazao.CharacterCasing = CharacterCasing.Upper;
             txtRazao.Location = new Point(26, 77);
             txtRazao.Name = "txtRazao";
             txtRazao.Size = new Size(507, 23);
@@ -69,6 +70,7 @@
             // 
             // txtFantasia
             // 
+            txtFantasia.CharacterCasing = CharacterCasing.Upper;
             txtFantasia.Location = new Point(26, 125);
             txtFantasia.Name = "txtFantasia";
             txtFantasia.Size = new Size(507, 23);
@@ -76,6 +78,7 @@
             // 
             // txtVicePresidente
             // 
+            txtVicePresidente.CharacterCasing = CharacterCasing.Upper;
             txtVicePresidente.Location = new Point(26, 226);
             txtVicePresidente.Name = "txtVicePresidente";
             txtVicePresidente.Size = new Size(507, 23);
@@ -83,6 +86,7 @@
             // 
             // txtEndereco
             // 
+            txtEndereco.CharacterCasing = CharacterCasing.Upper;
             txtEndereco.Location = new Point(26, 328);
             txtEndereco.Name = "txtEndereco";
             txtEndereco.Size = new Size(267, 23);
@@ -90,13 +94,15 @@
             // 
             // txtTelefone
             // 
-            txtTelefone.Location = new Point(287, 280);
+            txtTelefone.CharacterCasing = CharacterCasing.Upper;
+            txtTelefone.Location = new Point(317, 280);
             txtTelefone.Name = "txtTelefone";
-            txtTelefone.Size = new Size(246, 23);
+            txtTelefone.Size = new Size(216, 23);
             txtTelefone.TabIndex = 4;
             // 
             // txtPresidente
             // 
+            txtPresidente.CharacterCasing = CharacterCasing.Upper;
             txtPresidente.Location = new Point(26, 176);
             txtPresidente.Name = "txtPresidente";
             txtPresidente.Size = new Size(507, 23);
@@ -104,6 +110,7 @@
             // 
             // txtCnpj
             // 
+            txtCnpj.CharacterCasing = CharacterCasing.Upper;
             txtCnpj.Location = new Point(26, 279);
             txtCnpj.Name = "txtCnpj";
             txtCnpj.Size = new Size(225, 23);
@@ -191,7 +198,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(287, 260);
+            label6.Location = new Point(317, 259);
             label6.Name = "label6";
             label6.Size = new Size(51, 15);
             label6.TabIndex = 12;
@@ -251,6 +258,7 @@
             // 
             // TxtCidade
             // 
+            TxtCidade.CharacterCasing = CharacterCasing.Upper;
             TxtCidade.Location = new Point(26, 380);
             TxtCidade.Name = "TxtCidade";
             TxtCidade.Size = new Size(267, 23);
@@ -258,6 +266,7 @@
             // 
             // txtBairro
             // 
+            txtBairro.CharacterCasing = CharacterCasing.Upper;
             txtBairro.Location = new Point(317, 328);
             txtBairro.Name = "txtBairro";
             txtBairro.Size = new Size(216, 23);
@@ -296,6 +305,7 @@
             // 
             // txEstado
             // 
+            txEstado.CharacterCasing = CharacterCasing.Upper;
             txEstado.Location = new Point(317, 380);
             txEstado.Name = "txEstado";
             txEstado.Size = new Size(67, 23);

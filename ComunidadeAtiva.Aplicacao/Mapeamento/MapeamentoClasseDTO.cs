@@ -3,7 +3,7 @@ using ComunidadeAtiva.Aplicacao.CasosDeUso.Interface;
 using ComunidadeAtiva.Aplicacao.DTO;
 using ComunidadeAtiva.Dominio.Entidades;
 using ComunidadeAtiva.Dominio.Entity;
-
+using ComunidadeAtiva.Dominio.ObjetoValor;
 
 namespace ComunidadeAtiva.Aplicacao.Mapeamento
 {
@@ -17,6 +17,7 @@ namespace ComunidadeAtiva.Aplicacao.Mapeamento
             CreateMap<MoradorNecessidadeEspecial, NecessidadesMoradorDTO>().ReverseMap();
             CreateMap<CorpoDirigenteAssociacao, CorpoDirigenteAssociacaoDTO>().ReverseMap();
             CreateMap<Associacao, AssociacaoDTO>().ReverseMap();
+            CreateMap<BuscaObject,BuscaObjectDTO>().ReverseMap();
             CreateMap<Morador, MoradorDTO>().ForMember(dest => dest.Cpf, opt => opt.MapFrom(src=> src.Cpf.CPF)).ReverseMap();
             CreateMap<Rua, RuaDTO>().ForMember(dest => dest.Cep, opt => opt.MapFrom(src => src.Cep.CEP)).ReverseMap();
         }

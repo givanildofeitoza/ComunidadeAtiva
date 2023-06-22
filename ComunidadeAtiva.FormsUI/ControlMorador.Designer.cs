@@ -62,6 +62,7 @@
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(778, 437);
             flowLayoutPanel1.TabIndex = 0;
+            flowLayoutPanel1.Visible = false;
             // 
             // label1
             // 

@@ -21,7 +21,7 @@ namespace ComunidadeAtiva.Aplicacao.CasosDeUso.Interface
 
         public Task<IEnumerable<MoradorDTO>> ObterMradorTodos(int skip, int take);
         public  Task<MoradorDTO> ObterMoradorRelacionalRuaId(int id);
-        public  Task<IEnumerable<MoradorDTO>> ObterTodosRelacionalMorador(int t, int s);
+        public  Task<IEnumerable<MoradorDTO>> ObterTodosRelacionalMorador(int t, int s, BuscaObjectDTO pMorador);
 
     }
 }

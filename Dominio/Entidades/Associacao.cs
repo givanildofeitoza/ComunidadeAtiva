@@ -58,6 +58,7 @@ namespace ComunidadeAtiva.Dominio.Entity
         public void Validar(ICapturarNotificacao notificacao)
         {
             Cnpj = Comuns.LimparString(new string[] { ".", "-", "/" }, Cnpj);
+            Telefone = Comuns.LimparString(new string[] { ".", "-", "/" }, Telefone);
 
             notificacao.LimparErros();
             if (string.IsNullOrEmpty(RazaoSocial)) {

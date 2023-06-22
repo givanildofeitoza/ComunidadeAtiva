@@ -34,10 +34,10 @@
             txtInfo02 = new Label();
             panel1 = new Panel();
             imgBox = new PictureBox();
+            imgAlter = new PictureBox();
             txtInfo03 = new Label();
             txtInfo04 = new Label();
             panel2 = new Panel();
-            imgAlter = new PictureBox();
             imgDelete = new PictureBox();
             lblLabelCodigo = new Label();
             panel1.SuspendLayout();
@@ -49,20 +49,21 @@
             // TxtTitulo
             // 
             TxtTitulo.AutoSize = true;
-            TxtTitulo.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            TxtTitulo.ForeColor = SystemColors.WindowText;
-            TxtTitulo.Location = new Point(96, 5);
+            TxtTitulo.Font = new Font("Sans Serif Collection", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            TxtTitulo.ForeColor = Color.FromArgb(64, 64, 64);
+            TxtTitulo.Location = new Point(99, 19);
             TxtTitulo.Name = "TxtTitulo";
-            TxtTitulo.Size = new Size(51, 20);
+            TxtTitulo.Size = new Size(78, 32);
             TxtTitulo.TabIndex = 0;
             TxtTitulo.Text = "label1";
+            TxtTitulo.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // txtInfo01
             // 
             txtInfo01.AutoSize = true;
             txtInfo01.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             txtInfo01.ForeColor = SystemColors.WindowFrame;
-            txtInfo01.Location = new Point(142, 27);
+            txtInfo01.Location = new Point(147, 53);
             txtInfo01.Name = "txtInfo01";
             txtInfo01.Size = new Size(38, 13);
             txtInfo01.TabIndex = 1;
@@ -72,7 +73,7 @@
             // 
             txtInfo02.AutoSize = true;
             txtInfo02.ForeColor = SystemColors.WindowFrame;
-            txtInfo02.Location = new Point(98, 43);
+            txtInfo02.Location = new Point(103, 72);
             txtInfo02.Name = "txtInfo02";
             txtInfo02.Size = new Size(38, 15);
             txtInfo02.TabIndex = 2;
@@ -82,27 +83,41 @@
             // 
             panel1.BackColor = Color.Transparent;
             panel1.Controls.Add(imgBox);
+            panel1.Controls.Add(imgAlter);
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(98, 71);
+            panel1.Size = new Size(98, 93);
             panel1.TabIndex = 3;
             // 
             // imgBox
             // 
-            imgBox.Image = Properties.Resources.user1;
-            imgBox.Location = new Point(37, 13);
+            imgBox.Image = (Image)resources.GetObject("imgBox.Image");
+            imgBox.Location = new Point(3, 0);
             imgBox.Name = "imgBox";
-            imgBox.Size = new Size(45, 45);
+            imgBox.Size = new Size(30, 30);
             imgBox.SizeMode = PictureBoxSizeMode.StretchImage;
             imgBox.TabIndex = 4;
             imgBox.TabStop = false;
+            imgBox.Visible = false;
+            // 
+            // imgAlter
+            // 
+            imgAlter.Cursor = Cursors.Hand;
+            imgAlter.Image = (Image)resources.GetObject("imgAlter.Image");
+            imgAlter.Location = new Point(25, 22);
+            imgAlter.Name = "imgAlter";
+            imgAlter.Size = new Size(50, 50);
+            imgAlter.SizeMode = PictureBoxSizeMode.StretchImage;
+            imgAlter.TabIndex = 8;
+            imgAlter.TabStop = false;
+            imgAlter.Click += imgAlter_Click;
             // 
             // txtInfo03
             // 
             txtInfo03.AutoSize = true;
             txtInfo03.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             txtInfo03.ForeColor = SystemColors.WindowFrame;
-            txtInfo03.Location = new Point(355, 29);
+            txtInfo03.Location = new Point(390, 31);
             txtInfo03.Name = "txtInfo03";
             txtInfo03.Size = new Size(38, 13);
             txtInfo03.TabIndex = 4;
@@ -113,7 +128,7 @@
             txtInfo04.AutoSize = true;
             txtInfo04.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             txtInfo04.ForeColor = SystemColors.WindowFrame;
-            txtInfo04.Location = new Point(529, 29);
+            txtInfo04.Location = new Point(597, 31);
             txtInfo04.Name = "txtInfo04";
             txtInfo04.Size = new Size(38, 13);
             txtInfo04.TabIndex = 5;
@@ -122,31 +137,18 @@
             // panel2
             // 
             panel2.BackColor = SystemColors.ControlDark;
-            panel2.Dock = DockStyle.Bottom;
-            panel2.Location = new Point(0, 71);
+            panel2.Location = new Point(104, 97);
             panel2.Name = "panel2";
-            panel2.Size = new Size(789, 2);
+            panel2.Size = new Size(685, 2);
             panel2.TabIndex = 7;
-            // 
-            // imgAlter
-            // 
-            imgAlter.Cursor = Cursors.Hand;
-            imgAlter.Image = (Image)resources.GetObject("imgAlter.Image");
-            imgAlter.Location = new Point(691, 21);
-            imgAlter.Name = "imgAlter";
-            imgAlter.Size = new Size(26, 26);
-            imgAlter.SizeMode = PictureBoxSizeMode.StretchImage;
-            imgAlter.TabIndex = 8;
-            imgAlter.TabStop = false;
-            imgAlter.Click += imgAlter_Click;
             // 
             // imgDelete
             // 
             imgDelete.Cursor = Cursors.Hand;
             imgDelete.Image = (Image)resources.GetObject("imgDelete.Image");
-            imgDelete.Location = new Point(737, 21);
+            imgDelete.Location = new Point(605, 49);
             imgDelete.Name = "imgDelete";
-            imgDelete.Size = new Size(26, 26);
+            imgDelete.Size = new Size(23, 23);
             imgDelete.SizeMode = PictureBoxSizeMode.StretchImage;
             imgDelete.TabIndex = 9;
             imgDelete.TabStop = false;
@@ -156,7 +158,7 @@
             lblLabelCodigo.AutoSize = true;
             lblLabelCodigo.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             lblLabelCodigo.ForeColor = SystemColors.WindowFrame;
-            lblLabelCodigo.Location = new Point(98, 27);
+            lblLabelCodigo.Location = new Point(103, 53);
             lblLabelCodigo.Name = "lblLabelCodigo";
             lblLabelCodigo.Size = new Size(48, 13);
             lblLabelCodigo.TabIndex = 10;
@@ -166,9 +168,9 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             Controls.Add(lblLabelCodigo);
             Controls.Add(imgDelete);
-            Controls.Add(imgAlter);
             Controls.Add(panel2);
             Controls.Add(txtInfo04);
             Controls.Add(txtInfo03);
@@ -177,7 +179,7 @@
             Controls.Add(txtInfo01);
             Controls.Add(TxtTitulo);
             Name = "CustomListItem";
-            Size = new Size(789, 73);
+            Size = new Size(789, 102);
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)imgBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)imgAlter).EndInit();

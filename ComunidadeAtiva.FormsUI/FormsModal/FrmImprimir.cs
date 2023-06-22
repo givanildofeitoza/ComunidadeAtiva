@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using ComunidadeAtiva.Aplicacao.DTO;
 using ComunidadeAtiva.FormsUI.Classes;
 
 namespace ComunidadeAtiva.FormsUI.FormsModal
@@ -12,7 +13,8 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
 
         private async void button1_Click(object sender, EventArgs e)
         {
-            var moradores = await FrmMain._ServicoMorador.ObterTodosRelacionalMorador(5000, 0);
+            BuscaObjectDTO moradorDTO = new BuscaObjectDTO("0","","","","");
+            var moradores = await FrmMain._ServicoMorador.ObterTodosRelacionalMorador(5000, 0, moradorDTO);
             var descricaoBeneficios = await FrmMain._beneficioSocial.ObterTodos(100, 0);
             var descricaoNecessidades = await FrmMain._necessidadeEspecial.ObterTodos(100, 0);
 
@@ -37,8 +39,10 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
 
             RGprint rgPrint = new RGprint(true, 55);
             rgPrint.impCabecalho("LISTAGEM DE MORADORES", 15, FontStyle.Bold, 16, true);
-            rgPrint.impCabecalho("CABEÇALHO 02", 1, FontStyle.Regular, 16, true);
-            rgPrint.impCabecalho("CABEÇALHO 03", 1, FontStyle.Regular, 16, true);
+            rgPrint.impCabecalho("", 15, FontStyle.Bold, 16, true);
+            rgPrint.impCabecalho(FrmMain.razao, 1, FontStyle.Regular, 16, true);
+            rgPrint.impCabecalho(FrmMain.cnpj, 1, FontStyle.Regular, 16, true);
+            rgPrint.impCabecalho(FrmMain.endereco, 1, FontStyle.Regular, 16, true);
             rgPrint.impCabecalho("Tipo de Relatório: " + cboTipo.Text, 1, FontStyle.Regular, 16, true);
             rgPrint.impCabecalho("=================================================================================", 1, FontStyle.Regular, 16, true);
             rgPrint.impCabecalho("[ MORADOR                                                           ][ RUA                                                           ]", 1, FontStyle.Regular, 16, true);

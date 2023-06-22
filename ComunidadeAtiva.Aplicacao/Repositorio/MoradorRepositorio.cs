@@ -1,8 +1,10 @@
-﻿using ComunidadeAtiva.Dominio.Entidades;
+﻿using ComunidadeAtiva.Aplicacao.DTO;
+using ComunidadeAtiva.Dominio.Entidades;
 using ComunidadeAtiva.Dominio.Entity;
 using ComunidadeAtiva.Dominio.Interfaces;
 using ComunidadeAtiva.Infra.Data.RepositorioGenerico;
 using Microsoft.EntityFrameworkCore;
+using ComunidadeAtiva.Dominio.ObjetoValor;
 using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using System;
 using System.Collections.Generic;
@@ -29,11 +31,21 @@ namespace ComunidadeAtiva.Aplicacao.Repositorio
             .Include(b => b.moradorBeneficioSocial)
             .AsNoTracking().FirstOrDefaultAsync();
         }
-        public async Task<IEnumerable<Morador>> ObterTodosRelacionalMorador(int t, int s)
-            => _Entidade.Include(r => r.rua).
-            Include(n=>n.necessidadeEspecial).
-            Include(b => b.moradorBeneficioSocial).
-            AsNoTracking().ToList().Take(t).Skip(s);
+        public async Task<IEnumerable<Morador>> ObterTodosRelacionalMorador(int t, int s, BuscaObject pMorador)
+        {
+
+            var idPesq = pMorador.TextoBusca.All(char.IsDigit)? pMorador.TextoBusca : "0";
+            idPesq     = idPesq.Length > 6 ? idPesq.Substring(0, 6): idPesq.Substring(0, idPesq.Length);     
+
+            return await _Entidade.Where(x => x.Nome.Contains(pMorador.TextoBusca) || x.Cpf.CPF == pMorador.TextoBusca || x.id == int.Parse(idPesq))
+              .Include(r => r.rua)
+              .Include(n => n.necessidadeEspecial)
+              .Include(b => b.moradorBeneficioSocial)
+              .Take(t).Skip(s)
+              .AsNoTracking().ToListAsync();
+
+        }
+       
 
     }
 

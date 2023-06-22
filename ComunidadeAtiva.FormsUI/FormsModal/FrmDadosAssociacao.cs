@@ -35,12 +35,12 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
             associacaoDTO.Cidade = TxtCidade.Text;
             associacaoDTO.Email = txtEmail.Text;
             associacaoDTO.Site = TxtSite.Text;
-            associacaoDTO.Estado = txEstado.Text.Substring(0,2);
+            associacaoDTO.Estado = txEstado.Text.Substring(0, 2);
 
             try
             {
                 //IEnumerable<AssociacaoDTO> associacao = await FrmMain._ServicoAssociacao.ObterAssociacaoTodos(2, 0);
-                AssociacaoDTO  associacao = await FrmMain._ServicoAssociacao.ObterAssociacaoPorId(_id);
+                AssociacaoDTO associacao = await FrmMain._ServicoAssociacao.ObterAssociacaoPorId(_id);
                 if (associacao is null)
                 {
                     await FrmMain._ServicoAssociacao.CadastrarAssociacao(associacaoDTO);
