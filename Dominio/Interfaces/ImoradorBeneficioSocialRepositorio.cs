@@ -5,6 +5,7 @@ namespace ComunidadeAtiva.Dominio.Interfaces
 {
     public interface ImoradorBeneficioSocialRepositorio: IrepositorioGenerico<MoradorBeneficioSocial>
     {
-    
+        public Task DeletarPorIdBbeneficio(int Id);
     }
+  
 }

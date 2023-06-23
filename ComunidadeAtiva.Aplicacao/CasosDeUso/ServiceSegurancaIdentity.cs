@@ -6,11 +6,6 @@ using ComunidadeAtiva.Dominio.Validacao;
 using ComunidadeAtiva.Infra.Data.DbContextFiles;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +17,7 @@ namespace ComunidadeAtiva.Aplicacao.CasosDeUso
 {
     public class ServiceSegurancaIdentity : IServiceSegurancaIdentity
     {
-        private readonly UserManager<IdentityUser> _UserManager;
+        protected readonly UserManager<IdentityUser> _UserManager;
         private readonly SignInManager<IdentityUser> _SignInManager;
         private readonly ICapturarNotificacao _notificacao;
         private readonly IServicoCorpoDirigenteAssociacao _CorpoDirigenteAssociacao;

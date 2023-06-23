@@ -793,6 +793,7 @@
       "ComunidadeAtiva.Ioc/1.0.0": {
         "dependencies": {
           "AutoMapper": "12.0.1",
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
           "ComunidadeAtiva.Aplicacao": "1.0.0",
           "ComunidadeAtiva.Infra.Data": "1.0.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "7.0.0",

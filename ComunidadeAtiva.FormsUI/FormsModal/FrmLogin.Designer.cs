@@ -219,7 +219,6 @@
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(296, 16);
             txtEmail.TabIndex = 10;
-            txtEmail.Text = "givanildo@bol.com.br";
             // 
             // panel4
             // 
@@ -250,7 +249,6 @@
             txtSenha.PasswordChar = '*';
             txtSenha.Size = new Size(296, 16);
             txtSenha.TabIndex = 11;
-            txtSenha.Text = "Abc@123";
             // 
             // label1
             // 

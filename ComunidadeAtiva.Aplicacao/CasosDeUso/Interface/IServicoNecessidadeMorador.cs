@@ -14,5 +14,6 @@ namespace ComunidadeAtiva.Aplicacao.CasosDeUso.Interface
         public Task CadastrarNecessidadeMorador(NecessidadesMoradorDTO MoradorDto);
         public Task AlterarNecessidadeMorador(NecessidadesMoradorDTO MoradorDto);
         public Task DeletarNecessidadeMorador(NecessidadesMoradorDTO MoradorDto);
+        public Task DeletarNecessidadePorIdNecessidade(int Id);
     }
 }

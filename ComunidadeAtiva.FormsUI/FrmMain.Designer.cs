@@ -274,7 +274,7 @@
             // 
             imgAlter.Cursor = Cursors.Hand;
             imgAlter.Image = (Image)resources.GetObject("imgAlter.Image");
-            imgAlter.Location = new Point(378, 9);
+            imgAlter.Location = new Point(319, 10);
             imgAlter.Name = "imgAlter";
             imgAlter.Size = new Size(19, 19);
             imgAlter.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -301,10 +301,10 @@
             // 
             lblOpcaoAtiva.AutoSize = true;
             lblOpcaoAtiva.Cursor = Cursors.Hand;
-            lblOpcaoAtiva.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lblOpcaoAtiva.Location = new Point(403, 9);
+            lblOpcaoAtiva.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lblOpcaoAtiva.Location = new Point(337, 12);
             lblOpcaoAtiva.Name = "lblOpcaoAtiva";
-            lblOpcaoAtiva.Size = new Size(89, 17);
+            lblOpcaoAtiva.Size = new Size(82, 15);
             lblOpcaoAtiva.TabIndex = 6;
             lblOpcaoAtiva.Text = "MORADORES";
             // 

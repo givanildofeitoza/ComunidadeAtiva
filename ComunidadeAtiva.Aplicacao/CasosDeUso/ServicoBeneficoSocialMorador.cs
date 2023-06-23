@@ -46,5 +46,10 @@ namespace ComunidadeAtiva.Aplicacao.CasosDeUso
         {
            return _Mapper.Map<IEnumerable<BeneficosMoradorDTO>>(await _MoradorBeneficioSocialRepositorio.ObterTodos(skip,take));
         }
+
+        public async Task DeletarPorIdBbeneficio(int Id)
+        {
+            await _MoradorBeneficioSocialRepositorio.DeletarPorIdBbeneficio(Id);
+        }
     }
 }

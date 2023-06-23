@@ -29,7 +29,7 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
                 dirigenteDto.ConfirmaSenha = txtSenha.Text;
                 var id = await FrmMain._ServiceSegurancaIdentity.FazerLoginForms(dirigenteDto);
 
-                if ( !string.IsNullOrEmpty(id))
+                if (!string.IsNullOrEmpty(id))
                 {
                     this.Close();
                     FrmMain.usuarioLogado.UsuarioId = id;

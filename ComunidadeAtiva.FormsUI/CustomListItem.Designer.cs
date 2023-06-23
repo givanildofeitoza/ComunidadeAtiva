@@ -50,7 +50,7 @@
             // 
             TxtTitulo.AutoSize = true;
             TxtTitulo.Font = new Font("Sans Serif Collection", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            TxtTitulo.ForeColor = Color.FromArgb(64, 64, 64);
+            TxtTitulo.ForeColor = Color.DimGray;
             TxtTitulo.Location = new Point(99, 19);
             TxtTitulo.Name = "TxtTitulo";
             TxtTitulo.Size = new Size(78, 32);
@@ -61,21 +61,22 @@
             // txtInfo01
             // 
             txtInfo01.AutoSize = true;
-            txtInfo01.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            txtInfo01.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             txtInfo01.ForeColor = SystemColors.WindowFrame;
-            txtInfo01.Location = new Point(147, 53);
+            txtInfo01.Location = new Point(165, 53);
             txtInfo01.Name = "txtInfo01";
-            txtInfo01.Size = new Size(38, 13);
+            txtInfo01.Size = new Size(35, 13);
             txtInfo01.TabIndex = 1;
             txtInfo01.Text = "label2";
             // 
             // txtInfo02
             // 
             txtInfo02.AutoSize = true;
+            txtInfo02.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             txtInfo02.ForeColor = SystemColors.WindowFrame;
             txtInfo02.Location = new Point(103, 72);
             txtInfo02.Name = "txtInfo02";
-            txtInfo02.Size = new Size(38, 15);
+            txtInfo02.Size = new Size(35, 13);
             txtInfo02.TabIndex = 2;
             txtInfo02.Text = "label3";
             // 
@@ -104,9 +105,9 @@
             // 
             imgAlter.Cursor = Cursors.Hand;
             imgAlter.Image = (Image)resources.GetObject("imgAlter.Image");
-            imgAlter.Location = new Point(25, 22);
+            imgAlter.Location = new Point(36, 28);
             imgAlter.Name = "imgAlter";
-            imgAlter.Size = new Size(50, 50);
+            imgAlter.Size = new Size(40, 40);
             imgAlter.SizeMode = PictureBoxSizeMode.StretchImage;
             imgAlter.TabIndex = 8;
             imgAlter.TabStop = false;
@@ -115,22 +116,22 @@
             // txtInfo03
             // 
             txtInfo03.AutoSize = true;
-            txtInfo03.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            txtInfo03.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             txtInfo03.ForeColor = SystemColors.WindowFrame;
-            txtInfo03.Location = new Point(390, 31);
+            txtInfo03.Location = new Point(390, 29);
             txtInfo03.Name = "txtInfo03";
-            txtInfo03.Size = new Size(38, 13);
+            txtInfo03.Size = new Size(41, 13);
             txtInfo03.TabIndex = 4;
             txtInfo03.Text = "label2";
             // 
             // txtInfo04
             // 
             txtInfo04.AutoSize = true;
-            txtInfo04.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            txtInfo04.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             txtInfo04.ForeColor = SystemColors.WindowFrame;
-            txtInfo04.Location = new Point(597, 31);
+            txtInfo04.Location = new Point(596, 29);
             txtInfo04.Name = "txtInfo04";
-            txtInfo04.Size = new Size(38, 13);
+            txtInfo04.Size = new Size(41, 13);
             txtInfo04.TabIndex = 5;
             txtInfo04.Text = "label2";
             // 
@@ -148,19 +149,20 @@
             imgDelete.Image = (Image)resources.GetObject("imgDelete.Image");
             imgDelete.Location = new Point(605, 49);
             imgDelete.Name = "imgDelete";
-            imgDelete.Size = new Size(23, 23);
+            imgDelete.Size = new Size(20, 20);
             imgDelete.SizeMode = PictureBoxSizeMode.StretchImage;
             imgDelete.TabIndex = 9;
             imgDelete.TabStop = false;
+            imgDelete.Click += imgDelete_Click;
             // 
             // lblLabelCodigo
             // 
             lblLabelCodigo.AutoSize = true;
-            lblLabelCodigo.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lblLabelCodigo.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblLabelCodigo.ForeColor = SystemColors.WindowFrame;
             lblLabelCodigo.Location = new Point(103, 53);
             lblLabelCodigo.Name = "lblLabelCodigo";
-            lblLabelCodigo.Size = new Size(48, 13);
+            lblLabelCodigo.Size = new Size(43, 13);
             lblLabelCodigo.TabIndex = 10;
             lblLabelCodigo.Text = "Código:";
             // 

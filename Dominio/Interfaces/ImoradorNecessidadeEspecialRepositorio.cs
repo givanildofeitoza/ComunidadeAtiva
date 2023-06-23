@@ -5,6 +5,6 @@ namespace ComunidadeAtiva.Dominio.Interfaces
 {
     public interface ImoradorNecessidadeEspecialRepositorio : IrepositorioGenerico<MoradorNecessidadeEspecial>
     {
-    
+        public Task DeletarNecessidadePorIdNecessidade(int Id);
     }
 }

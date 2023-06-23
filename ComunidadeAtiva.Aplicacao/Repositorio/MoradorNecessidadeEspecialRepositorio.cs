@@ -18,6 +18,15 @@ namespace ComunidadeAtiva.Aplicacao.Repositorio
         public MoradorNecessidadeEspecialRepositorio(DbContext BancoDados) : base(BancoDados)
         {
         }
+
+        public async Task DeletarNecessidadePorIdNecessidade(int Id)
+        {
+            var n = await  _Entidade.Where(x => x.NecessidadeId == Id).ToArrayAsync();
+            _Entidade.RemoveRange(n);
+            await _BancoDados.SaveChangesAsync();
+
+        }
+
         /*  public async Task<MoradorNecessidadeEspecial> ObterNecessidadeRelacional(int Id)
           {
 

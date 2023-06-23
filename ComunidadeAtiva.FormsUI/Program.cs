@@ -11,6 +11,7 @@ using ComunidadeAtiva.Aplicacao.CasosDeUso;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using System.Windows.Forms;
+using ComunidadeAtiva.Ioc;
 
 namespace ComunidadeAtiva.FormsUI
 {
@@ -41,7 +42,11 @@ namespace ComunidadeAtiva.FormsUI
             var ConnectionStrings = "server=localhost; port=3307; uid=root;pwd=p@ssw0rd;database=comunidade";
 
             services.AddLogging(configure => configure.AddConsole())
-                .AddDbContext<IdentityFileDbContext>(options => options.UseMySql(ConnectionStrings, ServerVersion.AutoDetect(ConnectionStrings)))
+                .ConfigDependency()
+                .AddScoped<FrmMain>()
+                .AddDefaultIdentity<IdentityUser>();
+
+               /* .AddDbContext<IdentityFileDbContext>(options => options.UseMySql(ConnectionStrings, ServerVersion.AutoDetect(ConnectionStrings)))
                 .AddDbContext<FileDbContext>(opt => opt.UseMySql(ConnectionStrings, ServerVersion.AutoDetect(ConnectionStrings)))
                 .AddSingleton<DbContext, FileDbContext>()
                 .AddAutoMapper(typeof(MapeamentoClasseDTO))
@@ -69,7 +74,7 @@ namespace ComunidadeAtiva.FormsUI
                 .AddScoped<FrmMain>()
                 .AddDefaultIdentity<IdentityUser>()
                 .AddRoles<IdentityRole>()
-                .AddEntityFrameworkStores<IdentityFileDbContext>();
+                .AddEntityFrameworkStores<IdentityFileDbContext>();*/
                 
                 
                 

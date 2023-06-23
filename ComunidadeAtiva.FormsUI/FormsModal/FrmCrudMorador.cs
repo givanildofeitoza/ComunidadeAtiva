@@ -43,6 +43,10 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
 
         private async void button3_Click(object sender, EventArgs e)
         {
+            DialogResult result = MessageBox.Show("Confirmar operação?","Confirmação",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+            if (result == DialogResult.No)
+                return;
+
             MoradorDTO m = new MoradorDTO();
             m.Nome = txtNome.Text;
             m.Cpf = txtCpf.Text;
@@ -114,13 +118,17 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
             var beneficio = await _beneficioSocial.ObterTodos(50, 0);
             ListBoxBeneficio.Items.Clear();
             foreach (var b in Morador.moradorBeneficioSocial)
-                ListBoxBeneficio.Items.Add(beneficio.Where(x => x.id == b.BeneficioSocialId).FirstOrDefault().NomeBeneficioSocial + "- R$ " + b.Valor.ToString("0.00"));
-
+            {
+                var beneficioDet = beneficio.Where(x => x.id == b.BeneficioSocialId).FirstOrDefault();
+                if (beneficioDet != null)
+                    ListBoxBeneficio.Items.Add(beneficioDet.NomeBeneficioSocial + "- R$ " + b.Valor.ToString("0.00"));
+            }
             var necessidade = await _necessidadeEspecial.ObterTodos(50, 0);
             ListBoxNecessidade.Items.Clear();
             foreach (var n in Morador.necessidadeEspecial)
             {
                 var detNecessidade = necessidade.Where(x => x.id == n.NecessidadeId).FirstOrDefault();
+                if (detNecessidade != null)
                 ListBoxNecessidade.Items.Add("Remédio:" + detNecessidade.NecessitaRemedioControlado + "  " + detNecessidade.DescricaoNecessidadeEspecial);
             }
         }

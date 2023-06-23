@@ -19,7 +19,12 @@ namespace ComunidadeAtiva.Aplicacao.Repositorio
         {
         }
 
-
+        public  async Task DeletarPorIdBbeneficio(int Id)
+        {
+            var b = await _Entidade.Where(x => x.BeneficioSocialId == Id).ToArrayAsync();
+            _Entidade.RemoveRange(b);
+            await _BancoDados.SaveChangesAsync();
+        }
     }
 
 }

@@ -14,6 +14,7 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
         private async void button1_Click(object sender, EventArgs e)
         {
             BuscaObjectDTO moradorDTO = new BuscaObjectDTO("0","","","","");
+            moradorDTO.TextoBusca = "";
             var moradores = await FrmMain._ServicoMorador.ObterTodosRelacionalMorador(5000, 0, moradorDTO);
             var descricaoBeneficios = await FrmMain._beneficioSocial.ObterTodos(100, 0);
             var descricaoNecessidades = await FrmMain._necessidadeEspecial.ObterTodos(100, 0);
@@ -65,8 +66,13 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
                         rgPrint.impLinha("Benefícios Sociais:", 3, FontStyle.Bold, 16, true);
                         foreach (var b in impMorador.moradorBeneficioSocial)
                         {
-                            rgPrint.impLinha(descricaoBeneficios.Where(x => x.id == b.BeneficioSocialId).FirstOrDefault().NomeBeneficioSocial + "  Valor R$: " + b.Valor, 3, FontStyle.Regular, 16, true);
-                            rgPrint.impLinha("------------------------------------------------------------------------------------------------------", 3, FontStyle.Regular,20, true);
+                            var be = descricaoBeneficios.Where(x => x.id == b.BeneficioSocialId).FirstOrDefault();
+                            if (be != null)
+                            {
+                                rgPrint.impLinha(be.NomeBeneficioSocial + "  Valor R$: " + b.Valor, 3, FontStyle.Regular, 16, true);
+                                rgPrint.impLinha("------------------------------------------------------------------------------------------------------", 3, FontStyle.Regular, 20, true);
+
+                            }
                         }
                         rgPrint.impLinha("", 1, FontStyle.Regular, 16, true);
                     }
@@ -81,11 +87,14 @@ namespace ComunidadeAtiva.FormsUI.FormsModal
                         foreach (var n in impMorador.necessidadeEspecial)
                         {
                             var ne = descricaoNecessidades.Where(x => x.id == n.NecessidadeId).FirstOrDefault();
-                            rgPrint.impLinha(ne.DescricaoNecessidadeEspecial, 3, FontStyle.Regular, 16, true);
-                            rgPrint.impLinha("Remédio: " + ne.NecessitaRemedioControlado, 20, FontStyle.Regular, 16, false);
-                            rgPrint.impLinha("----------------------------------------------------------------------------------------------------", 3, FontStyle.Regular, 20, true);
-                        }
+                            if (ne != null)
+                            {
+                                rgPrint.impLinha(ne.DescricaoNecessidadeEspecial, 3, FontStyle.Regular, 16, true);
+                                rgPrint.impLinha("Remédio: " + ne.NecessitaRemedioControlado, 20, FontStyle.Regular, 16, false);
+                                rgPrint.impLinha("----------------------------------------------------------------------------------------------------", 3, FontStyle.Regular, 20, true);
 
+                            }
+                        }
                     }
                     rgPrint.impLinha("", 1, FontStyle.Regular, 16, true);
                 }               

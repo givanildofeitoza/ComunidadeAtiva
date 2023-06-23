@@ -92,16 +92,16 @@ namespace ComunidadeAtiva.FormsUI
                     {
                         BuscaObjectDTO buscaMorador = new BuscaObjectDTO("", "", "", "", "");
                         buscaMorador.TextoBusca = txtBusca.Text;
-                       
 
                         _FrmCrudMorador Fmorador = new _FrmCrudMorador(_ServicoMorador, _beneficioSocial, _necessidadeEspecial, _notificacao, _ruaService, _db, AcaoControleCadastro.ALTERAR);
                         flowLayoutPanel1.Controls.Clear();
-                        var listMoradores = await _ServicoMorador.ObterTodosRelacionalMorador(10, 0, buscaMorador);
+                        var listMoradores = await _ServicoMorador.ObterTodosRelacionalMorador(100, 0, buscaMorador);
                         CustomListItem[] listItem = new CustomListItem[listMoradores.Count()];
                         int i = 0;
                         foreach (var item in listMoradores)
                         {
                             listItem[i] = new CustomListItem(Fmorador);
+                            listItem[i].BoundedContext = "MORADORES";
                             listItem[i].Title = item.Nome;
                             listItem[i].Texto01 = item.id.ToString();
                             listItem[i].Texto02 = $"{item.rua.Nome1} - {item.rua.Nome2}, N° {item.NumeroCasa}";
@@ -116,14 +116,20 @@ namespace ComunidadeAtiva.FormsUI
                     }
                 case "PROGRAMAS SOCIAIS":
                     {
+
                         FormCrudBeneficioSocial Fmorador = new FormCrudBeneficioSocial(AcaoControleCadastro.ALTERAR);
                         flowLayoutPanel1.Controls.Clear();
-                        var listBeneficios = await _ServicoBeneficioSocial.ObterBeneficioTodos(50, 0);
+                        var listBeneficios = await _ServicoBeneficioSocial.ObterBeneficioTodos(100, 0);
+
+                        if (!string.IsNullOrEmpty(txtBusca.Text))
+                            listBeneficios = listBeneficios.Where(x => x.NomeBeneficioSocial.ToUpper().Contains(txtBusca.Text.ToUpper())).ToList();
+
                         CustomListItem[] listItem = new CustomListItem[listBeneficios.Count()];
                         int i = 0;
                         foreach (var item in listBeneficios)
                         {
                             listItem[i] = new CustomListItem(Fmorador);
+                            listItem[i].BoundedContext = "PROGRAMAS SOCIAIS";
                             listItem[i].Title = item.NomeBeneficioSocial;
                             listItem[i].Texto01 = item.Id.ToString();
                             listItem[i].Texto02 = item.DescricaoBeneficioSocial;
@@ -137,15 +143,22 @@ namespace ComunidadeAtiva.FormsUI
                     }
                 case "NECESSIDADES ESPECIAIS":
                     {
+
                         FrmCrudNecessidade frmCrudNecessidade = new FrmCrudNecessidade(AcaoControleCadastro.ALTERAR);
                         _FrmCrudMorador Fmorador = new _FrmCrudMorador(_ServicoMorador, _beneficioSocial, _necessidadeEspecial, _notificacao, _ruaService, _db, AcaoControleCadastro.ALTERAR);
                         flowLayoutPanel1.Controls.Clear();
                         var listNecessidades = await _ServicoNecessidadeEspecial.ObterNecessidadeTodos(50, 0);
+
+                        if (!string.IsNullOrEmpty(txtBusca.Text))
+                            listNecessidades = listNecessidades.Where(x => x.DescricaoNecessidadeEspecial.ToUpper().Contains(txtBusca.Text.ToUpper()));
+
                         CustomListItem[] listItem = new CustomListItem[listNecessidades.Count()];
                         int i = 0;
                         foreach (var item in listNecessidades)
                         {
+                            
                             listItem[i] = new CustomListItem(frmCrudNecessidade);
+                            listItem[i].BoundedContext = "NECESSIDADES ESPECIAIS";
                             listItem[i].Title = item.DescricaoNecessidadeEspecial;
                             listItem[i].Texto01 = item.Id.ToString();
                             listItem[i].Texto02 = "Permanente: " + item.Permanete;
@@ -257,7 +270,7 @@ namespace ComunidadeAtiva.FormsUI
 
         private void txtBusca_Enter(object sender, EventArgs e)
         {
-           txtBusca.Text="";
+            txtBusca.Text = "";
         }
     }
 }

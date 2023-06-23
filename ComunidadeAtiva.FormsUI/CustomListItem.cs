@@ -1,4 +1,7 @@
-﻿using ComunidadeAtiva.FormsUI.Classes;
+﻿using ComunidadeAtiva.Dominio.Entity;
+using ComunidadeAtiva.Dominio.Enum;
+using ComunidadeAtiva.FormsUI.Classes;
+using ComunidadeAtiva.FormsUI.FormsModal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +17,7 @@ namespace ComunidadeAtiva.FormsUI
     public partial class CustomListItem : UserControl
     {
         private ClasseFormPadrao _frm;
+        public string  BoundedContext;
 
         public CustomListItem(ClasseFormPadrao frm)
         {
@@ -33,6 +37,50 @@ namespace ComunidadeAtiva.FormsUI
         {
             _frm.Id = int.Parse(_texto01);
             _frm.ShowDialog();
+        }
+
+        private async void imgDelete_Click(object sender, EventArgs e)
+        {
+            switch (BoundedContext)
+            {
+                case "MORADORES":
+                    {
+                         DialogResult result = MessageBox.Show("Excluir Morador?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                         if (result == DialogResult.No)
+                         return;
+                     
+
+                       var morador = await FrmMain._ServicoMorador.ObterMoradorId(int.Parse(_texto01));
+                        morador.Situacao = "Excluído";
+                        await FrmMain._ServicoMorador.AlterarMorador(morador);
+
+                        break;
+                    }
+                case "NECESSIDADES ESPECIAIS":
+                    {
+                        DialogResult result = MessageBox.Show("Excluir Necessiade?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (result == DialogResult.No)
+                            return;
+
+                        var necessidade = await FrmMain._ServicoNecessidadeEspecial.ObterNecessidadeID(int.Parse(_texto01));
+                        await FrmMain._ServicoNecessidadeEspecial.DeletarNecessidade(necessidade);
+                        await FrmMain._ServicoNecessidadeMorador.DeletarNecessidadePorIdNecessidade(int.Parse(_texto01));                       
+
+                        break;
+                    }
+                case "PROGRAMAS SOCIAIS":
+                    {
+                        DialogResult result = MessageBox.Show("Excluir Programa Social?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (result == DialogResult.No)
+                            return;
+
+                        var beneficio = await FrmMain._ServicoBeneficioSocial.ObterBeneficioID(int.Parse(_texto01));
+                        await FrmMain._ServicoBeneficioSocial.DeletarBeneficio(beneficio);                       
+                        await FrmMain._ServicoBeneficoSocialMorador.DeletarPorIdBbeneficio(int.Parse(_texto01));
+
+                        break;
+                    }
+            }
         }
 
         [Category("Custom Props")]

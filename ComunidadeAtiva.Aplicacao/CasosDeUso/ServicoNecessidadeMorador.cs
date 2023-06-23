@@ -61,6 +61,10 @@ namespace ComunidadeAtiva.Aplicacao.CasosDeUso
         
         public async Task<IEnumerable<NecessidadesMoradorDTO>> ObterNecessidadeMoradorTodos(int skip, int take)
             =>_Mapper.Map< IEnumerable<NecessidadesMoradorDTO>>(await _MoradorNecessidadeEspecialRepositorio.ObterTodos(skip,take));
-        
+
+        public async Task DeletarNecessidadePorIdNecessidade(int Id)
+        {
+            await _MoradorNecessidadeEspecialRepositorio.DeletarNecessidadePorIdNecessidade(Id);
+        }
     }
 }

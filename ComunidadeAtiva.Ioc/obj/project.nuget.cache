@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "moT8lEcltL+yJKDW6BiHraPBiF1KMK70I1MPs6Ah46Lj57svySHydy6ZhytucMeNu9f4Kcoy/ZovinddOghYuw==",
+  "dgSpecHash": "XtnG+8GtKOs/pTeG6tvo88IU8eGxUCF5VRAYe4QPra/mmiWgz4oGJdTuZvPigen8rq/CHIQxSZ377fv3rp1IBw==",
   "success": true,
   "projectFilePath": "C:\\givanildo\\Projetos\\ComunidadeAtiva\\ComunidadeAtiva.Ioc\\ComunidadeAtiva.Ioc.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\IQ SISTEMAS\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\IQ SISTEMAS\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\IQ SISTEMAS\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\IQ SISTEMAS\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\IQ SISTEMAS\\.nuget\\packages\\microsoft.aspnetcore.authentication.cookies\\2.2.0\\microsoft.aspnetcore.authentication.cookies.2.2.0.nupkg.sha512",

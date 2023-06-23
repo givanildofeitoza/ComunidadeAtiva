@@ -15,5 +15,6 @@ namespace ComunidadeAtiva.Aplicacao.CasosDeUso.Interface
         public Task CadastrarBeneficioMorador(BeneficosMoradorDTO beneficoDTO);
         public Task AlterarBeneficioMorador(BeneficosMoradorDTO beneficoDTO);
         public Task DeletarBeneficioMorador(BeneficosMoradorDTO beneficoDTO);
+        public Task DeletarPorIdBbeneficio(int Id);
     }
 }
