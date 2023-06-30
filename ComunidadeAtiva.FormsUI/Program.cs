@@ -1,16 +1,8 @@
-using ComunidadeAtiva.Dominio.Interfaces;
 using ComunidadeAtiva.Infra.Data.DbContextFiles;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
-using ComunidadeAtiva.Dominio.Validacao;
-using ComunidadeAtiva.Aplicacao.Repositorio;
 using Microsoft.Extensions.DependencyInjection;
-using ComunidadeAtiva.Aplicacao.Mapeamento;
-using ComunidadeAtiva.Aplicacao.CasosDeUso.Interface;
-using ComunidadeAtiva.Aplicacao.CasosDeUso;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using System.Windows.Forms;
 using ComunidadeAtiva.Ioc;
 
 namespace ComunidadeAtiva.FormsUI
@@ -42,43 +34,39 @@ namespace ComunidadeAtiva.FormsUI
             var ConnectionStrings = "server=localhost; port=3307; uid=root;pwd=p@ssw0rd;database=comunidade";
 
             services.AddLogging(configure => configure.AddConsole())
+                .AddDbContext<IdentityFileDbContext>(options => options.UseMySql(ConnectionStrings, ServerVersion.AutoDetect(ConnectionStrings)))
+                .AddDbContext<FileDbContext>(opt => opt.UseMySql(ConnectionStrings, ServerVersion.AutoDetect(ConnectionStrings)))
                 .ConfigDependency()
                 .AddScoped<FrmMain>()
-                .AddDefaultIdentity<IdentityUser>();
+                .AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<IdentityFileDbContext>();
+            
+            /* .AddSingleton<DbContext, FileDbContext>()
+             .AddAutoMapper(typeof(MapeamentoClasseDTO))
+             .AddSingleton<ICapturarNotificacao, CapturarNotificacao>()
+             .AddSingleton<ImoradorRepositorio, MoradorRepositorio>()
+             .AddSingleton<IbeneficioSocialRepositorio, BeneficioSocialRepositorio>()
+             .AddSingleton<ImoradorBeneficioSocialRepositorio, MoradorBeneficioSocialRepositorio>()
+             .AddSingleton<InecessidadeEspecialRepositorio, NecessidadeEspecialRepositorio>()
+             .AddSingleton<IcorpoDirigenteAssociacaoRepositorio, CorpoDirigenteAssociacaoRepositorio>()
+             .AddSingleton<ImoradorNecessidadeEspecialRepositorio, MoradorNecessidadeEspecialRepositorio>()
+             .AddSingleton<IServicoRua, ServicoRua>()
+             .AddSingleton<IServicoMorador, ServicoMorador>()
+             .AddSingleton<IServicoBeneficoSocialMorador, ServicoBeneficoSocialMorador>()
+             .AddSingleton<IServicoNecessidadeMorador, ServicoNecessidadeMorador>()
+             .AddSingleton<IServicoBeneficioSocial, ServicoBeneficioSocial>()
+             .AddSingleton<IServicoNecessidadeEspecial, ServicoNecessidadeEspecial>()
+             .AddSingleton<IServicoCorpoDirigenteAssociacao,ServicoCorpoDirigenteAssociacao>()
+             .AddSingleton<IServicoAssociacao,ServicoAssociacao> ()
+             .AddSingleton<IruaRepositorio, RuaRepositorio>()
+             .AddSingleton<IassociacaoRepositorio,AssociacaoRepositorio>()
+             .AddSingleton<IServiceSegurancaIdentity, ServiceSegurancaIdentity>()
+             //.AddIdentityCore<IdentityUser>()
 
-               /* .AddDbContext<IdentityFileDbContext>(options => options.UseMySql(ConnectionStrings, ServerVersion.AutoDetect(ConnectionStrings)))
-                .AddDbContext<FileDbContext>(opt => opt.UseMySql(ConnectionStrings, ServerVersion.AutoDetect(ConnectionStrings)))
-                .AddSingleton<DbContext, FileDbContext>()
-                .AddAutoMapper(typeof(MapeamentoClasseDTO))
-                .AddSingleton<ICapturarNotificacao, CapturarNotificacao>()
-                .AddSingleton<ImoradorRepositorio, MoradorRepositorio>()
-                .AddSingleton<IbeneficioSocialRepositorio, BeneficioSocialRepositorio>()
-                .AddSingleton<ImoradorBeneficioSocialRepositorio, MoradorBeneficioSocialRepositorio>()
-                .AddSingleton<InecessidadeEspecialRepositorio, NecessidadeEspecialRepositorio>()
-                .AddSingleton<IcorpoDirigenteAssociacaoRepositorio, CorpoDirigenteAssociacaoRepositorio>()
-                .AddSingleton<ImoradorNecessidadeEspecialRepositorio, MoradorNecessidadeEspecialRepositorio>()
-                .AddSingleton<IServicoRua, ServicoRua>()
-                .AddSingleton<IServicoMorador, ServicoMorador>()
-                .AddSingleton<IServicoBeneficoSocialMorador, ServicoBeneficoSocialMorador>()
-                .AddSingleton<IServicoNecessidadeMorador, ServicoNecessidadeMorador>()
-                .AddSingleton<IServicoBeneficioSocial, ServicoBeneficioSocial>()
-                .AddSingleton<IServicoNecessidadeEspecial, ServicoNecessidadeEspecial>()
-                .AddSingleton<IServicoCorpoDirigenteAssociacao,ServicoCorpoDirigenteAssociacao>()
-                .AddSingleton<IServicoAssociacao,ServicoAssociacao> ()
-                .AddSingleton<IruaRepositorio, RuaRepositorio>()
-                .AddSingleton<IassociacaoRepositorio,AssociacaoRepositorio>()
-                .AddSingleton<IServiceSegurancaIdentity, ServiceSegurancaIdentity>()
-                //.AddIdentityCore<IdentityUser>()
-
-                //Para aparecer o AddAutomaper é preciso ao pacote nuguet AutoMappe.Extensions.Microsoft.DependencyInjection.
-                .AddScoped<FrmMain>()
-                .AddDefaultIdentity<IdentityUser>()
-                .AddRoles<IdentityRole>()
-                .AddEntityFrameworkStores<IdentityFileDbContext>();*/
-                
-                
-                
-
+             //Para aparecer o AddAutomaper é preciso ao pacote nuguet AutoMappe.Extensions.Microsoft.DependencyInjection.
+             .AddScoped<FrmMain>()
+             .AddDefaultIdentity<IdentityUser>()
+             .AddRoles<IdentityRole>()
+             .AddEntityFrameworkStores<IdentityFileDbContext>();*/
         }
 
     }

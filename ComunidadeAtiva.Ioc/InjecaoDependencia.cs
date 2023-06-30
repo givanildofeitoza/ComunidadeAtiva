@@ -2,14 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using ComunidadeAtiva.Aplicacao.Mapeamento;
-using AutoMapper;
 using ComunidadeAtiva.Aplicacao.CasosDeUso.Interface;
 using ComunidadeAtiva.Aplicacao.CasosDeUso;
 using ComunidadeAtiva.Aplicacao.Repositorio;
 using ComunidadeAtiva.Dominio.Interfaces;
 using ComunidadeAtiva.Dominio.Validacao;
-using Microsoft.AspNetCore.Identity;
-
 
 
 namespace ComunidadeAtiva.Ioc
@@ -17,10 +14,7 @@ namespace ComunidadeAtiva.Ioc
     public static class InjecaoDependencia
     {
         public static IServiceCollection ConfigDependency(this IServiceCollection Services)
-        {            
-               var ConnectionStrings = "server=localhost; port=3307; uid=root;pwd=p@ssw0rd;database=comunidade";
-               Services.AddDbContext<IdentityFileDbContext>(options => options.UseMySql(ConnectionStrings, ServerVersion.AutoDetect(ConnectionStrings)));
-               Services.AddDbContext<FileDbContext>(opt => opt.UseMySql(ConnectionStrings, ServerVersion.AutoDetect(ConnectionStrings)));
+        {              
                Services.AddScoped<DbContext, FileDbContext>();
                Services.AddScoped<ICapturarNotificacao, CapturarNotificacao>();
                Services.AddScoped<ImoradorRepositorio, MoradorRepositorio>();
@@ -40,10 +34,8 @@ namespace ComunidadeAtiva.Ioc
                Services.AddScoped<IruaRepositorio, RuaRepositorio>();
                Services.AddScoped<IassociacaoRepositorio, AssociacaoRepositorio>();              
                Services.AddScoped<IServiceSegurancaIdentity, ServiceSegurancaIdentity>();
-               Services.AddAutoMapper(typeof(MapeamentoClasseDTO));        
-               Services.AddIdentityCore<IdentityUser>()
-               .AddRoles<IdentityRole>()
-               .AddEntityFrameworkStores<IdentityFileDbContext>();
+               Services.AddAutoMapper(typeof(MapeamentoClasseDTO));
+              
            
             /*services.AddAutoMapper(typeof(AutoMapperConfig));
             services.AddScoped<DbContext, appDbContext>();

@@ -12,7 +12,6 @@ namespace ComunidadeAtiva.Aplicacao.DTO
         public string Telefone { get; set; }
         public string Celular { get; set; }
         public string Ativo { get; set; }
-        [Required]
         public string UsuarioId { get; set; }
       
         [Required(ErrorMessage = "E-mail é Obrigatório !")]
