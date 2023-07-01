@@ -103,7 +103,6 @@ namespace ComunidadeAtiva.Aplicacao.CasosDeUso
             return dirigenteDto;
 
         }
-
         public Task FazerLogoff(CorpoDirigenteAssociacaoDTO dirigenteDto)
         {
             throw new NotImplementedException();

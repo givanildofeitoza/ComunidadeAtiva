@@ -21,14 +21,14 @@ namespace ComunidadeAtiva.Api.Controllers
             _ServicoMorador = servicoMorador;
             _ServicoBeneficoSocialMorador = servicoBeneficoSocialMorador;
             _ServicoNecessidadeMorador = servicoNecessidadeMorador;
-        }
-
+        }       
         [HttpGet("obter-todos-moradores/{Take}/{Skip}")]
         public async Task<ActionResult<IEnumerable<MoradorDTO>>> GetAllMoradores(int Take, int Skip)
         {
             var Moradores = await _ServicoMorador.ObterMradorTodos(Take, Skip);           
             return Ok(Moradores); 
         }
+   
         [HttpGet("obter-moradores-por-id/{Id}")]
         public async Task<ActionResult<MoradorDTO>> GetMoradoresById(int Id)
         {
@@ -36,7 +36,7 @@ namespace ComunidadeAtiva.Api.Controllers
             return Ok(Moradores);
         }
         [HttpDelete("excluir-morador/{Id}")]
-        public async Task<ActionResult> DeleteMoradorById(int Id)
+        public async Task<ActionResult> DeleteMorador(int Id)
         {
             var Morador = await _ServicoMorador.ObterMoradorId(Id);
             try {
@@ -49,7 +49,7 @@ namespace ComunidadeAtiva.Api.Controllers
             
         }
         [HttpPut("atualizar-Moradores/")]
-        public async Task<ActionResult> UpdateMoradorById(MoradorCadastroDto morador)
+        public async Task<ActionResult> UpdateMorador(MoradorCadastroDto morador)
         {
             if (!ModelState.IsValid)
                 return BadRequest();
@@ -106,6 +106,74 @@ namespace ComunidadeAtiva.Api.Controllers
                 return BadRequest(ex.Message);
             }            
           
+        }
+        [HttpPost("adicionar-beneficio-morador/")]
+        public async Task<ActionResult> AddMoradorBeneficio([FromBody] BeneficosMoradorDTO beneficio)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            try
+            {
+                await _ServicoBeneficoSocialMorador.CadastrarBeneficioMorador(beneficio);
+                return Ok();
+            }
+            catch (ExcecoesCustomizadas ex)
+            {
+                return BadRequest(ex.Message);
+            }           
+         
+        }
+        [HttpDelete("excluir-beneficio-morador/")]
+        public async Task<ActionResult> ExcluirMoradorBeneficio([FromBody] BeneficosMoradorDTO beneficio)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            try
+            {
+                await _ServicoBeneficoSocialMorador.DeletarBeneficioMorador(beneficio);
+                return Ok();
+            }
+            catch (ExcecoesCustomizadas ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
+        [HttpDelete("excluir-necessidade-morador/")]
+        public async Task<ActionResult> ExcluirMoradorNecessidade([FromBody] NecessidadesMoradorDTO necessidade)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            try
+            {
+                await _ServicoNecessidadeMorador.DeletarNecessidadeMorador(necessidade);
+                return Ok();
+            }
+            catch (ExcecoesCustomizadas ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
+        [HttpPost("cadastrar-necessidade-morador/")]
+        public async Task<ActionResult> AdicionarMoradorNecessidade([FromBody] NecessidadesMoradorDTO necessidade)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            try
+            {
+                await _ServicoNecessidadeMorador.CadastrarNecessidadeMorador(necessidade);
+                return Ok();
+            }
+            catch (ExcecoesCustomizadas ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
         }
 
     }
